@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">AlAbroorMobile</string>
+    <string name="app_name">Al-Abroor Mobile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Al-Ab\'roor Mobile</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

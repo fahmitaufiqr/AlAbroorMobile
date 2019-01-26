@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#2699FB</color>
+    <color name="warnaAtas">#2699FB</color>
+    <color name="warnaBg">#F1F9FF</color>
+    <color name="warnaText">#0A80F5</color>
+    <color name="cardView">#F1F9FF</color>
+    <color name="warnaText2">#858585</color>
+    <color name="warnaGaris">#BCE0FD</color>
+    <color name="warnatextButton">#FFFFFF</color>
+
+    //navigation
+    <color name="colorNavigationIcon">#2699FB</color>
+    <color name="colorNavigationText">#ffffff</color>
 </resources>
