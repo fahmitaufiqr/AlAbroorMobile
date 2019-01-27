@@ -40,7 +40,8 @@ Kelurahan, Batukarut, Arjasari, Bandung"
             android:fontFamily="@font/ralewayregular"
             android:layout_gravity="left"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:id="@+id/strukturButton"/>
     </LinearLayout>
 
 </ScrollView>

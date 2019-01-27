@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainAdminActivity"></activity>
+        <activity android:name=".AdminTambahPetugas"></activity>
+        <activity android:name=".AdminTambahPengguna" />
+        <activity android:name=".JadwalRamadhan" />
+        <activity android:name=".JadwalPengajian" />
+        <activity android:name=".JadwalKesediaan" />
+        <activity android:name=".StrukturDkm" />
+        <activity android:name=".MainAdminActivity" />
         <activity android:name=".verifikasi" />
         <activity android:name=".splashscreen">
             <intent-filter>

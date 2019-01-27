@@ -20,9 +20,9 @@ public class MainAdminActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager =(ViewPager) findViewById(R.id.content);
         adapter = new viewPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new UserHome(),"MENU");
-        adapter.addFragment(new UserJadwal(),"JADWAL");
-        adapter.addFragment(new UserMasjid(),"MASJID");
+        adapter.addFragment(new AdminHome(),"MENU");
+        adapter.addFragment(new AdminJadwal(),"JADWAL");
+        adapter.addFragment(new AdminMasjid(),"MASJID");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
