@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -31,5 +32,7 @@ public class MainAdminActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_jadwal);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_masjid);
         //View Page END
+
+
     }
 }

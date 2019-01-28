@@ -15,11 +15,20 @@ public class verifikasi extends AppCompatActivity {
 
         //inisialisasi
         Button nextBt = (Button) findViewById(R.id.verifikasibt);
+        Button testAdminbt = (Button) findViewById(R.id.admin);
 
         nextBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(verifikasi.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        testAdminbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(verifikasi.this,MainAdminActivity.class);
                 startActivity(intent);
             }
         });

@@ -8,4 +8,49 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="jadwal_muadzin">JADWAL MUADZIN</string>
+
+    <string-array name="dkm_masjid">
+        <item>Dedi Indra</item>
+        <item>Atip</item>
+        <item>Deni H</item>
+        <item>Asmoro</item>
+        <item>Agus</item>
+        <item>Yusuf RT</item>
+        <item>Agus Priatna</item>
+        <item>Eko</item>
+        <item>Irman S</item>
+        <item>Ganjar</item>
+        <item>H. Mahdi</item>
+        <item>Imam A</item>
+        <item>Asep M</item>
+        <item>Irsan</item>
+        <item>Nurfaiz</item>
+        <item>Riman</item>
+        <item>Saeful</item>
+        <item>Siswo</item>
+        <item>Usep M</item>
+        <item>Yoyo</item>
+        <item>Wawan</item>
+        <item>Firman</item>
+        <item>Rinto</item>
+        <item>Tedi Triyotno</item>
+    </string-array>
+
+    <string-array name="hari">
+        <item>Minggu</item>
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+    </string-array>
+
+    <string-array name="sholat">
+        <item>Shubuh</item>
+        <item>Dzuhur</item>
+        <item>Ashar</item>
+        <item>Maghrib</item>
+        <item>Isya</item>
+    </string-array>
 </resources>
