@@ -81,11 +81,27 @@ public class AdminJadwal extends Fragment {
             }
         });
 
+        pengajianTbh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AdminTambahPengajian.class);
+                startActivity(intent);
+            }
+        });
+
         //CardView RAMADHAN
         ramadhanBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),JadwalRamadhan.class);
+                startActivity(intent);
+            }
+        });
+
+        ramadhanTbh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AdminTambahRamadhan.class);
                 startActivity(intent);
             }
         });

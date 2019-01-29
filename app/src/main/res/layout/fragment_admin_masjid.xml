@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminMasjid">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:gravity="center">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masjid Al-Ab'roor"
+            android:textSize="34sp"
+            android:fontFamily="@font/arialbd_1"
+            android:textColor="@color/warnaText"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Batu Karut Regency, RT.007/RW.012
+Kelurahan, Batukarut, Arjasari, Bandung"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="206dp"
+            android:layout_height="41dp"
+            android:background="@drawable/button_shape"
+            android:text="Struktur dkm masjid"
+            android:textSize="15sp"
+            android:textColor="@color/warnatextButton"
+            android:fontFamily="@font/ralewayregular"
+            android:layout_gravity="left"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/strukturButton"/>
+    </LinearLayout>
+
+</ScrollView>

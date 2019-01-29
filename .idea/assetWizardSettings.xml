@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_person_add_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_access_time_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -56,9 +56,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="G:\DATA KULIAH AIKVANDA\PROYEK AKHIR\ICON\islam.png" />
-                                      <entry key="outputName" value="ic_tambah_user" />
+                                      <entry key="outputName" value="ic_jam" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="f1f9ff" />
+                                      <entry key="themeColor" value="2699fb" />
                                     </map>
                                   </option>
                                 </PersistentState>
