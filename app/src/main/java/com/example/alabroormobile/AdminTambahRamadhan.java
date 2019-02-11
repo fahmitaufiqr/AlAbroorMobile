@@ -25,7 +25,7 @@ public class AdminTambahRamadhan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_tambah_ramadhan);
+        setContentView(R.layout.activity_admin_tambah_pengajian);
 
         String[] hari = {
                 "1","2","3","4","5","6","7","8","9","10"

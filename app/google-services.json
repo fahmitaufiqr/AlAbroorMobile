@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "673082741435",
+    "firebase_url": "https://alabroormobile.firebaseio.com",
+    "project_id": "alabroormobile",
+    "storage_bucket": "alabroormobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673082741435:android:600e2bd07203ccb9",
+        "android_client_info": {
+          "package_name": "com.example.alabroormobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673082741435-hbff7p5k5outkaq864rp1salnr6h5m2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alabroormobile",
+            "certificate_hash": "d5e0ff7b2f03ba686c1c9ddb76536e9d4385dd47"
+          }
+        },
+        {
+          "client_id": "673082741435-qqjbrulsv009rfsg4necrrjatiu16eur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVRBEUrwhpvM3R5BwY5TWGpfd8MiJfXaM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673082741435-qqjbrulsv009rfsg4necrrjatiu16eur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
