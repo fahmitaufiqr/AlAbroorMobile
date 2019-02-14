@@ -2,9 +2,8 @@ package com.example.alabroormobile;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -32,7 +31,7 @@ public class splashscreen extends Activity {
             @Override
             public void run() {
                 // to do auto generated stub
-                Intent apasih = new Intent(splashscreen.this,Login.class);
+                Intent apasih = new Intent(splashscreen.this, MainActivity.class);
                 startActivity(apasih);
 
                 // jeda setelah splashscren

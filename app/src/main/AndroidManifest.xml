@@ -9,16 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminTambahRamadhan"></activity>
+        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ArahKiblatActivity" />
+        <activity android:name=".AcaraMasjidActivity" />
+        <activity android:name=".AdminTambahRamadhan" />
         <activity android:name=".AdminTambahPengajian" />
-        <activity android:name=".AdminStatistikImam" />
+        <activity android:name=".AdminStatistikImamActivity" />
         <activity android:name=".AdminTambahPetugas" />
         <activity android:name=".AdminTambahPengguna" />
         <activity android:name=".JadwalRamadhan" />
         <activity android:name=".JadwalPengajian" />
-        <activity android:name=".JadwalKesediaan" />
-        <activity android:name=".StrukturDkm" />
-        <activity android:name=".MainAdminActivity" />
+        <activity android:name=".JadwalKesediaanActivity" />
+        <activity android:name=".StrukturDkmActivity" />
         <activity android:name=".verifikasi" />
         <activity android:name=".splashscreen">
             <intent-filter>

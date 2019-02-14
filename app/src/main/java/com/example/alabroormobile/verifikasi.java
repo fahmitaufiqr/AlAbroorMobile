@@ -25,12 +25,5 @@ public class verifikasi extends AppCompatActivity {
             }
         });
 
-        testAdminbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(verifikasi.this,MainAdminActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
