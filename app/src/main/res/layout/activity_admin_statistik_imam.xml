@@ -13,7 +13,7 @@
         android:id="@+id/sp_imam_stat"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:hint="Pilih Imam"
+        android:hint="Pilih Petugas"
         android:fontFamily="@font/ralewayregular"
         android:textSize="21sp"
         android:textColorHint="@color/colorPrimary"

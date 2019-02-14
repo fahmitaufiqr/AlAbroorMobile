@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".JadwalSholatActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ArahKiblatActivity" />
         <activity android:name=".AcaraMasjidActivity" />
