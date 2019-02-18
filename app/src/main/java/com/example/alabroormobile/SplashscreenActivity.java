@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class splashscreen extends Activity {
+public class SplashscreenActivity extends Activity {
     //set waktu lama sPlashscreen
     private static int LamaTampilSplash = 3000;
 
@@ -31,7 +31,7 @@ public class splashscreen extends Activity {
             @Override
             public void run() {
                 // to do auto generated stub
-                Intent apasih = new Intent(splashscreen.this, MainActivity.class);
+                Intent apasih = new Intent(SplashscreenActivity.this, LoginActivity.class);
                 startActivity(apasih);
 
                 // jeda setelah splashscren

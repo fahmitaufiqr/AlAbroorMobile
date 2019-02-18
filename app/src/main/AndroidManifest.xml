@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_alabroor"
@@ -13,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JadwalSholatActivity"></activity>
+        <activity android:name=".JadwalSholatActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ArahKiblatActivity" />
@@ -27,15 +28,14 @@
         <activity android:name=".JadwalPengajian" />
         <activity android:name=".JadwalKesediaanActivity" />
         <activity android:name=".StrukturDkmActivity" />
-        <activity android:name=".verifikasi" />
-        <activity android:name=".splashscreen">
+        <activity android:name=".SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
