@@ -98,7 +98,7 @@
                         android:layout_gravity="center"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@color/colorPrimary" />
+                        app:srcCompat="@drawable/ic_waktusholat" />
             </android.support.v7.widget.CardView>
 
             <TextView
@@ -160,7 +160,7 @@
                         android:layout_gravity="center"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@color/colorPrimary" />
+                        app:srcCompat="@drawable/ic_jadwalpengajian" />
             </android.support.v7.widget.CardView>
 
             <TextView
@@ -190,7 +190,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_profil"
                     android:layout_gravity="center"/>
             </android.support.v7.widget.CardView>
 
@@ -231,7 +231,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_statistikpetugas"
                     android:layout_gravity="center" />
             </android.support.v7.widget.CardView>
 
@@ -263,7 +263,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_kiblat"
                         android:layout_gravity="center"/>
             </android.support.v7.widget.CardView>
 
@@ -294,7 +294,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_struktur"
                         android:layout_gravity="center"/>
             </android.support.v7.widget.CardView>
 
@@ -327,7 +327,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_info"
                         android:layout_gravity="center"/>
             </android.support.v7.widget.CardView>
 

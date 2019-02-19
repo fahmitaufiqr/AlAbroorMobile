@@ -1,9 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileActivity"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/toolbar_profil" android:id="@+id/main_toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DKM Masjid Al-Ab'roor"
+        android:textSize="30sp"
+        android:fontFamily="@font/arialbd_1"
+        android:textColor="@color/warnaText"
+        android:layout_marginTop="30dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"/>
+
+
+</LinearLayout>
