@@ -1,17 +1,19 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
+import com.example.alabroormobile.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-public class AdminStatistikImamActivity extends AppCompatActivity {
+public class StatistikActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_statistik_imam);
+        setContentView(R.layout.activity_statistik);
+        getSupportActionBar().setTitle("Statistik Keaktifan");
 
         String[] dkmMasjid = {
                 "Dedi Indra"

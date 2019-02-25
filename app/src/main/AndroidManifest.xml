@@ -14,20 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JadwalSholatActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".ArahKiblatActivity" />
-        <activity android:name=".AcaraMasjidActivity" />
+        <activity android:name=".activity.WaktuShalatActivity" />
+        <activity android:name=".activity.InfoActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ArahKiblatActivity" />
+        <activity android:name=".activity.AcaraActivity" />
         <activity android:name=".AdminTambahRamadhan" />
         <activity android:name=".AdminTambahPengajian" />
-        <activity android:name=".AdminStatistikImamActivity" />
+        <activity android:name=".activity.StatistikActivity" />
         <activity android:name=".AdminTambahPetugas" />
         <activity android:name=".AdminTambahPengguna" />
         <activity android:name=".JadwalRamadhan" />
         <activity android:name=".JadwalPengajian" />
-        <activity android:name=".JadwalKesediaanActivity" />
-        <activity android:name=".StrukturDkmActivity" />
+        <activity android:name=".activity.JadwalPetugasActivity" />
+        <activity android:name=".activity.StrukturDkmActivity" />
         <activity android:name=".SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"

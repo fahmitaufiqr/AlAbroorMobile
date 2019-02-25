@@ -1,7 +1,9 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.alabroormobile.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -9,5 +11,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().setTitle("Profil");
     }
 }

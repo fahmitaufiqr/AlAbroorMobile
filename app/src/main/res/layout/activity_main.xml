@@ -6,15 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <include
-        android:id="@+id/main_toolbar"
-        layout="@layout/toolbar" />
+    android:weightSum="6"
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:background="@drawable/masjid_wallpaper_hd">
 
         <TextView
@@ -27,13 +25,11 @@
             android:fontFamily="@font/ralewayregular"/>
 
         <TextView
-            android:id="@+id/dateView"
+            android:id="@+id/tv_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:text="Tanggal"
-            android:drawableLeft="@drawable/ic_date"
             android:textColor="@color/warnatextButton"
             android:fontFamily="@font/ralewayregular"
             android:layout_alignParentRight="true" />
@@ -47,9 +43,8 @@
             android:fontFamily="@font/ralewayregular"
             android:format12Hour="hh:mm:ss a"
             android:gravity="center_horizontal"
-            android:text="JJ : MM"
             android:textColor="@color/warnatextButton"
-            android:textSize="65sp"
+            android:textSize="50sp"
             android:textStyle="bold" />
 
         <TextView
@@ -65,279 +60,307 @@
             android:layout_alignParentBottom="true"
             android:drawableLeft="@drawable/ic_time"
             android:id="@+id/namaSholat"/>
-
     </RelativeLayout>
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="8dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="4"
+        android:columnOrderPreserved="false"
+        android:padding="5dp"
+        android:rowCount="4">
+
+        <LinearLayout
+            android:id="@+id/jadwalSholat"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_waktusholat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jadwalPetugas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_jadwalpetugas" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jadwalAcara"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_jadwalpengajian"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_profil"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waktu Shalat"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jadwal Petugas"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acara"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statistikPetugas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_statistikpetugas"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/arahKiblat"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_kiblat"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/strukturDkm"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_struktur"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/about"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/ic_info"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Statistik"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arah Kiblat"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Struktur DKM"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="9sp"/>
+        </LinearLayout>
+    </GridLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="10dp"
-        android:paddingRight="16dp">
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/jadwalSholat"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:background="#F1F9FF"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/ic_waktusholat" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Waktu Shalat"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/jadwalPetugas"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ic_jadwalpetugas" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Jadwal Petugas"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/jadwalAcara"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/ic_jadwalpengajian" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Acara"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/profile"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ic_profil"
-                    android:layout_gravity="center"/>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Profil"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/statistikPetugas"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ic_statistikpetugas"
-                    android:layout_gravity="center" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Statistik"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/arahKiblat"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:background="#F1F9FF"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/ic_kiblat"
-                        android:layout_gravity="center"/>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Arah Kiblat"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/strukturDkm"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/ic_struktur"
-                        android:layout_gravity="center"/>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Struktur DKM"/>
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/about"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/ic_info"
-                        android:layout_gravity="center"/>
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:textSize="9sp"
-                android:text="Info"/>
-        </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="2">
     </LinearLayout>
 </LinearLayout>

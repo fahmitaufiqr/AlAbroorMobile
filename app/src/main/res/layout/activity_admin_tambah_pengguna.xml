@@ -8,8 +8,6 @@
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal">
 
-    <include layout="@layout/toolbar_tambah_user" android:id="@+id/main_toolbar"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

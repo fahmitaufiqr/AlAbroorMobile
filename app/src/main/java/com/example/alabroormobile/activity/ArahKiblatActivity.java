@@ -1,4 +1,4 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -22,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alabroormobile.Compass;
+import com.example.alabroormobile.GPSTracker;
+import com.example.alabroormobile.R;
+
 import static android.view.View.INVISIBLE;
 
 
@@ -39,10 +43,12 @@ public class ArahKiblatActivity extends AppCompatActivity {
     SharedPreferences prefs;
     public LocationManager locationManager;
     GPSTracker gps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arah_kiblat);
+        getSupportActionBar().setTitle("Arah Kiblat");
         //////////////////////////////////////////
 
         //////////////////////////////////////////

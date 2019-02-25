@@ -3,11 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".JadwalKesediaanActivity"
+    tools:context=".activity.JadwalPetugasActivity"
     android:orientation="vertical"
     android:layout_centerHorizontal="true">
-
-    <include layout="@layout/toolbar_statistik" android:id="@+id/main_toolbar"/>
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
         android:id="@+id/sp_imam_stat"

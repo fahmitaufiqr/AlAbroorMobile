@@ -1,13 +1,22 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.alabroormobile.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
+    private TextView tv_tanggal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,20 +24,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //inisialisasi
-        CardView jadwalSholatbt = (CardView) findViewById(R.id.jadwalSholat);
-        CardView jadwalPetugasbt = (CardView) findViewById(R.id.jadwalPetugas);
-        CardView jadwalAcarabt = (CardView) findViewById(R.id.jadwalAcara);
-        CardView statistikPetugasbt = (CardView) findViewById(R.id.statistikPetugas);
-        CardView arahKiblatbt = (CardView) findViewById(R.id.arahKiblat);
-        CardView strukturDkmbt = (CardView) findViewById(R.id.strukturDkm);
-        CardView profilebt = (CardView) findViewById(R.id.profile);
-        CardView aboutbt = (CardView) findViewById(R.id.about);
+        jadwalSholatbt = findViewById(R.id.jadwalSholat);
+        jadwalPetugasbt = findViewById(R.id.jadwalPetugas);
+        jadwalAcarabt = findViewById(R.id.jadwalAcara);
+        statistikPetugasbt = findViewById(R.id.statistikPetugas);
+        arahKiblatbt = findViewById(R.id.arahKiblat);
+        strukturDkmbt = findViewById(R.id.strukturDkm);
+        profilebt = findViewById(R.id.profile);
+        aboutbt = findViewById(R.id.about);
+        tv_tanggal = findViewById(R.id.tv_tanggal);
 
+        tanggal();
+        intent();
+    }
 
+    private void tanggal(){
+        Date Date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+        String formattanggal = format.format(Date);
+        tv_tanggal.setText(formattanggal);
+    }
+
+    private void intent(){
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,JadwalSholatActivity.class);
+                Intent intent = new Intent(MainActivity.this,WaktuShalatActivity.class);
                 startActivity(intent);
             }
         });
@@ -36,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, JadwalKesediaanActivity.class);
+                Intent intent = new Intent(MainActivity.this, JadwalPetugasActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalAcarabt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AcaraMasjidActivity.class);
+                Intent intent = new Intent(MainActivity.this,AcaraActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         statistikPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AdminStatistikImamActivity.class);
+                Intent intent = new Intent(MainActivity.this,StatistikActivity.class);
                 startActivity(intent);
             }
         });
@@ -84,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         aboutbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
                 startActivity(intent);
             }
         });

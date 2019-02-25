@@ -6,8 +6,6 @@
     tools:context=".AdminTambahPetugas"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_pengajian" android:id="@+id/main_toolbar"/>
-
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
