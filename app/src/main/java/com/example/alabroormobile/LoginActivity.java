@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            //if already login
+            //jika sudah login
             if (!FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().isEmpty()) {
                 startActivity(new Intent(this, MainActivity.class)
                         .putExtra("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().isEmpty())
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
-            //Successfully signed in
+            //Berhasil login
             if (resultCode == RESULT_OK)
             {
                 if (!FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().isEmpty())
@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     return;
                 }
-                else //sign in failed
+                else //gagal login
                 {
                     if (response == null) {
                         Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();

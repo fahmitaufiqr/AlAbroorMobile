@@ -3,11 +3,11 @@ package com.example.alabroormobile;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class JadwalPengajian extends AppCompatActivity {
+public class JadwalRamadhanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jadwal_pengajian);
+        setContentView(R.layout.activity_jadwal_ramadhan);
     }
 }

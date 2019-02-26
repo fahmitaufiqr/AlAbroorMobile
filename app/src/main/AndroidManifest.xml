@@ -24,8 +24,8 @@
         <activity android:name=".activity.StatistikActivity" />
         <activity android:name=".AdminTambahPetugas" />
         <activity android:name=".AdminTambahPengguna" />
-        <activity android:name=".JadwalRamadhan" />
-        <activity android:name=".JadwalPengajian" />
+        <activity android:name=".JadwalRamadhanActivity" />
+        <activity android:name=".activity.JadwalPengajianActivity" />
         <activity android:name=".activity.JadwalPetugasActivity" />
         <activity android:name=".activity.StrukturDkmActivity" />
         <activity android:name=".SplashscreenActivity">

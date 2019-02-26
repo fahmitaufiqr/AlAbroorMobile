@@ -8,41 +8,30 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class SplashscreenActivity extends Activity {
-    //set waktu lama sPlashscreen
-    private static int LamaTampilSplash = 3000;
+    private static int LamaTampilSplash = 2500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //MULAI KODING
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // KODING
 
         setContentView(R.layout.activity_splashscreen);
-
-
-        //KODING LAGI
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // to do auto generated stub
                 Intent apasih = new Intent(SplashscreenActivity.this, LoginActivity.class);
                 startActivity(apasih);
-
-                // jeda setelah splashscren
 
                 this.finish();
             }
 
             private void finish(){
-                //auto
-            }
-        },LamaTampilSplash);
 
-    };
+            }
+        }, LamaTampilSplash);
+    }
 }

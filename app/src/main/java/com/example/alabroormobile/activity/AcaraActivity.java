@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
-import com.example.alabroormobile.JadwalPengajian;
-import com.example.alabroormobile.JadwalRamadhan;
+import com.example.alabroormobile.JadwalRamadhanActivity;
 import com.example.alabroormobile.R;
 
 public class AcaraActivity extends AppCompatActivity {
@@ -16,6 +15,7 @@ public class AcaraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acara);
+        getSupportActionBar().setTitle("Acara");
 
         //inisialisasi
         CardView pengajianBt = (CardView) findViewById(R.id.jadwalPengajian);
@@ -25,7 +25,7 @@ public class AcaraActivity extends AppCompatActivity {
         pengajianBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AcaraActivity.this,JadwalPengajian.class);
+                Intent intent = new Intent(AcaraActivity.this,JadwalPengajianActivity.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +34,7 @@ public class AcaraActivity extends AppCompatActivity {
         ramadhanBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AcaraActivity.this,JadwalRamadhan.class);
+                Intent intent = new Intent(AcaraActivity.this,JadwalRamadhanActivity.class);
                 startActivity(intent);
             }
         });

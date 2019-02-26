@@ -14,12 +14,4 @@
         android:id="@+id/splashlogo"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
-
-    <ProgressBar
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="58dp"
-        android:progressTint="@color/colorPrimary" />
 </RelativeLayout>
