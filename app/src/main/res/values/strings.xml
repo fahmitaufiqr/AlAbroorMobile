@@ -72,13 +72,5 @@
     </string-array>
 
     <string name="team">Atom Team</string>
-    <!-- === String untuk About Us === -->
-    <string name="aboutUs_pengertian">Al-Abroor Mobile adalah aplikasi pengingat waktu adzan dan iqamat yang
-        diperuntukkan Dewan Kemakmuran Masjid (DKM), sehingga memudahkan pengurus dalam mengatur kegiatan dan juga
-        jadwal shalat pada masjid tersebut.</string>
-    <string name="aboutUs_made1">Made with Android Studio 3.3.1</string>
-    <string name="aboutUs_made2">Using Firebase for database</string>
-    <string name="aboutUs_version">2019 | Al-Abroor Mobile V1.0</string>
-    <string name="aboutUs_saran1">Ada Saran?</string>
-    <string name="aboutUs_saran2">Kirim saran kamu ke :</string>
+    <string name="pengertian">Al-Abroor Mobile adalah aplikasi pengingat waktu adzan dan iqamat yang diperuntukkan Dewan Kemakmuran Masjid (DKM), sehingga memudahkan pengurus dalam mengatur kegiatan dan juga jadwal shalat pada masjid tersebut.</string>
 </resources>

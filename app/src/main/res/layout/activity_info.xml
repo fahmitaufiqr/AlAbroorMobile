@@ -1,206 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.InfoActivity">
 
     <LinearLayout
-        android:id="@+id/layout_desc_alabroor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/dimen_primary">
+        android:layout_margin="@dimen/dimen_primary">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="APA ITU AL-ABROOR MOBILE?"
-            android:fontFamily="@font/arialbd_1"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pengertian"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATOM TEAM"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
             android:textStyle="bold"
-            android:textAllCaps="true"/>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColor="@color/warnaText"
-            android:text="@string/aboutUs_pengertian"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/layout_desc_alabroor"
-        android:paddingVertical="@dimen/fab_margin">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/team"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_marginTop="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/fahmitaufiqr"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    app:srcCompat="@drawable/ic_profil" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/fahmitaufiqr"
-                    android:text="Fahmi Taufiqurahman"
-                    android:textAlignment="center"
-                    android:textColor="@color/warnaText"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/fahmitaufiqr"
-                    android:text="fahmitaufiqurrahman3@gmail.com"
-                    android:textAlignment="center"
-                    android:textColor="@color/warnaText"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/aikvanda"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    app:srcCompat="@drawable/ic_profil" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/aikvanda"
-                    android:text="Aulia Ikvanda Yoren"
-                    android:textColor="@color/warnaText"
-                    android:textAlignment="center"
-                    android:textSize="14sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/aikvanda"
-                    android:text="auliaikvanda0@gmail.com"
-                    android:textColor="@color/warnaText"
-                    android:textAlignment="center"
-                    android:textSize="10sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="48dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentBottom="true">
-        <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:gravity="center_vertical"
-            android:id="@+id/line1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/fab_margin">
-            <TextView
-
-                android:id="@+id/saran"
-                android:textColor="@color/warnatextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:textSize="15sp"
-                android:text="@string/aboutUs_saran1"/>
-            <TextView
-                android:id="@+id/kirim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/warnatextButton"
-                android:layout_below="@id/saran"
-                android:layout_marginLeft="15dp"
-                android:textSize="12sp"
-                android:text="@string/aboutUs_saran2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/warnatextButton"
-                android:layout_below="@id/kirim"
-                android:layout_marginLeft="15dp"
-                android:textSize="10sp"
-                android:text="fahmitaufiqurrahman3@gmail.com"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/warnatextButton"
-                android:layout_below="@id/kirim"
-                android:layout_marginLeft="15dp"
-                android:textSize="10sp"
-                android:text="auliaikvanda0@gmail.com"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginRight="24dp">
-            <TextView
-                android:id="@+id/haa"
-                android:textColor="@color/warnatextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/aboutUs_version"/>
-            <TextView
-                android:id="@+id/paa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/warnatextButton"
-                android:textSize="12sp"
-                android:layout_below="@id/saran"
-                android:text="@string/aboutUs_made1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/warnatextButton"
-                android:textSize="12sp"
-                android:layout_below="@id/kirim"
-                android:text="@string/aboutUs_made2"/>
-        </LinearLayout>
-    </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>
 
 

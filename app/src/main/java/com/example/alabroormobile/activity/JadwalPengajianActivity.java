@@ -28,17 +28,15 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Jadwal Pengajian");
 
         HomeCollection.date_collection_arr=new ArrayList<HomeCollection>();
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-07-08" ,"Diwali","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-07-08" ,"Holi","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-07-08" ,"Statehood Day","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-08-08" ,"Republic Unian","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-07-09" ,"ABC","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-06-15" ,"demo","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2018-09-26" ,"weekly off","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2019-01-08" ,"Events","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2019-01-16" ,"Dasahara","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2019-02-09" ,"Christmas","Holiday","this is holiday"));
-        HomeCollection.date_collection_arr.add( new HomeCollection("2019-02-09" ,"Christmas","Holiday","this is holiday"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-03-01" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-03-08" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-03-15" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-03-22" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-03-29" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-04-05" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-04-12" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-04-19" ,"Pengajian","Pengajian mingguan"));
+        HomeCollection.date_collection_arr.add( new HomeCollection("2019-04-26" ,"Pengajian","Pengajian mingguan"));
 
         cal_month = (GregorianCalendar) GregorianCalendar.getInstance();
         cal_month_copy = (GregorianCalendar) cal_month.clone();
@@ -64,7 +62,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
 
             }
         });
-        ImageButton next = (ImageButton) findViewById(R.id.Ib_next);
+        ImageButton next = (ImageButton) findViewById(R.id.lb_next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

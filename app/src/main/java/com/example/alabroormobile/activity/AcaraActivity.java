@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
-import com.example.alabroormobile.JadwalRamadhanActivity;
 import com.example.alabroormobile.R;
 
 public class AcaraActivity extends AppCompatActivity {

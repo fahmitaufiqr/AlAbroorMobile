@@ -19,12 +19,7 @@
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.ArahKiblatActivity" />
         <activity android:name=".activity.AcaraActivity" />
-        <activity android:name=".AdminTambahRamadhan" />
-        <activity android:name=".AdminTambahPengajian" />
         <activity android:name=".activity.StatistikActivity" />
-        <activity android:name=".AdminTambahPetugas" />
-        <activity android:name=".AdminTambahPengguna" />
-        <activity android:name=".JadwalRamadhanActivity" />
         <activity android:name=".activity.JadwalPengajianActivity" />
         <activity android:name=".activity.JadwalPetugasActivity" />
         <activity android:name=".activity.StrukturDkmActivity" />
@@ -47,6 +42,7 @@
                     android:label="@string/title_activity_main2" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.JadwalRamadhanActivity"></activity>
     </application>
 
 </manifest>

@@ -198,7 +198,7 @@ public class HwAdapter extends BaseAdapter {
 
                     } else {
                         v.setBackgroundColor(Color.parseColor("#343434"));
-                        v.setBackgroundResource(R.drawable.ic_profil);
+                        v.setBackgroundResource(R.drawable.rounded_calendar);
                         txt.setTextColor(Color.parseColor("#696969"));
                     }
 
@@ -214,7 +214,6 @@ public class HwAdapter extends BaseAdapter {
             if (HomeCollection.date_collection_arr.get(j).date.equals(date)){
                 HashMap<String, String> maplist = new HashMap<String, String>();
                 maplist.put("hnames",HomeCollection.date_collection_arr.get(j).name);
-                maplist.put("hsubject",HomeCollection.date_collection_arr.get(j).subject);
                 maplist.put("descript",HomeCollection.date_collection_arr.get(j).description);
                 JSONObject json1 = new JSONObject(maplist);
                 jbarrays.put(json1);
@@ -249,7 +248,6 @@ public class HwAdapter extends BaseAdapter {
                 Dialogpojo pojo = new Dialogpojo();
 
                 pojo.setTitles(jsonObject.optString("hnames"));
-                pojo.setSubjects(jsonObject.optString("hsubject"));
                 pojo.setDescripts(jsonObject.optString("descript"));
 
                 alCustom.add(pojo);

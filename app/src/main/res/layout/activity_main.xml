@@ -20,9 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="Nama User"
-            android:textColor="@color/warnatextButton"
-            android:fontFamily="@font/ralewayregular"/>
+            android:textColor="@color/warnatextButton"/>
 
         <TextView
             android:id="@+id/tv_tanggal"
@@ -31,7 +29,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:textColor="@color/warnatextButton"
-            android:fontFamily="@font/ralewayregular"
             android:layout_alignParentRight="true" />
 
         <TextClock
@@ -40,26 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginTop="100dp"
-            android:fontFamily="@font/ralewayregular"
             android:format12Hour="hh:mm:ss a"
             android:gravity="center_horizontal"
             android:textColor="@color/warnatextButton"
             android:textSize="50sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="Maghrib"
-            android:textSize="16sp"
-            android:textColor="@color/warnatextButton"
-            android:fontFamily="@font/raleway"
-            android:textStyle="bold"
-            android:layout_alignParentBottom="true"
-            android:drawableLeft="@drawable/ic_time"
-            android:id="@+id/namaSholat"/>
     </RelativeLayout>
 
     <GridLayout

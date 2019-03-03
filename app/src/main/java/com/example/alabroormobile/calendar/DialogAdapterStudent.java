@@ -14,11 +14,8 @@ import com.example.alabroormobile.R;
 import java.util.ArrayList;
 
 class DialogAdapterStudent extends BaseAdapter {
-    Activity activity;
-
     private Activity context;
     private ArrayList<Dialogpojo> alCustom;
-    private String sturl;
 
     public DialogAdapterStudent(Activity context, ArrayList<Dialogpojo> alCustom) {
         this.context = context;
@@ -48,14 +45,10 @@ class DialogAdapterStudent extends BaseAdapter {
         View listViewItem = inflater.inflate(R.layout.row_addapt, null, true);
 
         TextView tvTitle=(TextView)listViewItem.findViewById(R.id.tv_name);
-        TextView tvSubject=(TextView)listViewItem.findViewById(R.id.tv_type);
-        TextView tvDuedate=(TextView)listViewItem.findViewById(R.id.tv_desc);
-        TextView tvDescription=(TextView)listViewItem.findViewById(R.id.tv_class);
+        TextView tvDescription=(TextView)listViewItem.findViewById(R.id.tv_desc);
 
 
         tvTitle.setText("Title : "+alCustom.get(position).getTitles());
-        tvSubject.setText("Subject : "+alCustom.get(position).getSubjects());
-        tvDuedate.setText("Due Date : "+alCustom.get(position).getDuedates());
         tvDescription.setText("Description : "+alCustom.get(position).getDescripts());
 
         return  listViewItem;
