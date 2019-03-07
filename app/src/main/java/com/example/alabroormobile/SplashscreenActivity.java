@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.alabroormobile.activity.Login2Activity;
+
 public class SplashscreenActivity extends Activity {
     private static int LamaTampilSplash = 2500;
 
@@ -23,7 +25,7 @@ public class SplashscreenActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent apasih = new Intent(SplashscreenActivity.this, LoginActivity.class);
+                Intent apasih = new Intent(SplashscreenActivity.this, Login2Activity .class);
                 startActivity(apasih);
 
                 this.finish();

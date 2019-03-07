@@ -72,5 +72,31 @@
     </string-array>
 
     <string name="team">Atom Team</string>
+    <string name="add_reminder">Reminder</string>
     <string name="pengertian">Al-Abroor Mobile adalah aplikasi pengingat waktu adzan dan iqamat yang diperuntukkan Dewan Kemakmuran Masjid (DKM), sehingga memudahkan pengurus dalam mengatur kegiatan dan juga jadwal shalat pada masjid tersebut.</string>
+    <string name="no_cardetails">Click on the button below to begin creating your reminder!</string>
+    <string name="details">Details</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="repeat">Repeat</string>
+    <string name="repeat_no">Ripitation Interval</string>
+    <string name="repeat_type">Type of Ripeatation</string>
+    <string name="repeat_off">Off</string>
+    <string name="editor_update_reminder_successful">Reminder update</string>
+    <string name="editor_update_reminder_failed">Error</string>
+    <string name="editor_insert_reminder_successful">Reminder saved</string>
+    <string name="editor_insert_reminder_failed">Error saving</string>
+    <string name="editor_delete_reminder_successful">Reminder deleted</string>
+    <string name="editor_delete_reminder_failed">Error delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_dialog_msg">Delete this reminder?</string>
+    <string name="keep_editing">Keep editing</string>
+    <string name="discard">Discard</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="action_discard_reminder">Discard Reminder</string>
+    <string name="action_save_reminder">Save Reminder</string>
+    <string name="title_activity_add_reminder">Add reminder</string>
+    <string name="editor_activity_title_edit_reminder">Edit Reminder</string>
+    <string name="editor_activity_title_new_reminder">Add reminder detail</string>
 </resources>
