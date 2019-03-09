@@ -1,4 +1,4 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.model;
 
 import java.io.Serializable;
 import java.util.HashMap;

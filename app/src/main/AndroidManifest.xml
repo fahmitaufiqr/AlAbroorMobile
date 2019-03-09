@@ -26,7 +26,7 @@
         <activity android:name=".activity.JadwalPengajianActivity" />
         <activity android:name=".activity.JadwalPetugasActivity" />
         <activity android:name=".activity.StrukturDkmActivity" />
-        <activity android:name=".SplashscreenActivity">
+        <activity android:name=".activity.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,8 +55,15 @@
             android:name=".reminder.ReminderAlarmService"
             android:exported="false" />
 
+        <service android:name=".service.FirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".activity.Login2Activity" />
-        <activity android:name=".TambahAcaraActivity"></activity>
+        <activity android:name=".TambahAcaraActivity" />
+        <activity android:name=".activity.LoginGoogleActivity"></activity>
     </application>
 
 </manifest>

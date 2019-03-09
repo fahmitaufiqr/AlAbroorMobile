@@ -1,4 +1,4 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.model;
 
 public class User {
     private String id, username, phone;

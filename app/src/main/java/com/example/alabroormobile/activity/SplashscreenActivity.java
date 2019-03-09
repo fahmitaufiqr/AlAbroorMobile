@@ -1,4 +1,4 @@
-package com.example.alabroormobile;
+package com.example.alabroormobile.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.alabroormobile.activity.Login2Activity;
+import com.example.alabroormobile.R;
 
 public class SplashscreenActivity extends Activity {
     private static int LamaTampilSplash = 2500;
@@ -25,7 +25,7 @@ public class SplashscreenActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent apasih = new Intent(SplashscreenActivity.this, Login2Activity .class);
+                Intent apasih = new Intent(SplashscreenActivity.this, LoginGoogleActivity.class);
                 startActivity(apasih);
 
                 this.finish();

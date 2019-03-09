@@ -10,24 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.alabroormobile.Acara;
+import com.example.alabroormobile.model.Acara;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.TambahAcaraActivity;
-import com.example.alabroormobile.calendar.HomeCollection;
-import com.example.alabroormobile.calendar.HwAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class JadwalPengajianActivity extends AppCompatActivity {
 

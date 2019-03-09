@@ -10,13 +10,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private TextView tv_status, tv_nama_user, tv_telp;
-    private ImageView iv_foto_user, iv_logout;
-    private FirebaseAuth auth;
+    private Button btn_logout;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +26,21 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         getSupportActionBar().setTitle("Profil");
 
-        auth = FirebaseAuth.getInstance();
+        btn_logout = (Button) findViewById(R.id.btn_logout);
+        GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder()
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        iv_logout = (ImageView) findViewById(R.id.iv_logout);
-        iv_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
-        });
+        btn_logout.setOnClickListener(v -> Logout());
     }
 
-    private void signOut() {
-        auth.signOut();
-        Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(ProfileActivity.this, Login2Activity.class);
+    void Logout(){
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut();
+        Intent intent = new Intent(ProfileActivity.this, LoginGoogleActivity.class);
         startActivity(intent);
         finish();
     }
