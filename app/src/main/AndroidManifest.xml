@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ViewPengajianActivity"></activity>
         <activity android:name=".activity.WaktuShalatActivity" />
         <activity android:name=".activity.InfoActivity" />
         <activity android:name=".activity.ProfileActivity" />
@@ -54,7 +55,6 @@
         <service
             android:name=".reminder.ReminderAlarmService"
             android:exported="false" />
-
         <service android:name=".service.FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -62,8 +62,8 @@
         </service>
 
         <activity android:name=".activity.Login2Activity" />
-        <activity android:name=".TambahAcaraActivity" />
-        <activity android:name=".activity.LoginGoogleActivity"></activity>
+        <activity android:name=".activity.TambahAcaraActivity" />
+        <activity android:name=".activity.LoginGoogleActivity" />
     </application>
 
 </manifest>

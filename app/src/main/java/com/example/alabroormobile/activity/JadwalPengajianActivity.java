@@ -1,9 +1,10 @@
 package com.example.alabroormobile.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.alabroormobile.model.Acara;
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.TambahAcaraActivity;
+import com.example.alabroormobile.model.Acara;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,6 +26,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
 
     RecycleAdapter adapter;
     ArrayList<Acara> acaraList;
+    private Context x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,8 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jadwal_pengajian);
         getSupportActionBar().setTitle("Jadwal Pengajian");
 
+        // FAB SETUP
         FloatingActionButton fabAdd = (FloatingActionButton)findViewById(R.id.fab_add_acara);
-
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,37 +54,38 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    //LOAD DATA
     @Override
     protected void onResume() {
         super.onResume();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        database.getReference("acaraList").addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        acaraList.clear();
+            database.getReference("acaraList").addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            acaraList.clear();
 
-                        Log.w("Data Acara", "getUser:onCancelled " + dataSnapshot.toString());
-                        Log.w("Data Acara", "count = " + String.valueOf(dataSnapshot.getChildrenCount()) + " values " + dataSnapshot.getKey());
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            Acara acaraa = data.getValue(Acara.class);
-                            acaraList.add(acaraa);
+                            Log.w("Data Acara", "getUser:onCancelled " + dataSnapshot.toString());
+                            Log.w("Data Acara", "count = " + String.valueOf(dataSnapshot.getChildrenCount()) + " values " + dataSnapshot.getKey());
+                            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                Acara acaraa = data.getValue(Acara.class);
+                                acaraList.add(acaraa);
+                            }
+
+                            adapter.notifyDataSetChanged();
                         }
 
-                        adapter.notifyDataSetChanged();
-                    }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w("Data Acara", "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w("Data Acara", "getUser:onCancelled", databaseError.toException());
-                    }
-                });
     }
 
+    //ADAPTER RECYCLER VIEW SETUP
     private class RecycleAdapter extends RecyclerView.Adapter {
-
-
         @Override
         public int getItemCount() {
             return acaraList.size();
@@ -102,23 +104,29 @@ public class JadwalPengajianActivity extends AppCompatActivity {
             viewHolder.position = position;
             Acara acaraa = acaraList.get(position);
             ((SimpleItemViewHolder) holder).title.setText(acaraa.getNama());
+            ((SimpleItemViewHolder) holder).tanggal.setText(acaraa.getDate());
         }
 
         public final  class SimpleItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView title;
+            TextView tanggal;
             public int position;
             public SimpleItemViewHolder(View itemView) {
                 super(itemView);
                 itemView.setOnClickListener(this);
                 title = (TextView) itemView.findViewById(R.id.txt_nama_acara);
+                tanggal = (TextView) itemView.findViewById(R.id.txt_tanggal_acara);
             }
 
+            //JIKA LIST DI KLIK
             @Override
             public void onClick(View view) {
-                Intent newIntent = new Intent(JadwalPengajianActivity.this, TambahAcaraActivity.class);
+                Intent newIntent = new Intent(JadwalPengajianActivity.this, ViewPengajianActivity.class);
                 newIntent.putExtra("acara", acaraList.get(position));
                 JadwalPengajianActivity.this.startActivity(newIntent);
             }
         }
     }
+
+
 }

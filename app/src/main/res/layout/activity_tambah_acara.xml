@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahAcaraActivity">
+    tools:context=".activity.TambahAcaraActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -60,13 +60,61 @@
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
-            <DatePicker
-                android:id="@+id/pilihTanggal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp">
 
-            </DatePicker>
+                    <TextView
+                        android:id="@+id/view_date"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Tanggal Pengajian"
+                        android:textSize="20sp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/border"
+                        android:padding="10dp"/>
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_date"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/pick_date"
+                        android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/view_jam"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Jam Mulai"
+                        android:maxLines="1"
+                        android:textSize="20sp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/border"
+                        android:padding="10dp"/>
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_time"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/pick_time"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
