@@ -1,5 +1,6 @@
 package com.example.alabroormobile.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
     RecycleAdapter adapter;
     ArrayList<Acara> acaraList;
     private Context x;
+    private Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,8 @@ public class JadwalPengajianActivity extends AppCompatActivity {
                             acaraList.clear();
 
                             Log.w("Data Acara", "getUser:onCancelled " + dataSnapshot.toString());
-                            Log.w("Data Acara", "count = " + String.valueOf(dataSnapshot.getChildrenCount()) + " values " + dataSnapshot.getKey());
+                            Log.w("Data Acara", "count = " + String.valueOf(dataSnapshot.getChildrenCount())
+                                    + " values " + dataSnapshot.getKey());
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 Acara acaraa = data.getValue(Acara.class);
                                 acaraList.add(acaraa);
@@ -122,8 +125,17 @@ public class JadwalPengajianActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent newIntent = new Intent(JadwalPengajianActivity.this, ViewPengajianActivity.class);
-                newIntent.putExtra("acara", acaraList.get(position));
-                JadwalPengajianActivity.this.startActivity(newIntent);
+//                newIntent.putExtra("acara", acaraList.get(position));
+//                JadwalPengajianActivity.this.startActivity(newIntent);
+
+                Acara acaraa = acaraList.get(position);
+                newIntent.putExtra("nama", acaraa.getNama());
+                newIntent.putExtra("keterangan", acaraa.getKeterangan());
+                newIntent.putExtra("date", acaraa.getDate());
+                newIntent.putExtra("time", acaraa.getTime());
+
+                startActivity(newIntent);
+
             }
         }
     }
