@@ -51,6 +51,8 @@ public class ViewPengajianActivity extends AppCompatActivity {
         mTextViewNama.setText(sNama);
         mTextViewKeterangan.setText(sDesk);
 //        mTextViewJam.setText(sJam);
+
+        //SET DATA DATE
 //        mCalenderView.setDate(Long.parseLong(sTanggal));
     }
 }

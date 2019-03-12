@@ -54,6 +54,9 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         adapter.notifyDataSetChanged();
+
+
+
     }
 
     //LOAD DATA
