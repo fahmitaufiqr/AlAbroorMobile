@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +31,9 @@ public class TambahAcaraActivity extends AppCompatActivity {
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
     protected static Calendar myCalendar;
+    int year;
+    int month;
+    int dayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +58,24 @@ public class TambahAcaraActivity extends AppCompatActivity {
         });
 
         //DATE PICKER
-        myCalendar = Calendar.getInstance();
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(TambahAcaraActivity.this, new DatePickerDialog.OnDateSetListener() {
+                myCalendar = Calendar.getInstance();
+                year = myCalendar.get(Calendar.YEAR);
+                month = myCalendar.get(Calendar.MONTH);
+                dayOfMonth = myCalendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(TambahAcaraActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        myCalendar.set(Calendar.YEAR, year);
-                        myCalendar.set(Calendar.MONTH, month);
-                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                        String formatTanggal = "dd-MM-yyyy";
-                        SimpleDateFormat sdf = new SimpleDateFormat(formatTanggal);
-                        viewDate.setText(sdf.format(myCalendar.getTime()));
+                        viewDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
+
                     }
-                },
-                        myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                },year,month,dayOfMonth);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
             }
         });
 
@@ -109,19 +111,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
 
 
     void saveTodo() {
-        // first section
-        // get the data to save in our firebase db
-
-//        Date date = new Date();
-//        date.setMonth(myCalendar.getMonth());
-//        date.setYear(c.getYear());
-//        date.setDate(c.getDayOfMonth());
-
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//
-//        String dateString = format.format(date);
-        //make the modal object and convert it into hasmap
-
         //second section
         //save it to the firebase db
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -130,7 +119,9 @@ public class TambahAcaraActivity extends AppCompatActivity {
         Acara acaraa = new Acara();
         acaraa.setNama(namaEdtText.getText().toString());
         acaraa.setKeterangan(keteranganEditText.getText().toString());
-//        acaraa.setDate(dateString);
+        acaraa.setDate(viewDate.getText().toString());
+        acaraa.setTime(viewTime.getText().toString());
+
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put(key, acaraa.toFirebaseObject());
