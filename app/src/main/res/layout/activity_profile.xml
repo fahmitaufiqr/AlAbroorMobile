@@ -65,7 +65,7 @@
                         android:background="@drawable/rounded"
                         android:scaleType="centerCrop"
                         android:layout_marginBottom="5dp"
-                        app:srcCompat="@drawable/ic_profil" />
+                        app:srcCompat="@drawable/home_profil" />
 
                     <TextView
                         android:id="@+id/tv_nama_user"

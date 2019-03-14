@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -34,6 +35,8 @@ import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private long backPressedTime;
 
     //~~Notif
     String TAG = MainActivity.class.getSimpleName();
@@ -48,14 +51,26 @@ public class MainActivity extends AppCompatActivity {
     //~~Akhirnotif
 
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
-    private TextView tv_tanggal;
+    private TextView tv_tanggal, tv_nama_pengguna;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //
+        //inisialisasi
+        jadwalSholatbt = findViewById(R.id.jadwalSholat);
+        jadwalPetugasbt = findViewById(R.id.jadwalPetugas);
+        jadwalAcarabt = findViewById(R.id.jadwalAcara);
+        statistikPetugasbt = findViewById(R.id.statistikPetugas);
+        arahKiblatbt = findViewById(R.id.arahKiblat);
+        strukturDkmbt = findViewById(R.id.strukturDkm);
+        profilebt = findViewById(R.id.profile);
+        aboutbt = findViewById(R.id.about);
+        tv_tanggal = findViewById(R.id.tv_tanggal);
+        tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
+
+        //Notif
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
@@ -91,21 +106,26 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        //
+        //Notif
 
-        //inisialisasi
-        jadwalSholatbt = findViewById(R.id.jadwalSholat);
-        jadwalPetugasbt = findViewById(R.id.jadwalPetugas);
-        jadwalAcarabt = findViewById(R.id.jadwalAcara);
-        statistikPetugasbt = findViewById(R.id.statistikPetugas);
-        arahKiblatbt = findViewById(R.id.arahKiblat);
-        strukturDkmbt = findViewById(R.id.strukturDkm);
-        profilebt = findViewById(R.id.profile);
-        aboutbt = findViewById(R.id.about);
-        tv_tanggal = findViewById(R.id.tv_tanggal);
+        Date Date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+        String formattanggal = format.format(Date);
+        tv_tanggal.setText(formattanggal);
 
-        tanggal();
         intent();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        } else {
+            Toast.makeText(getBaseContext(), "Ketuk lagi untuk keluar", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 
     private void subscribe(){
@@ -118,16 +138,8 @@ public class MainActivity extends AppCompatActivity {
                             msg = "Ney";
                         }
                         Log.d(TAG, msg);
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    private void tanggal(){
-        Date Date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
-        String formattanggal = format.format(Date);
-        tv_tanggal.setText(formattanggal);
     }
 
     private void intent(){

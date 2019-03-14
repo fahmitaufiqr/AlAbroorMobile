@@ -52,14 +52,14 @@
                 android:id="@+id/editAcara"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:srcCompat="@drawable/ic_edit" />
+                app:srcCompat="@drawable/ic_edit_black_24dp" />
 
             <ImageView
                 android:id="@+id/deleteAcara"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="10dp"
-                app:srcCompat="@drawable/ic_delete" />
+                app:srcCompat="@drawable/ic_delete_black_24dp" />
         </LinearLayout>
 
 

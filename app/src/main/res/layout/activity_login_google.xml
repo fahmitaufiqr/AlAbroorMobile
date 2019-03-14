@@ -16,6 +16,7 @@
 
         <ImageView
             android:layout_width="match_parent"
+            android:background="@color/cardView"
             android:layout_height="match_parent"
             android:src="@drawable/welcome_screen"
             android:scaleType="centerCrop"
@@ -47,14 +48,10 @@
                 android:layout_gravity="center"
                 />
 
-            <Button
-                android:id="@+id/btn_login_google"
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/signInButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="30dp"
-                android:text="Login"
-                />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView

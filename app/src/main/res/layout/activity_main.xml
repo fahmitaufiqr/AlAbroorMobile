@@ -16,6 +16,7 @@
         android:background="@drawable/masjid_wallpaper_hd">
 
         <TextView
+            android:id="@+id/tv_nama_pengguna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -73,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_waktusholat" />
+                app:srcCompat="@drawable/home_waktusholat" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,7 +94,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_jadwalpetugas" />
+                app:srcCompat="@drawable/home_jadwalpetugas" />
         </LinearLayout>
 
         <LinearLayout
@@ -113,7 +114,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_jadwalpengajian"/>
+                app:srcCompat="@drawable/home_jadwalpengajian"/>
         </LinearLayout>
 
         <LinearLayout
@@ -133,7 +134,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_profil"/>
+                app:srcCompat="@drawable/home_profil"/>
         </LinearLayout>
 
         <LinearLayout
@@ -213,7 +214,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_statistikpetugas"/>
+                app:srcCompat="@drawable/home_statistikpetugas"/>
 
         </LinearLayout>
 
@@ -234,7 +235,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_kiblat"/>
+                app:srcCompat="@drawable/home_kiblat"/>
 
         </LinearLayout>
 
@@ -255,7 +256,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_struktur"/>
+                app:srcCompat="@drawable/home_daftarpengurus"/>
 
         </LinearLayout>
 
@@ -276,7 +277,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/ic_info"/>
+                app:srcCompat="@drawable/home_info"/>
 
         </LinearLayout>
 
@@ -319,7 +320,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Struktur DKM"
+                android:text="Daftar Pengurus"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="9sp"/>
