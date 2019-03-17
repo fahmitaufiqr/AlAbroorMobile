@@ -142,6 +142,11 @@ public class JadwalPengajianActivity extends AppCompatActivity {
             }
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(JadwalPengajianActivity.this, AcaraActivity.class));
+        finish();
+        super.onBackPressed();
+    }
 
 }

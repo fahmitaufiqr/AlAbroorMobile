@@ -9,8 +9,18 @@ public class Acara implements Serializable {
     private String keterangan;
     private String date;
     private String time;
+    private String key;
+
 
     public Acara() {
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String id, String key) {
+        this.key = key;
     }
 
     public String getNama() {
@@ -47,6 +57,7 @@ public class Acara implements Serializable {
 
     public HashMap<String,String> toFirebaseObject() {
         HashMap<String,String> acaraa =  new HashMap<String,String>();
+        acaraa.put("key",key);
         acaraa.put("nama", nama);
         acaraa.put("keterangan", keterangan);
         acaraa.put("date", date);

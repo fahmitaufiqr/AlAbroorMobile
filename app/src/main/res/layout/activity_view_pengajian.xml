@@ -68,12 +68,31 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/colorPrimary"/>
-    <CalendarView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/tanggal_view"
-        android:clickable="false" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Tanggal         : "
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tanggal_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="12-03-2019"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

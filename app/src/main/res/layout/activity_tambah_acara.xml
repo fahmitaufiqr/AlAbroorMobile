@@ -15,7 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardView"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -82,7 +81,7 @@
                     <Button
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ic_view_day_black_24dp"
+                        android:background="@drawable/ic_date"
                         android:layout_marginLeft="20dp"
                         android:id="@+id/pick_date"
                         android:layout_gravity="center_vertical"/>
@@ -110,22 +109,20 @@
                 <Button
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_access_time_black_24dp"
+                    android:background="@drawable/ic_time"
                     android:layout_marginLeft="20dp"
                     android:id="@+id/pick_time"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
+            <Button
+                android:id="@+id/save_acara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="SIMPAN ACARA"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/warnatextButton"
+                android:textSize="20dp" />
         </LinearLayout>
     </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_save_acara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_black_24dp"
-        app:backgroundTint="@color/colorPrimary"
-        app:fabSize="normal"/>
 </RelativeLayout>
