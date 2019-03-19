@@ -114,15 +114,35 @@
                     android:id="@+id/pick_time"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
-            <Button
-                android:id="@+id/save_acara"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="SIMPAN ACARA"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/warnatextButton"
-                android:textSize="20dp" />
+                android:orientation="horizontal"
+                android:background="@color/colorPrimary">
+
+                <Button
+                    android:id="@+id/save_acara"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="SIMPAN"
+                    android:textSize="20sp"
+                    android:textColor="@color/warnatextButton"
+                    android:background="@color/colorPrimary"
+                    android:paddingEnd="4dp"/>
+                <Button
+                    android:id="@+id/cancel_bt"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="BATAL"
+                    android:textSize="20sp"
+                    android:textColor="@color/warnatextButton"
+                    android:background="@color/colorPrimary"
+                    android:paddingStart="4dp"/>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

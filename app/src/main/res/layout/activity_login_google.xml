@@ -5,29 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="5"
     tools:context=".activity.LoginGoogleActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:background="@color/cardView"
             android:layout_height="match_parent"
             android:src="@drawable/welcome_screen"
-            android:scaleType="centerCrop"
             />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:background="@color/mdtp_white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,8 +35,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ayo masuk untuk menjadi bagian dari pejuang Masjid Al-Abroor."
-                android:textSize="15sp"/>
+                android:text="Ayo masuk untuk menjadi bagian dari bagian"
+                android:textSize="15sp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masjid Al-Ab'roor"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/signInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="80dp"
+                android:paddingLeft="80dp"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
 
             <ProgressBar
                 android:visibility="invisible"
@@ -48,13 +64,12 @@
                 android:layout_gravity="center"
                 />
 
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/signInButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
+
         <TextView
+            android:id="@+id/copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Copyright 2019 Atom Team"

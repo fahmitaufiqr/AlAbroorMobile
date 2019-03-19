@@ -15,11 +15,18 @@ public class Acara implements Serializable {
     public Acara() {
     }
 
+    public Acara(String nama, String keterangan, String date, String time) {
+        this.nama = nama;
+        this.keterangan = keterangan;
+        this.date = date;
+        this.time = time;
+    }
+
     public String getKey() {
         return key;
     }
 
-    public void setKey(String id, String key) {
+    public void setKey(String key) {
         this.key = key;
     }
 
@@ -53,6 +60,14 @@ public class Acara implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return " "+nama+"\n" +
+                " "+keterangan+"\n" +
+                " "+date+"\n" +
+                " "+time;
     }
 
     public HashMap<String,String> toFirebaseObject() {
