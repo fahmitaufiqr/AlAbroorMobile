@@ -21,13 +21,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout rl_layout;
-        public TextView tv_title, tv_date;
+        public TextView tv_title, tv_date,tv_time,tv_desk;
 
         public MyViewHolder(View view) {
             super(view);
             rl_layout = view.findViewById(R.id.rl_layout);
             tv_title = view.findViewById(R.id.txt_nama_acara);
             tv_date = view.findViewById(R.id.txt_tanggal_acara);
+            tv_desk = view.findViewById(R.id.txt_keterangan);
+            tv_time = view.findViewById(R.id.txt_waktu_acara);
         }
     }
 
@@ -53,6 +55,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.tv_title.setText(movie.getNama());
         holder.tv_date.setText(movie.getDate());
+        holder.tv_desk.setText(movie.getKeterangan());
+        holder.tv_time.setText(movie.getTime());
 
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,14 +88,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TextView title;
         public TextView tanggal;
+        public TextView waktu;
+        public TextView keterangan;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
 
             title = (TextView) itemView.findViewById(R.id.txt_nama_acara);
-
             tanggal = (TextView) itemView.findViewById(R.id.txt_tanggal_acara);
+            waktu = (TextView) itemView.findViewById(R.id.txt_waktu_acara);
+            keterangan = (TextView) itemView.findViewById(R.id.txt_keterangan);
+
         }
     }
 }
