@@ -119,7 +119,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                                 Sdate.toLowerCase(),
                                 Stime.toLowerCase()));
 
-                        startActivity(new Intent(TambahAcaraActivity.this, JadwalPengajianActivity.class));
                         finish();
 
                     }
@@ -150,7 +149,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                                 Sdate.toLowerCase(),
                                 Stime.toLowerCase()), sPid);
 
-                        startActivity(new Intent(TambahAcaraActivity.this, JadwalPengajianActivity.class));
                         finish();
 
                     }
@@ -175,7 +173,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                             false);
 
                     deleteAcara();
-                    startActivity(new Intent(TambahAcaraActivity.this, JadwalPengajianActivity.class));
                     finish();
                 }
 
@@ -311,12 +308,5 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 DateFormat.is24HourFormat(this));
 
         timePickerDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(TambahAcaraActivity.this, JadwalPengajianActivity.class));
-        finish();
-        super.onBackPressed();
     }
 }

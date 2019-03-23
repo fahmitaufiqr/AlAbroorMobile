@@ -99,61 +99,9 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                     .build();
         }
-
-//        logout();
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-//        if (opr.isDone()){
-//            GoogleSignInResult result = opr.get();
-//            handleSignInResult (result);
-//        } else {
-//            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-//                @Override
-//                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-//                    handleSignInResult(googleSignInResult);
-//                }
-//            });
-//        }
-//    }
-//    private void handleSignInResult(GoogleSignInResult result) {
-//        if (result.isSuccess()){
-//            GoogleSignInAccount account = result.getSignInAccount();
-//            Name.setText(account.getDisplayName());
-//            Email.setText(account.getEmail());
-//        } else {
-//
-//        }
-//    }
-
-//    private void logout() {
-//        btn_logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mAuth.signOut();
-//                finish();
-//                if (mGoogleSignInClient != null){
-//                    Auth.GoogleSignInApi.signOut(mGoogleSignInClient).setResultCallback(new ResultCallback<Status>() {
-//                        @Override
-//                        public void onResult(@NonNull Status status) {
-//                            Intent i = new Intent(ProfileActivity.this, LoginGoogleActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            finish();
-//                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            startActivity(i);
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 }

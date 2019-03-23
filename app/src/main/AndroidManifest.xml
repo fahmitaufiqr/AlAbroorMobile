@@ -62,8 +62,10 @@
         </service>
 
         <activity android:name=".activity.TambahAcaraActivity" />
-        <activity android:name=".activity.LoginGoogleActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".activity.LoginGoogleActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.TambahPengurusActivity"></activity>
     </application>
 
 </manifest>

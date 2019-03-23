@@ -38,11 +38,10 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_pengajian);
         getSupportActionBar().setTitle("Jadwal Pengajian");
-        fab_tambah = findViewById(R.id.fab_add_acara);
 
+        fab_tambah = findViewById(R.id.fab_add_acara);
         database = FirebaseDatabase.getInstance().getReference();
         rc_list_acara = findViewById(R.id.rv_jadwal_pengajian);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rc_list_acara.setLayoutManager(mLayoutManager);
         rc_list_acara.setItemAnimator(new DefaultItemAnimator());
@@ -108,11 +107,5 @@ public class JadwalPengajianActivity extends AppCompatActivity {
                         .putExtra("desk", ""));
             }
         });
-    }
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(JadwalPengajianActivity.this, AcaraActivity.class));
-        finish();
-        super.onBackPressed();
     }
 }

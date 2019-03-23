@@ -63,13 +63,13 @@ public class LoginGoogleActivity extends AppCompatActivity {
         userss = new ArrayList<>();
 
         mAuth = FirebaseAuth.getInstance();
-        mAuthlistener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (mAuth.getCurrentUser() != null){
-                    startActivity(new Intent(LoginGoogleActivity.this, MainActivity.class));
-                    finish();
-                }
+        mAuthlistener = firebaseAuth -> {
+            if (mAuth.getCurrentUser() != null){
+                Intent i = new Intent(LoginGoogleActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         };
         mGoogleSignInButton = findViewById(R.id.signInButton);

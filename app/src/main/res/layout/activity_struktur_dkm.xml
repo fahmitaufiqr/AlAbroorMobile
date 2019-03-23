@@ -1,99 +1,24 @@
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rl_jadwal_pengajian"
+    android:id="@+id/rl_jadwal_pengurus"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.StrukturDkmActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_jadwal_pengurus"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp">
+        android:layout_height="match_parent"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DKM Masjid Al-Ab'roor"
-            android:textSize="30sp"
-            android:textColor="@color/warnaText"
-            android:layout_marginTop="30dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center_horizontal"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/colorPrimary"/>
-
-        <!--KETUA-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Ketua DKM                   : "
-                android:textSize="18sp" />
-            <TextView
-                android:id="@+id/nama_ketua_view"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="nama ketua dkm"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <!--WAKIL-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Wakil Ketua DKM         : "
-                android:textSize="18sp" />
-            <TextView
-                android:id="@+id/nama_wakil_view"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="nama wakil ketua dkm"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="400dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="3dp"
-            android:background="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="4dp"
-            android:text="DIVISI 1"
-            android:textStyle="bold"/>
-    </LinearLayout>
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_edit_dkm"
+        android:id="@+id/fab_add_pengurus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_edit"
+        app:srcCompat="@drawable/ic_add_black_24dp"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal"/>
 </RelativeLayout>
