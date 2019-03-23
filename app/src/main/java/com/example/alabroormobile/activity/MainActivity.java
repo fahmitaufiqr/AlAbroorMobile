@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         strukturDkmbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, StrukturDkmActivity.class);
+                Intent intent = new Intent(MainActivity.this, DaftarPengurusActivity.class);
                 startActivity(intent);
             }
         });

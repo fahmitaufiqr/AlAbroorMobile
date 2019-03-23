@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,7 +33,6 @@
                     android:layout_height="wrap_content"
                     android:hint="Nama Pengurus"
                     android:inputType="textCapWords"
-                    android:maxLength="25"
                     android:maxLines="1"
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
@@ -52,41 +50,40 @@
                 <EditText
                     android:id="@+id/input_email_pengurus"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="Email"
+                    android:layout_height="wrap_content"
+                    android:hint="Email Pengurus"
                     android:inputType="textCapWords"
                     android:maxLines="1"
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/colorPrimary">
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/save_acara_pengurus"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="SIMPAN"
-                    android:textSize="20sp"
-                    android:textColor="@color/warnatextButton"
+                    android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:paddingEnd="4dp"/>
+                    android:paddingEnd="4dp"
+                    android:text="SIMPAN"
+                    android:textColor="@color/warnatextButton"
+                    android:textSize="20sp" />
+
                 <Button
                     android:id="@+id/cancel_bt_pengurus"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="BATAL"
-                    android:textSize="20sp"
-                    android:textColor="@color/warnatextButton"
+                    android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:paddingStart="4dp"/>
+                    android:paddingStart="4dp"
+                    android:text="BATAL"
+                    android:textColor="@color/warnatextButton"
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </LinearLayout>

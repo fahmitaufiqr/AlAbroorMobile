@@ -26,7 +26,7 @@
         <activity android:name=".activity.StatistikActivity" />
         <activity android:name=".activity.JadwalPengajianActivity" />
         <activity android:name=".activity.JadwalPetugasActivity" />
-        <activity android:name=".activity.StrukturDkmActivity" />
+        <activity android:name=".activity.DaftarPengurusActivity" />
         <activity android:name=".activity.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

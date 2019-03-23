@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class StrukturDkmActivity extends AppCompatActivity {
+public class DaftarPengurusActivity extends AppCompatActivity {
 
     private DatabaseReference database;
 
@@ -37,8 +37,8 @@ public class StrukturDkmActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_struktur_dkm);
-        getSupportActionBar().setTitle("Struktur DKM Masjid");
+        setContentView(R.layout.activity_daftar_pengurus);
+        getSupportActionBar().setTitle("Daftar Pengurus");
 
         fab_tambah_pengurus = findViewById(R.id.fab_add_pengurus);
         database = FirebaseDatabase.getInstance().getReference();
@@ -48,7 +48,7 @@ public class StrukturDkmActivity extends AppCompatActivity {
         rc_list_pengurus.setLayoutManager(mLayoutManager);
         rc_list_pengurus.setItemAnimator(new DefaultItemAnimator());
 
-        loading = ProgressDialog.show(StrukturDkmActivity.this,
+        loading = ProgressDialog.show(DaftarPengurusActivity.this,
                 null,
                 "Mengambil Data...",
                 true,
@@ -83,7 +83,7 @@ public class StrukturDkmActivity extends AppCompatActivity {
                  * Inisialisasi adapter dan data hotel dalam bentuk ArrayList
                  * dan mengeset Adapter ke dalam RecyclerView
                  */
-                recyclerViewAdapterPengurus = new RecyclerViewAdapterPengurus(pengurusArrayList, StrukturDkmActivity.this);
+                recyclerViewAdapterPengurus = new RecyclerViewAdapterPengurus(pengurusArrayList, DaftarPengurusActivity.this);
                 rc_list_pengurus.setAdapter(recyclerViewAdapterPengurus);
                 loading.dismiss();
             }
@@ -103,7 +103,7 @@ public class StrukturDkmActivity extends AppCompatActivity {
         fab_tambah_pengurus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StrukturDkmActivity.this, TambahPengurusActivity.class)
+                startActivity(new Intent(DaftarPengurusActivity.this, TambahPengurusActivity.class)
                         .putExtra("id", "")
                         .putExtra("title", "")
                         .putExtra("email", "")
