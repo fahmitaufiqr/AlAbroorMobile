@@ -8,6 +8,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="jadwal_muadzin">JADWAL MUADZIN</string>
+    <string name="mendatang">Mendatang</string>
+
+    <string name="jadwal_helper_saatnya_shalat">Saatnya</string>
+
+    <string name="location_not_found">Location not ready, try again</string>
+    <string name="enable_location_please">Please enable Location first</string>
 
     <!--KIBLAT STRING -->
     <string name="compass_dial" translatable="false">Compass Dial</string>

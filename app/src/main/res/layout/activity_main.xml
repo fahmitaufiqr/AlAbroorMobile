@@ -10,39 +10,103 @@
     tools:context=".activity.MainActivity">
 
     <RelativeLayout
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@drawable/masjid_wallpaper_hd">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
 
         <TextView
             android:id="@+id/tv_nama_pengguna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/warnatextButton"/>
+            android:text="Nama Pengguna"
+            android:drawableLeft="@drawable/ic_user" />
 
         <TextView
             android:id="@+id/tv_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/warnatextButton"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:text="Tanggal Hari Ini" />
+    </RelativeLayout>
 
-        <TextClock
-            android:id="@+id/textClock"
-            android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/masjid_wallpaper_hd">
+
+
+
+        <!--<TextClock-->
+            <!--android:id="@+id/textClock"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginTop="100dp"-->
+            <!--android:format12Hour="hh:mm:ss a"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:textColor="@color/warnatextButton"-->
+            <!--android:textSize="50sp"-->
+            <!--android:textStyle="bold" />-->
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="100dp"
-            android:format12Hour="hh:mm:ss a"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="@dimen/dimen_small"
+                app:srcCompat="@drawable/ic_jadwal_clock"/>
+
+            <TextView
+                android:textColor="@color/warnatextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mendatang"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dimen_small"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@id/jadwal_textview_shalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen_primary"
+                android:textColor="@color/warnatextButton"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                tools:text="Shubuh" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@id/jadwal_textview_hitungmundur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:textColor="@color/warnatextButton"
-            android:textSize="50sp"
-            android:textStyle="bold" />
+            tools:text="Hitung Mundur"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"/>
 
     </RelativeLayout>
 

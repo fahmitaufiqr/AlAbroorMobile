@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--ID Activity Main-->
+    <item type="id" name="jadwal_textview_shalat"/> <!--TextView-->
+    <item type="id" name="jadwal_textview_hitungmundur"/> <!--TextView-->
+
+    <!--ID JADWAL SHOLAT-->
+    <item type="id" name="jadwal_textview_shubuh"/> <!--TextView-->
+    <item type="id" name="jadwal_textview_dzuhur"/> <!--TextView-->
+    <item type="id" name="jadwal_textview_ashar"/> <!--TextView-->
+    <item type="id" name="jadwal_textview_maghrib"/> <!--TextView-->
+    <item type="id" name="jadwal_textview_isya"/> <!--TextView-->
+
+    <!--ID KIBLAT-->
+    <item type="id" name="textview_arah_kabah"/> <!--TextView-->
+    <item type="id" name="textview_lokasi"/> <!--TextView-->
+    <item type="id" name="imageview_kompas"/> <!--ImageView-->
+    <item type="id" name="imageview_kompas_jarum"/> <!--ImageView-->
+</resources>
