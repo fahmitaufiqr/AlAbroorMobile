@@ -63,26 +63,12 @@ public class DaftarPengurusActivity extends AppCompatActivity {
                  */
                 pengurusArrayList = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    /**
-                     * Mapping data pada DataSnapshot ke dalam object Wisata
-                     * Dan juga menyimpan primary key pada object Wisata
-                     * untuk keperluan Edit dan Delete data
-                     */
                     Pengurus pengurus = noteDataSnapshot.getValue(Pengurus.class);
                     pengurus.setKey(noteDataSnapshot.getKey());
 
-                    /**
-                     * Menambahkan object Wisata yang sudah dimapping
-                     * ke dalam ArrayList
-                     */
                     pengurusArrayList.add(pengurus);
                 }
 
-
-                /**
-                 * Inisialisasi adapter dan data hotel dalam bentuk ArrayList
-                 * dan mengeset Adapter ke dalam RecyclerView
-                 */
                 recyclerViewAdapterPengurus = new RecyclerViewAdapterPengurus(pengurusArrayList, DaftarPengurusActivity.this);
                 rc_list_pengurus.setAdapter(recyclerViewAdapterPengurus);
                 loading.dismiss();
@@ -90,11 +76,6 @@ public class DaftarPengurusActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                /**
-                 * Kode ini akan dipanggil ketika ada error dan
-                 * pengambilan data gagal dan memprint error nya
-                 * ke LogCat
-                 */
                 System.out.println(databaseError.getDetails() + " " + databaseError.getMessage());
                 loading.dismiss();
             }
@@ -107,7 +88,8 @@ public class DaftarPengurusActivity extends AppCompatActivity {
                         .putExtra("id", "")
                         .putExtra("title", "")
                         .putExtra("email", "")
-                        .putExtra("desk", ""));
+                        .putExtra("desk", "")
+                        .putExtra("status", ""));
             }
         });
     }

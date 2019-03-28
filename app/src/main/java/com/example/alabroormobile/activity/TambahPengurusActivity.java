@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -30,11 +32,14 @@ public class TambahPengurusActivity extends AppCompatActivity {
 
     protected static EditText namaEdtTextPengurus;
     protected static EditText emailEditTextPengurus;
+    private RadioGroup rg_status;
+    private RadioButton rb_admin, rb_pengurus;
+    private String status;
     private ProgressDialog loading;
 
     private DatabaseReference database;
     //GET INTENT
-    private String sPidPengurus,sNamaPengurus, sEmailPengurus;
+    private String sPidPengurus,sNamaPengurus, sEmailPengurus, sStatus;
     private Intent intentGetDataPengurus;
 
     @Override
@@ -47,16 +52,42 @@ public class TambahPengurusActivity extends AppCompatActivity {
         sPidPengurus = getIntent().getStringExtra("id");
         sNamaPengurus = getIntent().getStringExtra("nama");
         sEmailPengurus = getIntent().getStringExtra("email");
+        sStatus = getIntent().getStringExtra("status");
 
         //INISIALISASI
         namaEdtTextPengurus = (EditText) findViewById(R.id.input_nama_pengurus);
         emailEditTextPengurus = (EditText) findViewById(R.id.input_email_pengurus);
+        rg_status = (RadioGroup) findViewById(R.id.rg_status);
+        rb_admin = (RadioButton) findViewById(R.id.rb_admin);
+        rb_pengurus = (RadioButton) findViewById(R.id.rb_pengurus);
         Button submitAcara = (Button)findViewById(R.id.save_acara_pengurus);
         Button cancelSubmit = (Button)findViewById(R.id.cancel_bt_pengurus);
 
         //SET DATA
         namaEdtTextPengurus.setText(sNamaPengurus);
         emailEditTextPengurus.setText(sEmailPengurus);
+        if (sStatus.equalsIgnoreCase("Admin")){
+            rb_admin.setChecked(true);
+        } else if (sStatus.equalsIgnoreCase("Pengurus")){
+            rb_pengurus.setChecked(true);
+        }
+
+        rb_pengurus.setChecked(true);
+        status = "Pengurus";
+
+        rg_status.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rb_admin:
+                        status = "Admin";
+                        break;
+                    case R.id.rb_pengurus:
+                        status = "Pengurus";
+                        break;
+                }
+            }
+        });
 
         if (sPidPengurus.equals("")){
             submitAcara.setText("SIMPAN");
@@ -89,8 +120,9 @@ public class TambahPengurusActivity extends AppCompatActivity {
                                 false);
 
                         simpanPengurus(new Pengurus(
-                                Snama.toLowerCase(),
-                                Semail.toLowerCase()));
+                                Snama,
+                                Semail.toLowerCase(),
+                                status));
                         finish();
                     }
                 } else {
@@ -109,8 +141,10 @@ public class TambahPengurusActivity extends AppCompatActivity {
                                 false);
 
                         editPengurus(new Pengurus(
-                                Snama.toLowerCase(),
-                                Semail.toLowerCase()), sPidPengurus);
+                                Snama,
+                                Semail.toLowerCase(),
+                                status),
+                                sPidPengurus);
                         finish();
                     }
                 }
@@ -157,8 +191,9 @@ public class TambahPengurusActivity extends AppCompatActivity {
 
 
     private void simpanPengurus(Pengurus pengurus) {
+        String username = emailEditTextPengurus.getText().toString().split("@")[0];
         database.child("Pengurus")
-                .push()
+                .child(username)
                 .setValue(pengurus)
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
@@ -182,7 +217,6 @@ public class TambahPengurusActivity extends AppCompatActivity {
                         loading.dismiss();
                         namaEdtTextPengurus.setText("");
                         emailEditTextPengurus.setText("");
-
                         Toast.makeText(TambahPengurusActivity.this, "Data Berhasil diedit",Toast.LENGTH_SHORT).show();
                     }
                 });

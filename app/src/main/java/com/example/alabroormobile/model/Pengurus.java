@@ -6,13 +6,23 @@ public class Pengurus {
     private String nama;
     private String email;
     private String key;
+    private String status;
 
     public Pengurus() {
     }
 
-    public Pengurus(String nama, String email) {
+    public Pengurus(String nama, String email, String status) {
         this.nama = nama;
         this.email = email;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNama() {
@@ -42,15 +52,7 @@ public class Pengurus {
     @Override
     public String toString() {
         return " "+nama+"\n" +
-                " "+email;
-    }
-
-    public HashMap<String,String> toFirebaseObject() {
-        HashMap<String,String> acaraa =  new HashMap<String,String>();
-        acaraa.put("key",key);
-        acaraa.put("nama", nama);
-        acaraa.put("email", email);
-
-        return acaraa;
+                " "+email+"\n" +
+                " "+status;
     }
 }

@@ -146,10 +146,7 @@ public class LoginGoogleActivity extends AppCompatActivity {
                                     if (dataSnapshot.child("username").exists()){
                                         username = use.getUsername();
                                     }
-                                    if (dataSnapshot.child("gambar").exists()){
-                                        gambar = use.getGambar();
-                                    }
-                                    final User usr = new User(user.getUid(),username,user.getEmail(),gambar);
+                                    final User usr = new User(user.getUid(),username,user.getEmail());
                                     dbs.setValue(usr);
                                     userss.add(usr);
                                 }

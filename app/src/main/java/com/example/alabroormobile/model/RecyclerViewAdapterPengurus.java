@@ -23,13 +23,14 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
 
     public class MyViewHolderPengurus extends RecyclerView.ViewHolder {
         public LinearLayout rl_layout_pengurus;
-        public TextView tv_nama_pengurus, tv_email_pengurus;
+        public TextView tv_nama_pengurus, tv_email_pengurus, tv_status;
 
         public MyViewHolderPengurus(View view) {
             super(view);
             rl_layout_pengurus = view.findViewById(R.id.rl_layout_pengurus);
             tv_nama_pengurus = view.findViewById(R.id.nama_pengurus);
             tv_email_pengurus = view.findViewById(R.id.email_pengurus);
+            tv_status = view.findViewById(R.id.status);
         }
     }
 
@@ -51,6 +52,7 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
 
         holder.tv_nama_pengurus.setText(movie.getNama());
         holder.tv_email_pengurus.setText(movie.getEmail());
+        holder.tv_status.setText(movie.getStatus());
         holder.rl_layout_pengurus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +61,7 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
                 goDetail.putExtra("id", movie.getKey());
                 goDetail.putExtra("nama", movie.getNama());
                 goDetail.putExtra("email", movie.getEmail());
+                goDetail.putExtra("status", movie.getStatus());
 
                 mActivity.startActivity(goDetail);
             }
@@ -75,6 +78,7 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
 
         public TextView nama;
         public TextView email;
+        public TextView status;
 
         public ViewHolder(View itemView) {
 
@@ -82,6 +86,7 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
 
             nama = (TextView) itemView.findViewById(R.id.nama_pengurus);
             email = (TextView) itemView.findViewById(R.id.email_pengurus);
+            status = (TextView) itemView.findViewById(R.id.status);
         }
     }
 }
