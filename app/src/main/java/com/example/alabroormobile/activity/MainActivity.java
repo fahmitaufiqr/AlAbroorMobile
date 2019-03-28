@@ -16,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.helpers.MethodHelper;
+import com.example.alabroormobile.helpers.VarConstants;
+import com.example.alabroormobile.helpers.WaktuShalatHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -52,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
     private TextView tv_tanggal, tv_nama_pengguna;
+
+    // ---------------------------------------------------------------------------------------------
+    private int countTime;
+    // ---------------------------------------------------------------------------------------------
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +122,65 @@ public class MainActivity extends AppCompatActivity {
         tv_tanggal.setText(formattanggal);
 
         intent();
+
+        //CODE untuk WAKTU MUNDUR
+        //
+        //
+        TextView mTextViewShalatMendatang = findViewById(R.id.jadwal_textview_shalat);
+        TextView mTextViewCoundown = findViewById(R.id.jadwal_textview_hitungmundur);
+        // Deklarasi Class helper
+        WaktuShalatHelper mWaktuShalatHelper = new WaktuShalatHelper();
+        MethodHelper mMethodHelper = new MethodHelper();
+        // -----------------------------------------------------------------------------------------
+        int jumlahDetikSaatIni = mMethodHelper.getSumWaktuDetik();
+        String mJadwal = mWaktuShalatHelper.getJadwalShalat();
+        // -----------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------
+        int detikShubuh = mWaktuShalatHelper.getJmlWaktuShubuh();
+        int detikDzuhur = mWaktuShalatHelper.getJmlWaktuDzuhur();
+        int detikAshar = mWaktuShalatHelper.getJmlWaktuAshar();
+        int detikMaghrib = mWaktuShalatHelper.getJmlWaktuMaghrib();
+        int detikIsya = mWaktuShalatHelper.getJmlWaktuIsya();
+        int detikAfterMid = mWaktuShalatHelper.getJmlAftMidnight();
+        int detikBeforeMid = mWaktuShalatHelper.getJmlBeMidnight();
+        // -----------------------------------------------------------------------------------------
+
+        switch (mJadwal) {
+            case VarConstants.Constants.SHUBUH:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.DZUHUR.substring(7));
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                break;
+            case VarConstants.Constants.DZUHUR:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.ASHAR.substring(7));
+                countTime = (detikAshar - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                break;
+            case VarConstants.Constants.ASHAR:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.MAGHRIB.substring(7));
+                countTime = (detikMaghrib - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                break;
+            case VarConstants.Constants.MAGHRIB:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.ISYA.substring(7));
+                countTime = (detikIsya - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                break;
+            case VarConstants.Constants.ISYA:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.SHUBUH.substring(7));
+                if ((jumlahDetikSaatIni == detikAfterMid) || (jumlahDetikSaatIni < detikShubuh)) {
+                    countTime = (detikShubuh - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                } else if ((jumlahDetikSaatIni == detikIsya) || (jumlahDetikSaatIni <= detikBeforeMid)) {
+                    countTime =  (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                }
+                break;
+            default:
+                mTextViewShalatMendatang.setText(VarConstants.Constants.DZUHUR.substring(7));
+                countTime = (detikDzuhur - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
+                break;
+        }
+        // -----------------------------------------------------------------------------------------
+        mWaktuShalatHelper.CoundownTime(countTime, mTextViewCoundown);
+        // -----------------------------------------------------------------------------------------
+        //
+        //
+        //CODE untuk WAKTU MUNDUR
     }
 
     @Override
@@ -146,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,WaktuShalat2Activity.class);
+                Intent intent = new Intent(MainActivity.this,WaktuSholatActivity.class);
                 startActivity(intent);
             }
         });

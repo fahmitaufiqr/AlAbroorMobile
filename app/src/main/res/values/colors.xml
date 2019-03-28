@@ -8,6 +8,7 @@
     <color name="warnaText2">#858585</color>
     <color name="warnaGaris">#BCE0FD</color>
     <color name="warnatextButton">#FFFFFF</color>
+    <color name="textColorBlack">#000000</color>
 
     //navigation
     <color name="colorNavigationIcon">#2699FB</color>
