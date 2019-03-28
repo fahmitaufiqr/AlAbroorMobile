@@ -86,9 +86,8 @@ public class DaftarPengurusActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(DaftarPengurusActivity.this, TambahPengurusActivity.class)
                         .putExtra("id", "")
-                        .putExtra("title", "")
+                        .putExtra("nama", "")
                         .putExtra("email", "")
-                        .putExtra("desk", "")
                         .putExtra("status", ""));
             }
         });
