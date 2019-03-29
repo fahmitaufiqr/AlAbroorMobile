@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_layout_pengurus"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,6 +9,7 @@
     android:layout_marginLeft="8dp"
     android:clickable="true"
     android:focusable="true"
+    android:background="@color/cardView"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama : "
+            android:text="Nama&#x9;&#x9;: "
             android:textStyle="bold" />
 
         <TextView
@@ -34,11 +37,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Emai   : "
+            android:text="Email&#x9;&#x9;: "
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/email_pengurus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status&#x9;: "
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

@@ -52,10 +52,46 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email Pengurus"
-                    android:inputType="textCapWords"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:textSize="20sp" />
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="18sp"
+                android:text="Status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:id="@+id/rg_status"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                android:gravity=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"/>
+
+                <RadioButton
+                    android:id="@+id/rb_pengurus"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pengurus"/>
+
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"

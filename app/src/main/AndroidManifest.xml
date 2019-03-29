@@ -17,9 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WaktuSholatActivity"></activity>
         <activity android:name=".activity.ViewPengajianActivity" />
-        <activity android:name=".activity.WaktuShalatActivity" />
         <activity android:name=".activity.InfoActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.ArahKiblatActivity" />
@@ -67,6 +65,7 @@
             android:name=".activity.LoginGoogleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.TambahPengurusActivity" />
+        <activity android:name=".activity.WaktuShalatActivity"></activity>
     </application>
 
 </manifest>
