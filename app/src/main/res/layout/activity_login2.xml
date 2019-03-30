@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.LoginGoogleActivity">
+    tools:context=".activity.GoogleLogin.Login2Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,22 +47,14 @@
                 android:layout_marginTop="5dp"/>
 
             <com.google.android.gms.common.SignInButton
-                android:id="@+id/signInButton"
+                android:id="@+id/login_with_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="80dp"
                 android:paddingLeft="80dp"
                 android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"/>
-
-            <ProgressBar
-                android:visibility="invisible"
-                android:id="@+id/progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                />
+                android:layout_marginTop="20dp" />
 
 
         </LinearLayout>
@@ -76,4 +68,5 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
+
 </LinearLayout>

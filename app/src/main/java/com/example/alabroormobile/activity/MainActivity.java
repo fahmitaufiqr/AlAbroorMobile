@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,12 +15,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.Menu.AcaraActivity;
+import com.example.alabroormobile.activity.GoogleLogin.BaseActivity;
+import com.example.alabroormobile.activity.GoogleLogin.SharedPrefManager;
+import com.example.alabroormobile.activity.Menu.ArahKiblatActivity;
+import com.example.alabroormobile.activity.Menu.DaftarPengurusActivity;
+import com.example.alabroormobile.activity.Menu.InfoActivity;
+import com.example.alabroormobile.activity.Menu.JadwalPetugasActivity;
+import com.example.alabroormobile.activity.Menu.ProfileActivity;
+import com.example.alabroormobile.activity.Menu.StatistikActivity;
+import com.example.alabroormobile.activity.Menu.WaktuShalatActivity;
 import com.example.alabroormobile.helpers.MethodHelper;
 import com.example.alabroormobile.helpers.VarConstants;
 import com.example.alabroormobile.helpers.WaktuShalatHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,14 +48,15 @@ import java.util.Date;
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements
+        GoogleApiClient.OnConnectionFailedListener {
 
     private long backPressedTime;
+
 
     //~~Notif
     String TAG = MainActivity.class.getSimpleName();
     Button mBtnAddNotif;
-    FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
 
     NotificationManager mNotificationManager;
@@ -59,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
     // ---------------------------------------------------------------------------------------------
     private int countTime;
     // ---------------------------------------------------------------------------------------------
+
+    //TAMPIL NAMA
+    SharedPrefManager sharedPrefManager;
+    private GoogleApiClient mGoogleApiClient;
+    private FirebaseAuth mAuth;
+    Context mContext = this;
+    private String mUsername;
 
 
     @Override
@@ -77,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
         aboutbt = findViewById(R.id.about);
         tv_tanggal = findViewById(R.id.tv_tanggal);
         tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
+
+        //TAMPIL NAMA PENGGUNA
+        mAuth=FirebaseAuth.getInstance();
+        sharedPrefManager = new SharedPrefManager(mContext);
+        mUsername = sharedPrefManager.getName();
+        tv_nama_pengguna.setText(mUsername);
 
         //Notif
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
@@ -117,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         //Notif
 
         Date Date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat format = new SimpleDateFormat("EEEE, dd MMM yyyy");
         String formattanggal = format.format(Date);
         tv_tanggal.setText(formattanggal);
 
@@ -213,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,WaktuShalatActivity.class);
+                Intent intent = new Intent(MainActivity.this, WaktuShalatActivity.class);
                 startActivity(intent);
             }
         });
@@ -229,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalAcarabt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AcaraActivity.class);
+                Intent intent = new Intent(MainActivity.this, AcaraActivity.class);
                 startActivity(intent);
             }
         });
@@ -237,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         statistikPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,StatistikActivity.class);
+                Intent intent = new Intent(MainActivity.this, StatistikActivity.class);
                 startActivity(intent);
             }
         });
@@ -282,5 +307,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }

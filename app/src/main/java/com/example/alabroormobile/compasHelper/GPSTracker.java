@@ -14,6 +14,10 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
+
 public class GPSTracker extends Service implements LocationListener {
     private final Context mContext;
     // flag for GPS status

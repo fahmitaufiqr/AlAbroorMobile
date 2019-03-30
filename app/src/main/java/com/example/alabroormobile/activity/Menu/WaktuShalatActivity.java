@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Menu;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -47,6 +47,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waktu_shalat);
+        getSupportActionBar().setTitle("Waktu Sholat");
 
         geocoder = new Geocoder(this, Locale.getDefault());
 

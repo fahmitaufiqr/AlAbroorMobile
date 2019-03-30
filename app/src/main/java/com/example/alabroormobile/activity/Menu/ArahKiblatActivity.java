@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Menu;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -24,11 +24,15 @@ import com.example.alabroormobile.R;
 
 import static android.view.View.INVISIBLE;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
+
 
 public class ArahKiblatActivity extends AppCompatActivity {
 
     // ---------------------------------------------------------------------------------------------
-    private static final String TAG = "KiblatFragment";
+    private static final String TAG = "ArahKiblatActivity";
     private float currentAzimuth;
     private Compass compass;
     private ImageView mImageView_Kompas_Jarum, mImageView_Kompas;

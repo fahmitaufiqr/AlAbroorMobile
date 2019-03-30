@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.TimeZone;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
+
 public class PrayTimes {
     // ---------------------- Global Variables --------------------
     private int calcMethod; // caculation method

@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Acara;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 public class JadwalPengajianActivity extends AppCompatActivity {
 

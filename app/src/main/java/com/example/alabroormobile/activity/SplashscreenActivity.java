@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.GoogleLogin.Login2Activity;
+
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 public class SplashscreenActivity extends Activity {
 
@@ -18,7 +23,7 @@ public class SplashscreenActivity extends Activity {
             @Override
             public void run() {
 
-                startActivity(new Intent(SplashscreenActivity.this, LoginGoogleActivity.class));
+                startActivity(new Intent(SplashscreenActivity.this, Login2Activity.class));
                 finish();
             }
         }, 800);

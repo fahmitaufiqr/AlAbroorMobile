@@ -1,5 +1,9 @@
 package com.example.alabroormobile.helpers;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
+
 public class VarConstants {
 
     public VarConstants() {

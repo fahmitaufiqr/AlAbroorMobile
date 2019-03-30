@@ -17,22 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ViewPengajianActivity" />
-        <activity android:name=".activity.InfoActivity" />
-        <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.ArahKiblatActivity" />
-        <activity android:name=".activity.AcaraActivity" />
-        <activity android:name=".activity.StatistikActivity" />
-        <activity android:name=".activity.JadwalPengajianActivity" />
-        <activity android:name=".activity.JadwalPetugasActivity" />
-        <activity android:name=".activity.DaftarPengurusActivity" />
         <activity android:name=".activity.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action
@@ -40,11 +31,29 @@
                     android:label="@string/title_activity_main2" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.JadwalRamadhanActivity" />
-        <activity android:name=".activity.WaktuShalat2Activity" />
+
         <activity
             android:name=".AddReminderActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+
+        <activity android:name=".activity.GoogleLogin.BaseActivity"></activity>
+        <activity android:name=".activity.GoogleLogin.Login2Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activity.Acara.ViewPengajianActivity" />
+        <activity android:name=".activity.Menu.InfoActivity" />
+        <activity android:name=".activity.Menu.ProfileActivity" />
+        <activity android:name=".activity.Menu.ArahKiblatActivity" />
+        <activity android:name=".activity.Menu.AcaraActivity" />
+        <activity android:name=".activity.Menu.StatistikActivity" />
+        <activity android:name=".activity.Acara.JadwalPengajianActivity" />
+        <activity android:name=".activity.Menu.JadwalPetugasActivity" />
+        <activity android:name=".activity.Menu.DaftarPengurusActivity" />
+        <activity android:name=".activity.Acara.JadwalRamadhanActivity" />
+        <activity android:name=".activity.WaktuShalat2Activity" />
+        <activity android:name=".activity.Acara.TambahAcaraActivity" />
+        <activity android:name=".activity.Pengurus.TambahPengurusActivity" />
+        <activity android:name=".activity.Menu.WaktuShalatActivity" />
 
         <provider
             android:name=".data.AlarmReminderProvider"
@@ -60,12 +69,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.TambahAcaraActivity" />
-        <activity
-            android:name=".activity.LoginGoogleActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.TambahPengurusActivity" />
-        <activity android:name=".activity.WaktuShalatActivity"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
+
 public class MethodHelper {
 
     // Requirement Random Karakter -----------------------------------------------------------------

@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Menu;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,12 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.Acara.JadwalPengajianActivity;
+import com.example.alabroormobile.activity.Acara.JadwalRamadhanActivity;
+
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 public class AcaraActivity extends AppCompatActivity {
 
@@ -24,7 +30,7 @@ public class AcaraActivity extends AppCompatActivity {
         pengajianBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AcaraActivity.this,JadwalPengajianActivity.class);
+                Intent intent = new Intent(AcaraActivity.this, JadwalPengajianActivity.class);
                 startActivity(intent);
             }
         });
@@ -33,7 +39,7 @@ public class AcaraActivity extends AppCompatActivity {
         ramadhanBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AcaraActivity.this,JadwalRamadhanActivity.class);
+                Intent intent = new Intent(AcaraActivity.this, JadwalRamadhanActivity.class);
                 startActivity(intent);
             }
         });

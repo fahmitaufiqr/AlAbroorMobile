@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Acara;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import com.example.alabroormobile.calendar.HwAdapter;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
+
 
 public class JadwalRamadhanActivity extends AppCompatActivity {
     public GregorianCalendar cal_month2, cal_month_copy2;

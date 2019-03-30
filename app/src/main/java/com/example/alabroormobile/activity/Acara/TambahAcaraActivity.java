@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Acara;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -22,6 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 public class TambahAcaraActivity extends AppCompatActivity {
 

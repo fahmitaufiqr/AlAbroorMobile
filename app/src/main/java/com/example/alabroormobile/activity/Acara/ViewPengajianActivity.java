@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile.activity.Acara;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 public class ViewPengajianActivity extends AppCompatActivity {
 

@@ -12,6 +12,14 @@
 
     <string name="jadwal_helper_saatnya_shalat">Saatnya</string>
 
+    <!--STRING GOOGLE SIGN IN-->
+    <string name="loading">Tunggu Sebentar....</string>
+    <string name="log_error_occurred">"Eror Masuk : "</string>
+
+    <!--GOOGLE SIGN IN TOKEN-->
+    <string name="web_client_id">673082741435-qqjbrulsv009rfsg4necrrjatiu16eur.apps.googleusercontent.com</string>
+
+
     <string name="location_not_found">Location not ready, try again</string>
     <string name="enable_location_please">Please enable Location first</string>
 

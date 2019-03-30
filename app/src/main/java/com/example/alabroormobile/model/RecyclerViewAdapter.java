@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.TambahAcaraActivity;
+import com.example.alabroormobile.activity.Acara.TambahAcaraActivity;
 
 import java.util.List;
 

@@ -51,6 +51,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation 'com.google.firebase:firebase-messaging:17.4.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.firebase:firebase-client-android:2.4.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //alarm
     implementation 'com.android.support:recyclerview-v7:27.1.1'

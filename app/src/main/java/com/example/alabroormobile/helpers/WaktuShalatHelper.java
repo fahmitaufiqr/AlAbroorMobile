@@ -11,6 +11,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Created by Aulia Ikvanda on 31,March,2019
+ */
 
 
 public class WaktuShalatHelper {
