@@ -93,35 +93,37 @@
 
             </RadioGroup>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/save_acara_pengurus"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:paddingEnd="4dp"
-                    android:text="SIMPAN"
-                    android:textColor="@color/warnatextButton"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/cancel_bt_pengurus"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:paddingStart="4dp"
-                    android:text="BATAL"
-                    android:textColor="@color/warnatextButton"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/save_acara_pengurus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:paddingEnd="4dp"
+            android:text="SIMPAN"
+            android:textColor="@color/warnatextButton"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/cancel_bt_pengurus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:paddingStart="4dp"
+            android:text="BATAL"
+            android:textColor="@color/warnatextButton"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 </RelativeLayout>

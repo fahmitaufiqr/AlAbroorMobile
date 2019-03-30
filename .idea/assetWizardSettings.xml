@@ -154,8 +154,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_edit_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\fahmi" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="height" value="360" />
+                            <entry key="outputName" value="ic_kiblat" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="G:\DATA KULIAH AIKVANDA\PROYEK AKHIR\DESIGN\compas-02.svg" />
+                            <entry key="width" value="50" />
                           </map>
                         </option>
                       </PersistentState>

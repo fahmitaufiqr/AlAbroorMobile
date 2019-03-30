@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<android.support.v4.widget.SwipeRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeToRefresh"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -8,56 +8,54 @@
     tools:context=".activity.ArahKiblatActivity">
 
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    >
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
 
+        <TextView
+            android:id="@id/textview_arah_kabah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/textColorBlack"
+            tools:text="Arah Ka'bah"/>
 
-    <TextView
-        android:id="@id/textview_arah_kabah"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/textColorBlack"
-        tools:text="Arah Ka'bah"/>
+        <ImageView
+            android:id="@id/imageview_kompas"
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/compass_dial"
+            app:srcCompat="@drawable/ic_compas" />
 
-    <ImageView
-        android:id="@id/imageview_kompas"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        android:layout_centerInParent="true"
-        android:contentDescription="@string/compass_dial"
-        android:src="@drawable/kompass" />
+        <ImageView
+            android:id="@id/imageview_kompas_jarum"
+            android:layout_width="50dp"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/compass_hands"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_kiblat" />
 
-    <ImageView
-        android:id="@id/imageview_kompas_jarum"
-        android:layout_width="50dp"
-        android:layout_height="400dp"
-        android:layout_centerInParent="true"
-        android:contentDescription="@string/compass_hands"
-        android:scaleType="fitXY"
-        android:src="@drawable/arah" />
+        <TextView
+            android:id="@id/textview_lokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textColor="@color/textColorBlack"
+            tools:text="Lokasi Anda"/>
 
-    <TextView
-        android:id="@id/textview_lokasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:textSize="12sp"
-        android:textAlignment="center"
-        android:textColor="@color/textColorBlack"
-        tools:text="Lokasi Anda"/>
-
-</RelativeLayout>
+    </RelativeLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>
