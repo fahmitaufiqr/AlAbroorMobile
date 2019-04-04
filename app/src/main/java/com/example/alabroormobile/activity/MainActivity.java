@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,9 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.GoogleLogin.UserModel;
 import com.example.alabroormobile.activity.Menu.AcaraActivity;
-import com.example.alabroormobile.activity.GoogleLogin.BaseActivity;
-import com.example.alabroormobile.activity.GoogleLogin.SharedPrefManager;
 import com.example.alabroormobile.activity.Menu.ArahKiblatActivity;
 import com.example.alabroormobile.activity.Menu.DaftarPengurusActivity;
 import com.example.alabroormobile.activity.Menu.InfoActivity;
@@ -31,14 +31,16 @@ import com.example.alabroormobile.helpers.WaktuShalatHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -48,8 +50,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 
-public class MainActivity extends BaseActivity implements
-        GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
@@ -58,6 +59,8 @@ public class MainActivity extends BaseActivity implements
     String TAG = MainActivity.class.getSimpleName();
     Button mBtnAddNotif;
     GoogleSignInClient mGoogleSignInClient;
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     NotificationManager mNotificationManager;
     NotificationCompat.Builder mBuilder;
@@ -71,13 +74,6 @@ public class MainActivity extends BaseActivity implements
     // ---------------------------------------------------------------------------------------------
     private int countTime;
     // ---------------------------------------------------------------------------------------------
-
-    //TAMPIL NAMA
-    SharedPrefManager sharedPrefManager;
-    private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth mAuth;
-    Context mContext = this;
-    private String mUsername;
 
 
     @Override
@@ -97,11 +93,25 @@ public class MainActivity extends BaseActivity implements
         tv_tanggal = findViewById(R.id.tv_tanggal);
         tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
 
-        //TAMPIL NAMA PENGGUNA
-        mAuth=FirebaseAuth.getInstance();
-        sharedPrefManager = new SharedPrefManager(mContext);
-        mUsername = sharedPrefManager.getName();
-        tv_nama_pengguna.setText(mUsername);
+
+        //SET NAMA PENGGUNA
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+        dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                tv_nama_pengguna.setText(user.getName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         //Notif
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
@@ -307,9 +317,5 @@ public class MainActivity extends BaseActivity implements
             return true;
         }
         return false;
-    }
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 }

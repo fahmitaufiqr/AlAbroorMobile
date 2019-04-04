@@ -1,19 +1,16 @@
 package com.example.alabroormobile.activity.GoogleLogin;
 
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.activity.MainActivity;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,252 +25,184 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Aulia Ikvanda on 31,March,2019
  */
 
-public class Login2Activity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener {
+public class Login2Activity extends AppCompatActivity {
 
-    private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final int RC_SIGN_IN = 9001;
-    private static final String TAG = "Login2Activity";
-    private String idToken;
-    public SharedPrefManager sharedPrefManager;
-    private final Context mContext = this;
+    private final String TAG = Login2Activity.class.getSimpleName();
+    private static final int RC_SIGN=9001;
 
-    private String name, email;
-    private String photo;
-    private Uri photoUri;
-    private SignInButton mSignInButton;
+    private GoogleApiClient googleApiClient;
+    private FirebaseAuth mFirebaseAuth;
+    private ProgressDialog pDialog;
+    String name;
+    String id = "";
+    String imageProfile = "";
+    String umur = "";
+    String nohp = "";
+    String email = "";
 
+    private ArrayList<UserModel> userss;
+
+    private String gambar = "";
+    private String username = "";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        if (currentUser != null){
+            startActivity(new Intent(Login2Activity.this,MainActivity.class));
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        mSignInButton = (SignInButton) findViewById(R.id.login_with_google);
+        SignInButton loginBt = (SignInButton) findViewById(R.id.login_with_google);
 
-        mSignInButton.setOnClickListener(this);
-
-        configureSignIn();
-
-        mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
-
-        //this is where we start the Auth state Listener to listen for whether the user is signed in or not
-        mAuthListener = new FirebaseAuth.AuthStateListener(){
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                // Get signedIn user
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                //if user is signed in, we call a helper method to save the user details to Firebase
-                if (user != null) {
-                    // User is signed in
-                    createUserInFirebaseHelper();
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-            }
-        };
-    }
-
-    //This method creates a new user on our own Firebase database
-    //after a successful Authentication on Firebase
-    //It also saves the user info to SharedPreference
-    private void createUserInFirebaseHelper(){
-
-        //Since Firebase does not allow "." in the key name, we'll have to encode and change the "." to ","
-        // using the encodeEmail method in class Utils
-        final String encodedEmail = Utils.encodeEmail(email.toLowerCase());
-
-        //create an object of Firebase database and pass the the Firebase URL
-        final Firebase userLocation = new Firebase(Constants.FIREBASE_URL_USERS).child(encodedEmail);
-
-        //Add a Listerner to that above location
-        userLocation.addListenerForSingleValueEvent(new com.firebase.client.ValueEventListener() {
-            @Override
-            public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null){
-                    /* Set raw version of date to the ServerValue.TIMESTAMP value and save into dateCreatedMap */
-                    HashMap<String, Object> timestampJoined = new HashMap<>();
-                    timestampJoined.put(Constants.FIREBASE_PROPERTY_TIMESTAMP, ServerValue.TIMESTAMP);
-
-                    // Insert into Firebase database
-                    UserModel newUser = new UserModel(name, photo, encodedEmail, timestampJoined);
-                    userLocation.setValue(newUser);
-
-                    Toast.makeText(Login2Activity.this, "Account created!", Toast.LENGTH_SHORT).show();
-
-                    // After saving data to Firebase, goto next activity
-//                    Intent intent = new Intent(MainActivity.this, NavDrawerActivity.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    startActivity(intent);
-//                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-                Log.d(TAG, getString(R.string.log_error_occurred) + firebaseError.getMessage());
-                //hideProgressDialog();
-                if (firebaseError.getCode() == FirebaseError.EMAIL_TAKEN){
-                }
-                else {
-                    Toast.makeText(Login2Activity.this, firebaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    // This method configures Google SignIn
-    public void configureSignIn(){
-// Configure sign-in to request the user's basic profile like name and email
-        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(Login2Activity.this.getResources().getString(R.string.web_client_id))
+        userss = new ArrayList<>();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
-        // Build a GoogleApiClient with access to GoogleSignIn.API and the options above.
-        mGoogleApiClient = new GoogleApiClient.Builder(mContext)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, options)
+        // [END config_signin]
+        googleApiClient = new GoogleApiClient.Builder(Login2Activity.this)
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        Toast.makeText(Login2Activity.this, "You Have An Error", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-        mGoogleApiClient.connect();
+
+        mFirebaseAuth=FirebaseAuth.getInstance();
+
+        loginBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInwithGoogle();
+            }
+        });
+
     }
 
-    // This method is called when the signIn button is clicked on the layout
-    // It prompts the user to select a Google account.
-    private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+    protected void signInwithGoogle() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
-    // This IS the method where the result of clicking the signIn button will be handled
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode==RC_SIGN){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()) {
-                // Google Sign In was successful, save Token and a state then authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
+            if (result.isSuccess()){
+                GoogleSignInAccount account= result.getSignInAccount();
+                firebaseAuthWithGoogle(account);
+            }else {
 
-                idToken = account.getIdToken();
-
-                name = account.getDisplayName();
-                email = account.getEmail();
-                photoUri = account.getPhotoUrl();
-                photo = photoUri.toString();
-
-                // Save Data to SharedPreference
-                sharedPrefManager = new SharedPrefManager(mContext);
-                sharedPrefManager.saveIsLoggedIn(mContext, true);
-
-                sharedPrefManager.saveEmail(mContext, email);
-                sharedPrefManager.saveName(mContext, name);
-                sharedPrefManager.savePhoto(mContext, photo);
-
-                sharedPrefManager.saveToken(mContext, idToken);
-                //sharedPrefManager.saveIsLoggedIn(mContext, true);
-
-                AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-                firebaseAuthWithGoogle(credential);
-            } else {
-                // Google Sign In failed, update UI appropriately
-                Log.e(TAG, "Gagal untuk Masuk. ");
-                Toast.makeText(this, "Gagal untuk Masuk", Toast.LENGTH_SHORT)
-                        .show();
-
+                mFirebaseAuth.signOut();
             }
         }
     }
 
-    //After a successful sign into Google, this method now authenticates the user with Firebase
-    private void firebaseAuthWithGoogle(AuthCredential credential){
-        showProgressDialog();
-        mAuth.signInWithCredential(credential)
+
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle: "+acct.getId());
+        displayLoader();
+        AuthCredential credential= GoogleAuthProvider.getCredential(acct.getIdToken(),null);
+        mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithCredential" + task.getException().getMessage());
-                            task.getException().printStackTrace();
-                            Toast.makeText(Login2Activity.this, "Autentikasi Gagal",
-                                    Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()){
+//                            jika sign succes update ui
+                            Log.d(TAG, "onComplete: success");
+                            final FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+                            final HashMap<String, Object> user= new HashMap<>();
+                            gambar = currentUser.getPhotoUrl().toString();
+                            name = currentUser.getDisplayName();
+                            final DatabaseReference dbf = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+                            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if(dataSnapshot.exists()){
+                                        Intent pindah = new Intent(Login2Activity.this, MainActivity.class);
+                                        startActivity(pindah);
+                                    } else {
+                                        UserModel us = dataSnapshot.getValue(UserModel.class);
+                                        if (dataSnapshot.child("email").exists()){
+                                            email = us.getEmail();
+                                        }
+                                        if (dataSnapshot.child("nama").exists()){
+                                            name = us.getName();
+                                        }
+                                        if (dataSnapshot.child("gambar").exists()){
+                                            gambar = us.getGambar();
+                                        }
+                                        if (dataSnapshot.child("umur").exists()){
+                                            umur = us.getUmur();
+                                        }
+                                        if (dataSnapshot.child("nohp").exists()){
+                                            nohp = us.getNoHp();
+                                        }
+
+
+
+                                        user.put("numberPhone",nohp);
+                                        user.put("idEmail",currentUser.getUid());
+                                        user.put("name",name);
+                                        user.put("email",currentUser.getEmail());
+                                        user.put("age",umur);
+                                        user.put("gambar",gambar);
+                                        dbf.setValue(user);
+                                        Intent pindah = new Intent(Login2Activity.this,MainActivity.class);
+                                        startActivity(pindah);
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
                         }else {
-                            createUserInFirebaseHelper();
-                            Toast.makeText(Login2Activity.this, "Anda Berhasil Masuk",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login2Activity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
+                            Log.w(TAG, "onFailure: ", task.getException() );
                         }
-                        hideProgressDialog();
                     }
                 });
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mAuthListener != null){
-            FirebaseAuth.getInstance().signOut();
-        }
-        mAuth.addAuthStateListener(mAuthListener);
+    private void displayLoader() {
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Verifikasi Akun...");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+        pDialog.show();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mAuthListener != null){
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        Utils utils = new Utils(this);
-        int id = view.getId();
-
-        if (id == R.id.login_with_google){
-            if (utils.isNetworkAvailable()){
-                signIn();
-            }else {
-                Toast.makeText(Login2Activity.this, "Oops! Tidak Ada Koneksi Internet!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 }
