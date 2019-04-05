@@ -57,7 +57,7 @@
                 android:id="@+id/editAcara"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:srcCompat="@drawable/ic_save" />
+                app:srcCompat="@drawable/ic_check_black_24dp" />
 
         </LinearLayout>
 
