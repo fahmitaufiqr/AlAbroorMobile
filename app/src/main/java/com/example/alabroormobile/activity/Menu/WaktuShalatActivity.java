@@ -1,27 +1,36 @@
 package com.example.alabroormobile.activity.Menu;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.location.Address;
 import android.location.Geocoder;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.compasHelper.GPSTracker;
 import com.example.alabroormobile.model.PrayTimes;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 public class WaktuShalatActivity extends AppCompatActivity {
+
 
     PrayTimes prayers;
 
@@ -32,6 +41,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
     Geocoder geocoder;
     List<Address> addresses;
     double timezone;
+    DatabaseReference dRJadwalShalat;
 
     /* Lokasi Daerah Bandung dan Sekitarnya */
     double latitude = -6.974086;
@@ -47,7 +57,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waktu_shalat);
-        getSupportActionBar().setTitle("Waktu Sholat");
 
         geocoder = new Geocoder(this, Locale.getDefault());
 
@@ -126,10 +135,9 @@ public class WaktuShalatActivity extends AppCompatActivity {
         ShowPrayTime(year, month, day);
 
         mlayoutDate.setOnClickListener(new View.OnClickListener() {
-            @SuppressWarnings("deprecation")
             @Override
             public void onClick(View v) {
-                showDialog(0);
+                editWaktuShalatPopUp();
             }
         });
     }
@@ -138,28 +146,140 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
 
-        mSubuh.setText(prayerTimes.get(0));
-        mZuhur.setText(prayerTimes.get(2));
-        mAsar.setText(prayerTimes.get(3));
-        mMagrib.setText(prayerTimes.get(4));
-        mIsya.setText(prayerTimes.get(6));
+        mDate.setText("Sesuaikan Waktu Shalat");
 
-        mDate.setText(day + " " + months[month] + " " + year);
+        cekEdited(day + "-" + months[month] + "-" + year,
+                prayerTimes.get(0),
+                prayerTimes.get(2),
+                prayerTimes.get(3),
+                prayerTimes.get(4),
+                prayerTimes.get(6));
+
+        showJadwal();
     }
 
-    @Deprecated
-    protected Dialog onCreateDialog(int id) {
-        return new DatePickerDialog(this, datePickerListener, year, month, day);
+    private void setJadwal(String tanggal, String subuh, String dzuhur, String ashar, String maghrib, String isya){
+        dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
+        HashMap<String, String> dataWaktuShalat = new HashMap<>();
+        dataWaktuShalat.put("tanggal", tanggal);
+        dataWaktuShalat.put("subuh", subuh);
+        dataWaktuShalat.put("dzuhur", dzuhur);
+        dataWaktuShalat.put("ashar", ashar);
+        dataWaktuShalat.put("maghrib", maghrib);
+        dataWaktuShalat.put("isya", isya);
+
+        dRJadwalShalat.setValue(dataWaktuShalat).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+            }
+        });
     }
 
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
-            ShowPrayTime(selectedYear, selectedMonth, selectedDay);
+    private void showJadwal(){
+        ArrayList<String> waktuSholat = new ArrayList<>();
+        dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
+        dRJadwalShalat.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()){
+                    String jadwalnya = d.getValue(String.class);
+                    waktuSholat.add(jadwalnya);
+                }
+                mSubuh.setText(waktuSholat.get(4));
+                mZuhur.setText(waktuSholat.get(1));
+                mAsar.setText(waktuSholat.get(0));
+                mMagrib.setText(waktuSholat.get(3));
+                mIsya.setText(waktuSholat.get(2));
+            }
 
-            year	= selectedYear;
-            month	= selectedMonth;
-            day		= selectedDay;
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
-    };
+            }
+        });
+    }
+
+    private boolean cekEdited(String currentDate, String subuh, String dzuhur, String ashar, String maghrib, String isya) {
+        dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat").child("tanggal");
+        dRJadwalShalat.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String isiTanggal =  dataSnapshot.getValue(String.class);
+                if (!isiTanggal.equals(currentDate)){
+                    setJadwal(currentDate,
+                            subuh,
+                            dzuhur,
+                            ashar,
+                            maghrib,
+                            isya);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return false;
+    }
+
+    private void editWaktuShalatPopUp(){
+        Dialog popUp = new Dialog(WaktuShalatActivity.this);
+        popUp.setContentView(R.layout.pop_up_edit_waktu_shalat);
+        EditText et_sSubuh = (EditText) popUp.findViewById(R.id.et_sSubuh);
+        EditText et_sDzuhur = (EditText) popUp.findViewById(R.id.et_sDzuhur);
+        EditText et_sAshar = (EditText) popUp.findViewById(R.id.et_sAshar);
+        EditText et_sMaghrib = (EditText) popUp.findViewById(R.id.et_sMaghrib);
+        EditText et_sIsya = (EditText) popUp.findViewById(R.id.et_sIsya);
+        Button btn_cancel = (Button) popUp.findViewById(R.id.btn_cancel);
+        Button btn_save = (Button) popUp.findViewById(R.id.btn_save);
+        ArrayList<String> waktuSholat = new ArrayList<>();
+        dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
+        dRJadwalShalat.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()){
+                    String jadwalnya = d.getValue(String.class);
+                    waktuSholat.add(jadwalnya);
+                }
+                et_sSubuh.setText(waktuSholat.get(4));
+                et_sDzuhur.setText(waktuSholat.get(1));
+                et_sAshar.setText(waktuSholat.get(0));
+                et_sMaghrib.setText(waktuSholat.get(3));
+                et_sIsya.setText(waktuSholat.get(2));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popUp.dismiss();
+            }
+        });
+
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String waktuSubuh = et_sSubuh.getText().toString();
+                String waktuDzuhur = et_sDzuhur.getText().toString();
+                String waktuAshar = et_sAshar.getText().toString();
+                String waktuMaghrib = et_sMaghrib.getText().toString();
+                String waktuIsya = et_sIsya.getText().toString();
+                String tanggal = day + "-" + months[month] + "-" + year;
+
+                setJadwal(tanggal, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya);
+                showJadwal();
+                popUp.dismiss();
+            }
+        });
+
+        popUp.show();
+    }
 }

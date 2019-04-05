@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WaktuShalatActivity.class);
+                Intent intent = new Intent(MainActivity.this, WaktuShalat2Activity.class);
                 startActivity(intent);
             }
         });
