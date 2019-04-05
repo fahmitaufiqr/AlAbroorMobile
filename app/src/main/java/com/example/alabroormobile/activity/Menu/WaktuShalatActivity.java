@@ -57,6 +57,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waktu_shalat);
+        getSupportActionBar().setTitle("Waktu Shalat");
 
         loading = ProgressDialog.show(WaktuShalatActivity.this,
                 null,
@@ -134,7 +135,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
     private void ShowPrayTime(int year, int month, int day) {
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
         mDate.setText("Sesuaikan Waktu Shalat");
-        cekEdited(day + "-" + months[month] + "-" + year,
+        gantihari(day + "-" + months[month] + "-" + year,
                 prayerTimes.get(0),
                 prayerTimes.get(2),
                 prayerTimes.get(3),
@@ -186,7 +187,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         });
     }
 
-    private boolean cekEdited(String currentDate, String subuh, String dzuhur, String ashar, String maghrib, String isya) {
+    private boolean gantihari(String currentDate, String subuh, String dzuhur, String ashar, String maghrib, String isya) {
         dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat").child("tanggal");
         dRJadwalShalat.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -211,7 +212,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
     }
 
     private void editWaktuShalatPopUp(){
-        Dialog popUp = new Dialog(WaktuShalatActivity.this);
+        Dialog popUp = new Dialog(WaktuShalatActivity.this, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
         popUp.setContentView(R.layout.pop_up_edit_waktu_shalat);
         EditText et_sSubuh = (EditText) popUp.findViewById(R.id.et_sSubuh);
         EditText et_sDzuhur = (EditText) popUp.findViewById(R.id.et_sDzuhur);
@@ -219,6 +220,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         EditText et_sMaghrib = (EditText) popUp.findViewById(R.id.et_sMaghrib);
         EditText et_sIsya = (EditText) popUp.findViewById(R.id.et_sIsya);
         Button btn_cancel = (Button) popUp.findViewById(R.id.btn_cancel);
+        Button btn_reset = (Button) popUp.findViewById(R.id.btn_reset);
         Button btn_save = (Button) popUp.findViewById(R.id.btn_save);
         ArrayList<String> waktuSholat = new ArrayList<>();
         dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
@@ -249,11 +251,24 @@ public class WaktuShalatActivity extends AppCompatActivity {
             }
         });
 
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
+                gantihari(day + "-" + months[month] + "-" + year,
+                        prayerTimes.get(0),
+                        prayerTimes.get(2),
+                        prayerTimes.get(3),
+                        prayerTimes.get(4),
+                        prayerTimes.get(6));
+                showJadwal();
+                popUp.dismiss();
+            }
+        });
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String waktuSubuh = et_sSubuh.getText().toString();
                 String waktuDzuhur = et_sDzuhur.getText().toString();
                 String waktuAshar = et_sAshar.getText().toString();

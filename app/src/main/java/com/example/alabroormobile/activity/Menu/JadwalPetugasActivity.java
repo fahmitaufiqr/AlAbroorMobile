@@ -1,9 +1,12 @@
 package com.example.alabroormobile.activity.Menu;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
@@ -13,9 +16,15 @@ public class JadwalPetugasActivity extends AppCompatActivity {
 
     private TextView tv_muazin1, tv_imam1, tv_muazin2, tv_imam2, tv_muazin3, tv_imam3, tv_muazin4, tv_imam4, tv_muazin5, tv_imam5;
     private ImageView im_su, im_dz, im_as, im_mg, im_is;
-    private String su, dz, as, mg, is;
     private TextDrawable mDrawableBuilderSu, mDrawableBuilderDz, mDrawableBuilderAs, mDrawableBuilderMg, mDrawableBuilderIs;
     private ColorGenerator mColorGenerator = ColorGenerator.DEFAULT;
+    private CalendarView cv_jadwal_petugas;
+    String su = "Su";
+    String dz = "Dz";
+    String as = "As";
+    String mg = "Mg";
+    String is = "Is";
+    int color = mColorGenerator.getRandomColor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +32,8 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jadwal_petugas);
         getSupportActionBar().setTitle("Jadwal Petugas");
 
+        //inisialisasi
+        cv_jadwal_petugas = (CalendarView) findViewById(R.id.cv_jadwal_petugas);
         tv_muazin1 = (TextView) findViewById(R.id.tv_muazin1);
         tv_muazin2 = (TextView) findViewById(R.id.tv_muazin2);
         tv_muazin3 = (TextView) findViewById(R.id.tv_muazin3);
@@ -39,12 +50,6 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         im_mg = (ImageView) findViewById(R.id.iv_mg);
         im_is = (ImageView) findViewById(R.id.iv_is);
 
-        int color = mColorGenerator.getRandomColor();
-        su = "Su";
-        dz = "Dz";
-        as = "As";
-        mg = "Mg";
-        is = "Is";
         mDrawableBuilderSu = TextDrawable.builder().buildRound(su, color);
         mDrawableBuilderDz = TextDrawable.builder().buildRound(dz, color);
         mDrawableBuilderAs = TextDrawable.builder().buildRound(as, color);
@@ -55,5 +60,12 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         im_as.setImageDrawable(mDrawableBuilderAs);
         im_mg.setImageDrawable(mDrawableBuilderMg);
         im_is.setImageDrawable(mDrawableBuilderIs);
+
+        cv_jadwal_petugas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(JadwalPetugasActivity.this, "Year: "+year+ "\nMonth: "+month+ "\nDay of Month: "+dayOfMonth, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -29,7 +29,6 @@ import java.util.Calendar;
 
 public class TambahAcaraActivity extends AppCompatActivity {
 
-    private static final String TAG = "acara";
     protected static TextView viewDate;
     protected static TextView viewTime;
     protected static EditText namaEdtText;
