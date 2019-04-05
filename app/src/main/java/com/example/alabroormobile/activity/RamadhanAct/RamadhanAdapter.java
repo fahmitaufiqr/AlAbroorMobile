@@ -1,11 +1,13 @@
 package com.example.alabroormobile.activity.RamadhanAct;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
@@ -18,11 +20,11 @@ import java.util.List;
 public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHolder>{
 
     private List<RamadhanItem> listitems;
-    private Context mcontext;
+    private Activity mActivity;
 
-    public RamadhanAdapter(List<RamadhanItem> listitems, Context mcontext) {
+    public RamadhanAdapter(List<RamadhanItem> listitems, Activity activity) {
         this.listitems = listitems;
-        this.mcontext = mcontext;
+        this.mActivity = activity;
 
     }
 
@@ -42,6 +44,17 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
         holder.seh.setText(listitem.getSeh_time());
         holder.ift.setText(listitem.getIft_time());
         holder.mar.setText(listitem.getMark());
+
+        holder.recviewRamadhann.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent goDetail = new Intent(mActivity, DetailRamadhanActivity.class);
+                mActivity.startActivity(goDetail);
+
+
+            }
+        });
     }
 
     @Override
@@ -50,9 +63,11 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        public LinearLayout recviewRamadhann;
         public TextView texttittle,textDesc,days,seh,ift,mar;
         public ViewHolder(View itemview){
             super(itemview);
+            recviewRamadhann = itemview.findViewById(R.id.ramadhan_layout);
             texttittle = itemview.findViewById(R.id.text1);
             textDesc=itemview.findViewById(R.id.text2);
             days = itemview.findViewById(R.id.days);

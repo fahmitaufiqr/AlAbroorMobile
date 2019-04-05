@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RamadhanAct.RamadhanActivity"></activity>
+        <activity android:name=".activity.RamadhanAct.DetailRamadhanActivity"></activity>
+        <activity android:name=".activity.RamadhanAct.RamadhanActivity" />
         <activity android:name=".activity.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +35,7 @@
         </activity>
         <activity
             android:name=".AddReminderActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.GoogleLogin.Login2Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
