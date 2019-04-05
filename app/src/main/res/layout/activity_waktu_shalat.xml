@@ -60,7 +60,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Sholat Subuh"
+                android:text="Shalat Subuh"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -73,7 +73,6 @@
                 android:paddingRight="20dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
-                android:text="Fajr"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -91,7 +90,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Sholat Zhuhur"
+                android:text="Shalat Zhuhur"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -104,7 +103,6 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
-                android:text="Dhuhr"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -122,7 +120,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Sholat Ashar"
+                android:text="Shalat Ashar"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -135,7 +133,6 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
-                android:text="Asr"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -153,7 +150,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Sholat Maghrib"
+                android:text="Shalat Maghrib"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -166,7 +163,6 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
-                android:text="Sunset"
                 android:textSize="17sp" />
         </LinearLayout>
 
@@ -185,7 +181,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Sholat Isya"
+                android:text="Shalat Isya"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -198,7 +194,6 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
-                android:text="Isha"
                 android:textSize="17sp" />
         </LinearLayout>
         <View

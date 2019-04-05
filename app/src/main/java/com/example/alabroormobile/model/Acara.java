@@ -42,10 +42,6 @@ public class Acara implements Serializable {
         return keterangan;
     }
 
-    public void setKeterangan(String keterangan) {
-        this.keterangan = keterangan;
-    }
-
     public String getDate() {
         return date;
     }
@@ -68,16 +64,5 @@ public class Acara implements Serializable {
                 " "+keterangan+"\n" +
                 " "+date+"\n" +
                 " "+time;
-    }
-
-    public HashMap<String,String> toFirebaseObject() {
-        HashMap<String,String> acaraa =  new HashMap<String,String>();
-        acaraa.put("key",key);
-        acaraa.put("nama", nama);
-        acaraa.put("keterangan", keterangan);
-        acaraa.put("date", date);
-        acaraa.put("time", time);
-
-        return acaraa;
     }
 }

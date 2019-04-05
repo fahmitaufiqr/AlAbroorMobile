@@ -43,6 +43,5 @@ public class AcaraActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

@@ -45,9 +45,6 @@ public class AlarmCursorAdapter extends CursorAdapter {
         String time = cursor.getString(timeColumnIndex);
         String active = cursor.getString(activeColumnIndex);
 
-
-
-
         setReminderTitle(title);
 
         if (date != null){
@@ -62,12 +59,6 @@ public class AlarmCursorAdapter extends CursorAdapter {
         }else{
             mActiveImage.setImageResource(R.drawable.ic_notifications_off_black_24dp);
         }
-
-
-
-
-
-
     }
 
     // Set reminder title view
@@ -100,6 +91,4 @@ public class AlarmCursorAdapter extends CursorAdapter {
             mActiveImage.setImageResource(R.drawable.ic_notifications_off_black_24dp);
         }
     }
-
-
 }

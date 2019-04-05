@@ -30,24 +30,19 @@ import java.util.Calendar;
 public class TambahAcaraActivity extends AppCompatActivity {
 
     private static final String TAG = "acara";
-
     protected static TextView viewDate;
     protected static TextView viewTime;
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
     protected static Calendar myCalendar;
     private TimePickerDialog timePickerDialog;
+    private ProgressDialog loading;
+    private DatabaseReference database;
+    private String sPid,sNama, sTanggal, sJam, sDesk;
+
     int year;
     int month;
     int dayOfMonth;
-    private ProgressDialog loading;
-
-
-    // variable yang merefers ke Firebase Realtime Database
-    private DatabaseReference database;
-    //GET INTENT
-    private String sPid,sNama, sTanggal, sJam, sDesk;
-    private Intent intentGetData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +51,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Tambah Pengajian");
 
         database = FirebaseDatabase.getInstance().getReference();
-
         sPid = getIntent().getStringExtra("id");
         sNama = getIntent().getStringExtra("nama");
         sDesk = getIntent().getStringExtra("keterangan");
@@ -152,19 +146,15 @@ public class TambahAcaraActivity extends AppCompatActivity {
                                 Sket.toLowerCase(),
                                 Sdate.toLowerCase(),
                                 Stime.toLowerCase()), sPid);
-
                         finish();
-
                     }
                 }
-
             }
         });
 
         cancelSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (cancelSubmit.getText().equals("BATAL")) {
                     //tutup page
                     finish();
@@ -175,14 +165,11 @@ public class TambahAcaraActivity extends AppCompatActivity {
                             "Sedang Proses...",
                             true,
                             false);
-
                     deleteAcara();
                     finish();
                 }
-
             }
         });
-
 
         //DATE PICKER
         pickDate.setOnClickListener(new View.OnClickListener() {
@@ -193,21 +180,13 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 month = myCalendar.get(Calendar.MONTH);
                 dayOfMonth = myCalendar.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(TambahAcaraActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        viewDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year);
-
-                    }
-                },year,month,dayOfMonth);
+                        (view, year, month, dayOfMonth) -> viewDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year),year,month,dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
             }
         });
 
-
-//        //TIME PICKER
+        //TIME PICKER
         pickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -223,7 +202,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                         loading.dismiss();
 
                         namaEdtText.setText("");
@@ -231,15 +209,10 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this,
-                                "Data Berhasil dihapus",
-                                Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil dihapus", Toast.LENGTH_SHORT).show();
                     }
-
                 });
     }
-
 
     private void simpanAcara(Acara acara) {
         database.child("acaraList")
@@ -248,7 +221,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                         loading.dismiss();
 
                         namaEdtText.setText("");
@@ -256,12 +228,8 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this,
-                                "Data Berhasil ditambahkan",
-                                Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                     }
-
                 });
     }
 
@@ -272,7 +240,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                         loading.dismiss();
 
                         namaEdtText.setText("");
@@ -280,36 +247,19 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this,
-                                "Data Berhasil diedit",
-                                Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil diedit", Toast.LENGTH_SHORT).show();
                     }
-
                 });
     }
-
 
     private void showTimeDialog() {
         myCalendar = Calendar.getInstance();
         timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                /**
-                 * Method ini dipanggil saat kita selesai memilih waktu di DatePicker
-                 */
                 viewTime.setText(hourOfDay+":"+minute);
             }
-        },
-                /**
-                 * Tampilkan jam saat ini ketika TimePicker pertama kali dibuka
-                 */
-                myCalendar.get(Calendar.HOUR_OF_DAY), myCalendar.get(Calendar.MINUTE),
-
-                /**
-                 * Cek apakah format waktu menggunakan 24-hour format
-                 */
-                DateFormat.is24HourFormat(this));
+        }, myCalendar.get(Calendar.HOUR_OF_DAY), myCalendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this));
 
         timePickerDialog.show();
     }

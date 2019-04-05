@@ -69,25 +69,19 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
-
     }
 
     private void setupCompass() {
         getBearing(mTextView_ArahKiblat, mTextview_Lokasi);
-        Compass.CompassListener cl = new Compass.CompassListener() {
-            @Override
-            public void onNewAzimuth(float azimuth) {
-                adjustGambarDial(azimuth, mImageView_Kompas);
-                adjustArrowQiblat(azimuth);
-            }
+        Compass.CompassListener cl = azimuth -> {
+            adjustGambarDial(azimuth, mImageView_Kompas);
+            adjustArrowQiblat(azimuth);
         };
         compass.setListener(cl);
     }
 
 
     public void adjustGambarDial(float azimuth, ImageView kompas) {
-        // Log.d(TAG, "will set rotation from " + currentAzimuth + " to "                + azimuth);
-
         Animation an = new RotateAnimation(-currentAzimuth, -azimuth,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
                 0.5f);
@@ -97,6 +91,7 @@ public class ArahKiblatActivity extends AppCompatActivity {
         an.setFillAfter(true);
         kompas.startAnimation(an);
     }
+
     public void adjustArrowQiblat(float azimuth) {
         float kiblat_derajat = GetFloat("kiblat_derajat");
         Animation an = new RotateAnimation(-(currentAzimuth)+kiblat_derajat, -azimuth,
@@ -110,7 +105,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
     }
 
     @SuppressLint("MissingPermission")
-
     public void getBearing(TextView arahKiblat, TextView lokasi){
         // Get the location manager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -131,9 +125,8 @@ public class ArahKiblatActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 1: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
+
                 } else {
                     Toast.makeText(this, "This app requires Access Location", Toast.LENGTH_LONG).show();
                     this.finish();
@@ -142,7 +135,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
             }
         }
     }
-
 
     public void SaveFloat(String Judul, Float bbb){
         SharedPreferences.Editor edit = prefs.edit();
@@ -153,7 +145,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
     public Float GetFloat(String Judul){
         return prefs.getFloat(Judul, 0);
     }
-
 
     public void fetch_GPS(GPSTracker gps, ImageView jarum, TextView arahKiblat, TextView lokasi){
         double result = 0;
@@ -202,15 +193,12 @@ public class ArahKiblatActivity extends AppCompatActivity {
         super.onStart();
         Log.d(TAG, "start compass");
         compass.start();
-        //alwaysOn(1);
-
     }
 
     @Override
     public void onPause() {
         super.onPause();
         compass.stop();
-
     }
 
     @Override
@@ -224,6 +212,5 @@ public class ArahKiblatActivity extends AppCompatActivity {
         super.onStop();
         Log.d(TAG, "stop compass");
         compass.stop();
-
     }
 }

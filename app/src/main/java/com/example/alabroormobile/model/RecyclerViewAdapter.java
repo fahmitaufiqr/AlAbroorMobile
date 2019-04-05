@@ -36,32 +36,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(List<Acara> acaraList,Activity activity) {
         this.acaraList = acaraList;
         this.mActivity = activity;
-
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
-
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-
         final Acara movie = acaraList.get(position);
-
         holder.tv_title.setText(movie.getNama());
         holder.tv_date.setText(movie.getDate());
         holder.tv_desk.setText(movie.getKeterangan());
         holder.tv_time.setText(movie.getTime());
-
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent goDetail = new Intent(mActivity, TambahAcaraActivity.class);
                 goDetail.putExtra("id", movie.getKey());
                 goDetail.putExtra("nama", movie.getNama());
@@ -69,37 +61,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 goDetail.putExtra("date", movie.getDate());
                 goDetail.putExtra("time", movie.getTime());
 
-
                 mActivity.startActivity(goDetail);
-
-
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-
         return acaraList.size();
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView title;
-        public TextView tanggal;
-        public TextView waktu;
-        public TextView keterangan;
-
-        public ViewHolder(View itemView) {
-
-            super(itemView);
-
-            title = (TextView) itemView.findViewById(R.id.txt_nama_acara);
-            tanggal = (TextView) itemView.findViewById(R.id.txt_tanggal_acara);
-            waktu = (TextView) itemView.findViewById(R.id.txt_waktu_acara);
-            keterangan = (TextView) itemView.findViewById(R.id.txt_keterangan);
-
-        }
     }
 }

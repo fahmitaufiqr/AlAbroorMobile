@@ -24,15 +24,10 @@ public class ViewPengajianActivity extends AppCompatActivity {
     private TextView mTextViewKeterangan;
     private TextView mTextViewJam;
     private TextView mDateView;
-    ArrayList<Acara> acaraView;
-    private ArrayList<String> mIdAcara;
-    private String acaraID;
-    ImageView edit,delete;
-
-    private static final String TAG = "acaranya";
-    private DatabaseReference database;
+    private ImageView edit, delete;
     private String sNama = "", sTanggal = "", sJam = "", sDesk = "";
-
+    private String acaraID;
+    ArrayList<Acara> acaraView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +35,7 @@ public class ViewPengajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_pengajian);
         getSupportActionBar().setTitle("Detail Pengajian");
 
-        //Post
         acaraView = new ArrayList<>();
-        mIdAcara = new ArrayList<>();
-
-        //Get Data From Intent
         Intent intentGetData = getIntent();
 
         //Inisialitation Variable
@@ -52,14 +43,11 @@ public class ViewPengajianActivity extends AppCompatActivity {
         mDateView = findViewById(R.id.tanggal_view);
         mTextViewKeterangan = findViewById(R.id.keterangan_view);
         mTextViewJam = findViewById(R.id.jam_view);
-
         edit = findViewById(R.id.editAcara);
         delete = findViewById(R.id.deleteAcara);
 
-//        Get Data From Intent
+        //Get Data From Intent
         acaraID = intentGetData.getStringExtra("key");
-        database = FirebaseDatabase.getInstance().getReference("acaraList").child("key");
-
         sNama = getIntent().getStringExtra("nama");
         sTanggal = getIntent().getStringExtra("date");
         sJam = getIntent().getStringExtra("time");
@@ -74,8 +62,8 @@ public class ViewPengajianActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent edit = new Intent(ViewPengajianActivity.this,TambahAcaraActivity.class);
-                edit.putExtra("nama",acaraID);
+                Intent edit = new Intent(ViewPengajianActivity.this, TambahAcaraActivity.class);
+                edit.putExtra("nama", acaraID);
                 startActivity(edit);
             }
         });
@@ -83,8 +71,8 @@ public class ViewPengajianActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent edit = new Intent(ViewPengajianActivity.this,TambahAcaraActivity.class);
-                edit.putExtra("key",acaraID);
+                Intent edit = new Intent(ViewPengajianActivity.this, TambahAcaraActivity.class);
+                edit.putExtra("key", acaraID);
                 startActivity(edit);
             }
         });
@@ -96,7 +84,7 @@ public class ViewPengajianActivity extends AppCompatActivity {
             }
         });
 
-        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -104,5 +92,4 @@ public class ViewPengajianActivity extends AppCompatActivity {
         finish();
         super.onBackPressed();
     }
-
-    }
+}

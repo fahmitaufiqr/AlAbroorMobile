@@ -19,19 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class TambahPengurusActivity extends AppCompatActivity {
 
-    private static final String TAG = "pengurus";
-
     protected static EditText namaEdtTextPengurus;
     protected static EditText emailEditTextPengurus;
     private RadioGroup rg_status;
     private RadioButton rb_admin, rb_pengurus;
     private String status;
     private ProgressDialog loading;
-
     private DatabaseReference database;
-    //GET INTENT
     private String sPidPengurus,sNamaPengurus, sEmailPengurus, sStatus;
-    private Intent intentGetDataPengurus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +34,6 @@ public class TambahPengurusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tambah_pengurus);
 
         database = FirebaseDatabase.getInstance().getReference();
-
         sPidPengurus = getIntent().getStringExtra("id");
         sNamaPengurus = getIntent().getStringExtra("nama");
         sEmailPengurus = getIntent().getStringExtra("email");
@@ -96,7 +90,6 @@ public class TambahPengurusActivity extends AppCompatActivity {
 
                 if (submitAcara.getText().equals("SIMPAN")){
                     // perintah save
-
                     if (Snama.equals("")) {
                         namaEdtTextPengurus.setError("Silahkan masukkan nama acara");
                         namaEdtTextPengurus.requestFocus();

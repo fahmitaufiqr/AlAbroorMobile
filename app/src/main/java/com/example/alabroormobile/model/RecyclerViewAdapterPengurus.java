@@ -55,7 +55,6 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
         holder.rl_layout_pengurus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent goDetail = new Intent(mActivity, TambahPengurusActivity.class);
                 goDetail.putExtra("id", movie.getKey());
                 goDetail.putExtra("nama", movie.getNama());
@@ -65,27 +64,10 @@ public class RecyclerViewAdapterPengurus extends RecyclerView.Adapter<RecyclerVi
                 mActivity.startActivity(goDetail);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return pengurusList.size();
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView nama;
-        public TextView email;
-        public TextView status;
-
-        public ViewHolder(View itemView) {
-
-            super(itemView);
-
-            nama = (TextView) itemView.findViewById(R.id.nama_pengurus);
-            email = (TextView) itemView.findViewById(R.id.email_pengurus);
-            status = (TextView) itemView.findViewById(R.id.status);
-        }
     }
 }

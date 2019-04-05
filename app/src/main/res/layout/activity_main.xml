@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,9 +31,7 @@
             <TextView
                 android:id="@+id/tv_nama_pengguna"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Pengguna"/>
-
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
@@ -48,16 +45,13 @@
             <TextView
                 android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tanggal Hari Ini" />
+                android:layout_height="wrap_content"/>
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 app:srcCompat="@drawable/ic_date"/>
-
         </LinearLayout>
-
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -66,20 +60,6 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:background="@drawable/masjid_wallpaper_hd">
-
-
-
-        <!--<TextClock-->
-            <!--android:id="@+id/textClock"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_marginTop="100dp"-->
-            <!--android:format12Hour="hh:mm:ss a"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:textColor="@color/warnatextButton"-->
-            <!--android:textSize="50sp"-->
-            <!--android:textStyle="bold" />-->
 
         <LinearLayout
             android:orientation="horizontal"
@@ -100,40 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mendatang"
                 android:textSize="16sp" />
-
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="@dimen/dimen_small"
-            android:layout_centerInParent="true">
-
-            <TextView
-                android:id="@id/jadwal_textview_shalat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/dimen_primary"
-                android:textColor="@color/warnatextButton"
-                android:textSize="50sp"
-                android:textStyle="bold"
-                tools:text="Shubuh" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@id/jadwal_textview_hitungmundur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/warnatextButton"
-            tools:text="Hitung Mundur"
-            android:gravity="center_horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"/>
-
     </RelativeLayout>
 
     <GridLayout
@@ -305,7 +252,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
                 app:srcCompat="@drawable/home_statistikpetugas"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -326,7 +272,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
                 app:srcCompat="@drawable/home_kiblat"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -347,7 +292,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
                 app:srcCompat="@drawable/home_daftarpengurus"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -368,7 +312,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
                 app:srcCompat="@drawable/home_info"/>
-
         </LinearLayout>
 
         <LinearLayout

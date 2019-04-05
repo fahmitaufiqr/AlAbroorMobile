@@ -30,7 +30,6 @@ public class StatistikActivity extends AppCompatActivity {
                 ,"Imam A"
                 ,"Asep M"};
 
-
         //CODE SPINNER
         ArrayAdapter<String> arrayImam = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, dkmMasjid);

@@ -1,6 +1,7 @@
 package com.example.alabroormobile.activity.Menu;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.annotation.NonNull;
@@ -31,9 +32,8 @@ import java.util.Locale;
 
 public class WaktuShalatActivity extends AppCompatActivity {
 
-
+    private ProgressDialog loading;
     PrayTimes prayers;
-
     TextView mSubuh, mZuhur, mAsar, mMagrib, mIsya, mDate,lt,ln,al;
     RelativeLayout mlayoutDate;
     String address,city,state,country,postalCode,knownName;
@@ -58,23 +58,15 @@ public class WaktuShalatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waktu_shalat);
 
-        geocoder = new Geocoder(this, Locale.getDefault());
+        loading = ProgressDialog.show(WaktuShalatActivity.this,
+                null,
+                "Mengambil Data...",
+                true,
+                false);
 
+        geocoder = new Geocoder(this, Locale.getDefault());
         gps = new GPSTracker(WaktuShalatActivity.this);
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-            if(gps.getLatitude() == 0 || gps.getLongitude() == 0){
-                gps.showSettingsAlert();
-            }else{
-                latitude = gps.getLatitude();
-                longitude = gps.getLongitude();
-            }
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
-        }
+
         try {
             addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
@@ -83,7 +75,8 @@ public class WaktuShalatActivity extends AppCompatActivity {
             country = addresses.get(0).getCountryName();
             postalCode = addresses.get(0).getPostalCode();
             knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
             address = "";
             city = "Bandung";
@@ -102,7 +95,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         lt.setText(df.format(latitude));
         ln.setText(df.format(longitude));
 
-
         mSubuh		= (TextView) findViewById(R.id.subuh_value);
         mZuhur		= (TextView) findViewById(R.id.zuhur_value);
         mAsar		= (TextView) findViewById(R.id.asar_value);
@@ -114,13 +106,11 @@ public class WaktuShalatActivity extends AppCompatActivity {
         timezone = (java.util.Calendar.getInstance().getTimeZone().getOffset(java.util.Calendar.getInstance().getTimeInMillis())) / (1000 * 60 * 60);
 
         prayers	 = new PrayTimes();
-
         prayers.setTimeFormat(prayers.Time24);
         prayers.setCalcMethod(prayers.MWL);
         prayers.setAsrJuristic(prayers.Shafii);
         prayers.setAdjustHighLats(prayers.MidNight);
         prayers.setTimeZone(prayers.getTimeZone());
-
         prayers.setFajrAngle(20.0);
         prayers.setIshaAngle(18.0);
 
@@ -131,7 +121,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         year			= cal.get(java.util.Calendar.YEAR);
         month			= cal.get(java.util.Calendar.MONTH);
         day				= cal.get(java.util.Calendar.DAY_OF_MONTH);
-
         ShowPrayTime(year, month, day);
 
         mlayoutDate.setOnClickListener(new View.OnClickListener() {
@@ -143,18 +132,14 @@ public class WaktuShalatActivity extends AppCompatActivity {
     }
 
     private void ShowPrayTime(int year, int month, int day) {
-
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
-
         mDate.setText("Sesuaikan Waktu Shalat");
-
         cekEdited(day + "-" + months[month] + "-" + year,
                 prayerTimes.get(0),
                 prayerTimes.get(2),
                 prayerTimes.get(3),
                 prayerTimes.get(4),
                 prayerTimes.get(6));
-
         showJadwal();
     }
 
@@ -190,11 +175,13 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 mAsar.setText(waktuSholat.get(0));
                 mMagrib.setText(waktuSholat.get(3));
                 mIsya.setText(waktuSholat.get(2));
+
+                loading.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                loading.dismiss();
             }
         });
     }

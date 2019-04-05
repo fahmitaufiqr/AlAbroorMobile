@@ -26,12 +26,9 @@ import java.util.ArrayList;
 public class DaftarPengurusActivity extends AppCompatActivity {
 
     private DatabaseReference database;
-
     private ProgressDialog loading;
-
     private ArrayList<Pengurus> pengurusArrayList;
     private RecyclerViewAdapterPengurus recyclerViewAdapterPengurus;
-
     private RecyclerView rc_list_pengurus;
     private FloatingActionButton fab_tambah_pengurus;
 
@@ -45,7 +42,6 @@ public class DaftarPengurusActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference();
         rc_list_pengurus = findViewById(R.id.rv_jadwal_pengurus);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
         rc_list_pengurus.setLayoutManager(mLayoutManager);
         rc_list_pengurus.setItemAnimator(new DefaultItemAnimator());
 
@@ -59,14 +55,10 @@ public class DaftarPengurusActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                /**
-                 * Saat ada data baru, masukkan datanya ke ArrayList
-                 */
                 pengurusArrayList = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     Pengurus pengurus = noteDataSnapshot.getValue(Pengurus.class);
                     pengurus.setKey(noteDataSnapshot.getKey());
-
                     pengurusArrayList.add(pengurus);
                 }
 

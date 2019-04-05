@@ -42,21 +42,15 @@ public class Login2Activity extends AppCompatActivity {
 
     private final String TAG = Login2Activity.class.getSimpleName();
     private static final int RC_SIGN=9001;
-
     private GoogleApiClient googleApiClient;
     private FirebaseAuth mFirebaseAuth;
     private ProgressDialog pDialog;
+
+    String gambar = "";
     String name;
-    String id = "";
-    String imageProfile = "";
     String umur = "";
     String nohp = "";
     String email = "";
-
-    private ArrayList<UserModel> userss;
-
-    private String gambar = "";
-    private String username = "";
 
     @Override
     protected void onStart() {
@@ -74,13 +68,11 @@ public class Login2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
 
         SignInButton loginBt = (SignInButton) findViewById(R.id.login_with_google);
-
-        userss = new ArrayList<>();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        // [END config_signin]
+
         googleApiClient = new GoogleApiClient.Builder(Login2Activity.this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
@@ -99,7 +91,6 @@ public class Login2Activity extends AppCompatActivity {
                 signInwithGoogle();
             }
         });
-
     }
 
     protected void signInwithGoogle() {
@@ -122,13 +113,10 @@ public class Login2Activity extends AppCompatActivity {
                 GoogleSignInAccount account= result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             }else {
-
                 mFirebaseAuth.signOut();
             }
         }
     }
-
-
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle: "+acct.getId());
@@ -139,7 +127,6 @@ public class Login2Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-//                            jika sign succes update ui
                             Log.d(TAG, "onComplete: success");
                             final FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
                             final HashMap<String, Object> user= new HashMap<>();
@@ -170,8 +157,6 @@ public class Login2Activity extends AppCompatActivity {
                                             nohp = us.getNoHp();
                                         }
 
-
-
                                         user.put("numberPhone",nohp);
                                         user.put("idEmail",currentUser.getUid());
                                         user.put("name",name);
@@ -182,7 +167,6 @@ public class Login2Activity extends AppCompatActivity {
                                         Intent pindah = new Intent(Login2Activity.this,MainActivity.class);
                                         startActivity(pindah);
                                     }
-
                                 }
 
                                 @Override
@@ -190,13 +174,12 @@ public class Login2Activity extends AppCompatActivity {
 
                                 }
                             });
-
-                        }else {
-                            Log.w(TAG, "onFailure: ", task.getException() );
                         }
+                        else Log.w(TAG, "onFailure: ", task.getException() );
                     }
                 });
     }
+
     private void displayLoader() {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Verifikasi Akun...");
@@ -204,5 +187,4 @@ public class Login2Activity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
     }
-
 }

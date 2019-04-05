@@ -1,5 +1,6 @@
 package com.example.alabroormobile.activity.Menu;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,13 +45,19 @@ public class ProfileActivity extends AppCompatActivity {
     GoogleApiClient mGoogleSignInClient;
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
-    private GoogleApiClient mGoogleApiClient;
+    private ProgressDialog loading;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().setTitle("Profil Pengguna");
+
+        loading = ProgressDialog.show(ProfileActivity.this,
+                null,
+                "Mengambil Data...",
+                true,
+                false);
 
         //INISIALISASI
         namaUser = findViewById(R.id.tv_name);
@@ -76,13 +83,14 @@ public class ProfileActivity extends AppCompatActivity {
                 hpUser.setText(user.getNoHp());
                 Log.d("lol", "onDataChange: tes gambar " + user.getGambar());
                 Picasso.with(getApplicationContext()).load(user.getGambar()).into(profileUser);
+
+                loading.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                loading.dismiss();
             }
-
         });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -108,27 +116,26 @@ public class ProfileActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
                 builder.setMessage("Klik lagi untuk keluar")
                         .setMessage("Yakin Keluar")
-                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                               FirebaseAuth.getInstance().signOut();
-                                if (mGoogleSignInClient != null){
-                                    Auth.GoogleSignInApi.signOut(mGoogleSignInClient).setResultCallback(new ResultCallback<Status>() {
-                                        @Override
-                                        public void onResult(@NonNull Status status) {
-
-                                        }
-                                    });
-                                }
-                               startActivity(new Intent(ProfileActivity.this, Login2Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        .setPositiveButton("Ya", (dialog, which) -> {
+                           FirebaseAuth.getInstance().signOut();
+                           finish();
+                            if (mGoogleSignInClient != null){
+                                Auth.GoogleSignInApi.signOut(mGoogleSignInClient).setResultCallback(new ResultCallback<Status>() {
+                                    @Override
+                                    public void onResult(@NonNull Status status) {
+                                        Intent i = new Intent(ProfileActivity.this, Login2Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        finish();
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(i);
+                                    }
+                                });
                             }
                         })
                         .setNegativeButton("Tidak", null);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
             }
         });
-
     }
 }

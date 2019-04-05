@@ -1,6 +1,7 @@
 package com.example.alabroormobile.activity;
 
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,9 +26,6 @@ import com.example.alabroormobile.activity.Menu.JadwalPetugasActivity;
 import com.example.alabroormobile.activity.Menu.ProfileActivity;
 import com.example.alabroormobile.activity.Menu.StatistikActivity;
 import com.example.alabroormobile.activity.Menu.WaktuShalatActivity;
-import com.example.alabroormobile.helpers.MethodHelper;
-import com.example.alabroormobile.helpers.VarConstants;
-import com.example.alabroormobile.helpers.WaktuShalatHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -53,8 +51,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
     private long backPressedTime;
-
-
+    private ProgressDialog loading;
     //~~Notif
     String TAG = MainActivity.class.getSimpleName();
     Button mBtnAddNotif;
@@ -71,16 +68,17 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
     private TextView tv_tanggal, tv_nama_pengguna;
 
-    // ---------------------------------------------------------------------------------------------
-    private int countTime;
-    // ---------------------------------------------------------------------------------------------
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loading = ProgressDialog.show(MainActivity.this,
+                null,
+                "Mengambil Data...",
+                true,
+                false);
         //inisialisasi
         jadwalSholatbt = findViewById(R.id.jadwalSholat);
         jadwalPetugasbt = findViewById(R.id.jadwalPetugas);
@@ -104,14 +102,14 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserModel user = dataSnapshot.getValue(UserModel.class);
                 tv_nama_pengguna.setText(user.getName());
+                loading.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                loading.dismiss();
             }
         });
-
 
         //Notif
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
@@ -124,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mBtnAddNotif = findViewById(R.id.btn_notif_iqamat);
-
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         //Call Database Notif
@@ -157,65 +154,6 @@ public class MainActivity extends AppCompatActivity {
         tv_tanggal.setText(formattanggal);
 
         intent();
-
-        //CODE untuk WAKTU MUNDUR
-        //
-        //
-        TextView mTextViewShalatMendatang = findViewById(R.id.jadwal_textview_shalat);
-        TextView mTextViewCoundown = findViewById(R.id.jadwal_textview_hitungmundur);
-        // Deklarasi Class helper
-        WaktuShalatHelper mWaktuShalatHelper = new WaktuShalatHelper();
-        MethodHelper mMethodHelper = new MethodHelper();
-        // -----------------------------------------------------------------------------------------
-        int jumlahDetikSaatIni = mMethodHelper.getSumWaktuDetik();
-        String mJadwal = mWaktuShalatHelper.getJadwalShalat();
-        // -----------------------------------------------------------------------------------------
-        // -----------------------------------------------------------------------------------------
-        int detikShubuh = mWaktuShalatHelper.getJmlWaktuShubuh();
-        int detikDzuhur = mWaktuShalatHelper.getJmlWaktuDzuhur();
-        int detikAshar = mWaktuShalatHelper.getJmlWaktuAshar();
-        int detikMaghrib = mWaktuShalatHelper.getJmlWaktuMaghrib();
-        int detikIsya = mWaktuShalatHelper.getJmlWaktuIsya();
-        int detikAfterMid = mWaktuShalatHelper.getJmlAftMidnight();
-        int detikBeforeMid = mWaktuShalatHelper.getJmlBeMidnight();
-        // -----------------------------------------------------------------------------------------
-
-        switch (mJadwal) {
-            case VarConstants.Constants.SHUBUH:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.DZUHUR.substring(7));
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                break;
-            case VarConstants.Constants.DZUHUR:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.ASHAR.substring(7));
-                countTime = (detikAshar - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                break;
-            case VarConstants.Constants.ASHAR:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.MAGHRIB.substring(7));
-                countTime = (detikMaghrib - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                break;
-            case VarConstants.Constants.MAGHRIB:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.ISYA.substring(7));
-                countTime = (detikIsya - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                break;
-            case VarConstants.Constants.ISYA:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.SHUBUH.substring(7));
-                if ((jumlahDetikSaatIni == detikAfterMid) || (jumlahDetikSaatIni < detikShubuh)) {
-                    countTime = (detikShubuh - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                } else if ((jumlahDetikSaatIni == detikIsya) || (jumlahDetikSaatIni <= detikBeforeMid)) {
-                    countTime =  (detikShubuh + detikBeforeMid - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                }
-                break;
-            default:
-                mTextViewShalatMendatang.setText(VarConstants.Constants.DZUHUR.substring(7));
-                countTime = (detikDzuhur - jumlahDetikSaatIni) * VarConstants.Constants.DETIK_KE_MILI;
-                break;
-        }
-        // -----------------------------------------------------------------------------------------
-        mWaktuShalatHelper.CoundownTime(countTime, mTextViewCoundown);
-        // -----------------------------------------------------------------------------------------
-        //
-        //
-        //CODE untuk WAKTU MUNDUR
     }
 
     @Override
@@ -248,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WaktuShalat2Activity.class);
+                Intent intent = new Intent(MainActivity.this, WaktuShalatActivity.class);
                 startActivity(intent);
             }
         });

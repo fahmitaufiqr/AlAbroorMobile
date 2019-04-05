@@ -16,6 +16,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class FirebaseInstanceIdService extends FirebaseMessagingService {
     private String TAG = FirebaseInstanceIdService.class.getSimpleName();
+
     @Override
     public void onNewToken(String s) {
         Log.d("TAG", "onNewToken: " + s);
@@ -30,15 +31,13 @@ public class FirebaseInstanceIdService extends FirebaseMessagingService {
         try {
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
-//            String idPost = remoteMessage.getData().get("postId");
             Log.d(TAG, "onMessageReceived: "+title+body);
             notifShow(title,body);
         }catch (Exception e){
             Log.e(TAG, "onMessageReceived: "+e.getMessage());
         }
-
-
     }
+
     private void notifShow(String title, String body){
         NotificationManager mNotificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -49,6 +48,7 @@ public class FirebaseInstanceIdService extends FirebaseMessagingService {
             channel.setDescription("YOUR_NOTIFICATION_CHANNEL_DISCRIPTION");
             mNotificationManager.createNotificationChannel(channel);
         }
+
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setClass(getApplicationContext(),MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

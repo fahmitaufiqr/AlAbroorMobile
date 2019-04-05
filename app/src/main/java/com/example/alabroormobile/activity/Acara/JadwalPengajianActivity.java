@@ -28,12 +28,9 @@ import java.util.ArrayList;
 public class JadwalPengajianActivity extends AppCompatActivity {
 
     private DatabaseReference database;
-
     private ProgressDialog loading;
-
     private ArrayList<Acara> acaraArrayList;
     private RecyclerViewAdapter recyclerViewAdapter;
-
     private RecyclerView rc_list_acara;
     private FloatingActionButton fab_tambah;
 
@@ -59,31 +56,12 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         database.child("acaraList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                /**
-                 * Saat ada data baru, masukkan datanya ke ArrayList
-                 */
                 acaraArrayList = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    /**
-                     * Mapping data pada DataSnapshot ke dalam object Wisata
-                     * Dan juga menyimpan primary key pada object Wisata
-                     * untuk keperluan Edit dan Delete data
-                     */
                     Acara acara = noteDataSnapshot.getValue(Acara.class);
                     acara.setKey(noteDataSnapshot.getKey());
-
-                    /**
-                     * Menambahkan object Wisata yang sudah dimapping
-                     * ke dalam ArrayList
-                     */
                     acaraArrayList.add(acara);
                 }
-
-                /**
-                 * Inisialisasi adapter dan data hotel dalam bentuk ArrayList
-                 * dan mengeset Adapter ke dalam RecyclerView
-                 */
                 recyclerViewAdapter = new RecyclerViewAdapter(acaraArrayList, JadwalPengajianActivity.this);
                 rc_list_acara.setAdapter(recyclerViewAdapter);
                 loading.dismiss();
@@ -91,11 +69,6 @@ public class JadwalPengajianActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                /**
-                 * Kode ini akan dipanggil ketika ada error dan
-                 * pengambilan data gagal dan memprint error nya
-                 * ke LogCat
-                 */
                 System.out.println(databaseError.getDetails()+" "+databaseError.getMessage());
                 loading.dismiss();
             }
