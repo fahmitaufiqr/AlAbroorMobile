@@ -52,7 +52,7 @@ public class Login2Activity extends AppCompatActivity {
     String umur = "";
     String nohp = "";
     String email = "";
-    String status = "Pengurus";
+    String status = "Jemaah Masjid Al-Abroor";
 
     Button adminLog;
 

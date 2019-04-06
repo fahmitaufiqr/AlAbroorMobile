@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
 
 
-        //SET NAMA PENGGUNA
+        //SET NAMA PENGGUNA & SET UI USER
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 tv_nama_pengguna.setText(user.getName());
 
 
-                if (user.getStatus().equals("Pengurus")){
+                if (user.getStatus().equals("Admin Al-Ab'roor Mobile")){
                     mBtnAddNotif.setVisibility(View.GONE);
                 }else {
                     mBtnAddNotif.setVisibility(View.VISIBLE);

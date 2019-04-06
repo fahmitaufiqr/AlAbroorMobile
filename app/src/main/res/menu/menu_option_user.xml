@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/hapus_user"
-        android:title="Hapus User" />
+        android:title="Reset Pengguna" />
 
 
 </menu>

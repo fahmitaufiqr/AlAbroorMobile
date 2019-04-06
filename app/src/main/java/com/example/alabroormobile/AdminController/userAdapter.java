@@ -81,17 +81,17 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.MyViewHolderUs
                         switch (item.getItemId()) {
                             case R.id.add_admin:
                                 //handle menu1 click
-                                hashMap.put("status","Admin");
+                                hashMap.put("status","Admin Al-Ab'roor Mobile");
                                 database.updateChildren(hashMap);
                                 break;
                             case R.id.add_pengurus:
                                 //handle menu2 click
-                                hashMap.put("status","Pengurus");
+                                hashMap.put("status","Pengurus DKM Masjid Al-Al'Abroor");
                                 database.updateChildren(hashMap);
                                 break;
                             case R.id.hapus_user:
                                 //handle menu3 click
-                                hashMap.put("status","Member");
+                                hashMap.put("status","Jemaah Masjid Al-Ab'roor");
                                 database.updateChildren(hashMap);
                                 break;
                         }

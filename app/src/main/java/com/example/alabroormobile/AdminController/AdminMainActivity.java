@@ -33,7 +33,7 @@ public class AdminMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
-        getSupportActionBar().setTitle("Daftar User Al-Abr'roor Mobile");
+        getSupportActionBar().setTitle("Daftar Pengguna Al-Abr'roor Mobile");
 
         database = FirebaseDatabase.getInstance().getReference();
         rc_list_user = findViewById(R.id.rv_all_user);
