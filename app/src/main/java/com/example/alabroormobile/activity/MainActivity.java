@@ -74,11 +74,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loading = ProgressDialog.show(MainActivity.this,
-                null,
-                "Mengambil Data...",
-                true,
-                false);
         //inisialisasi
         jadwalSholatbt = findViewById(R.id.jadwalSholat);
         jadwalPetugasbt = findViewById(R.id.jadwalPetugas);
@@ -102,7 +97,15 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserModel user = dataSnapshot.getValue(UserModel.class);
                 tv_nama_pengguna.setText(user.getName());
-                loading.dismiss();
+
+
+                if (user.getStatus().equals("Pengurus")){
+                    mBtnAddNotif.setVisibility(View.GONE);
+                }else {
+                    mBtnAddNotif.setVisibility(View.VISIBLE);
+                }
+
+
             }
 
             @Override

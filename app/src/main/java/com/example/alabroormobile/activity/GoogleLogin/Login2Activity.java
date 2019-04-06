@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.AdminController.AdminLoginActivity;
 import com.example.alabroormobile.activity.MainActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,7 +33,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -51,6 +52,9 @@ public class Login2Activity extends AppCompatActivity {
     String umur = "";
     String nohp = "";
     String email = "";
+    String status = "Pengurus";
+
+    Button adminLog;
 
     @Override
     protected void onStart() {
@@ -91,6 +95,18 @@ public class Login2Activity extends AppCompatActivity {
                 signInwithGoogle();
             }
         });
+
+        //ADMIN LOGIN BUTTON
+        adminLog = (Button) findViewById(R.id.admlogin);
+        adminLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent admin = new Intent(Login2Activity.this, AdminLoginActivity.class);
+                startActivity(admin);
+            }
+        });
+
+
     }
 
     protected void signInwithGoogle() {
@@ -156,12 +172,16 @@ public class Login2Activity extends AppCompatActivity {
                                         if (dataSnapshot.child("nohp").exists()){
                                             nohp = us.getNoHp();
                                         }
+                                        if (dataSnapshot.child("status").exists()){
+                                            status = us.getStatus();
+                                        }
 
                                         user.put("numberPhone",nohp);
                                         user.put("idEmail",currentUser.getUid());
                                         user.put("name",name);
                                         user.put("email",currentUser.getEmail());
                                         user.put("age",umur);
+                                        user.put("status",status);
                                         user.put("gambar",gambar);
                                         dbf.setValue(user);
                                         Intent pindah = new Intent(Login2Activity.this,MainActivity.class);

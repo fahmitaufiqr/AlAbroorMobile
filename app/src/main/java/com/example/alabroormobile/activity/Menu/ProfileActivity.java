@@ -39,7 +39,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView namaUser,emailUser,umurUser,hpUser;
+    TextView namaUser,emailUser,umurUser,hpUser,statuss;
     CircleImageView profileUser;
     ImageView logoutBtn;
     GoogleApiClient mGoogleSignInClient;
@@ -64,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         emailUser = findViewById(R.id.emailView);
         umurUser = findViewById(R.id.umurView);
         hpUser = findViewById(R.id.noHpView);
+        statuss = findViewById(R.id.status);
 
         profileUser =  findViewById(R.id.userProfile);
         logoutBtn = findViewById(R.id.LogOutBt);
@@ -81,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
                 emailUser.setText(user.getEmail());
                 umurUser.setText(user.getUmur());
                 hpUser.setText(user.getNoHp());
+                statuss.setText(user.getStatus());
                 Log.d("lol", "onDataChange: tes gambar " + user.getGambar());
                 Picasso.with(getApplicationContext()).load(user.getGambar()).into(profileUser);
 
@@ -137,5 +139,11 @@ public class ProfileActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
