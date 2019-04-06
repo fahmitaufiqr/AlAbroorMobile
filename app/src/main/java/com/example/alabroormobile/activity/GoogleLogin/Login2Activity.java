@@ -165,8 +165,8 @@ public class Login2Activity extends AppCompatActivity {
                                         if (dataSnapshot.child("gambar").exists()){
                                             gambar = us.getGambar();
                                         }
-                                        if (dataSnapshot.child("nohp").exists()){
-                                            nohp = us.getNoHp();
+                                        if (dataSnapshot.child("numberPhone").exists()){
+                                            nohp = us.getNumberPhone();
                                         }
                                         if (dataSnapshot.child("status").exists()){
                                             status = us.getStatus();

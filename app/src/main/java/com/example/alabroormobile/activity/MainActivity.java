@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (user.getStatus().equals("Admin Al-Ab'roor Mobile")){
-                    mBtnAddNotif.setVisibility(View.GONE);
-                }else {
                     mBtnAddNotif.setVisibility(View.VISIBLE);
+                }else {
+                    mBtnAddNotif.setVisibility(View.GONE);
                 }
 
 
