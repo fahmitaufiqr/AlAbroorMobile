@@ -62,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
         //INISIALISASI
         namaUser = findViewById(R.id.tv_name);
         emailUser = findViewById(R.id.emailView);
-        umurUser = findViewById(R.id.umurView);
         hpUser = findViewById(R.id.noHpView);
         statuss = findViewById(R.id.status);
 
@@ -80,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity {
                 UserModel user = dataSnapshot.getValue(UserModel.class);
                 namaUser.setText(user.getName());
                 emailUser.setText(user.getEmail());
-                umurUser.setText(user.getUmur());
                 hpUser.setText(user.getNoHp());
                 statuss.setText(user.getStatus());
                 Log.d("lol", "onDataChange: tes gambar " + user.getGambar());

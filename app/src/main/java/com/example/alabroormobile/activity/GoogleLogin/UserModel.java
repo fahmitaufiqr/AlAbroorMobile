@@ -8,17 +8,16 @@ import java.io.Serializable;
 
 public class UserModel implements Serializable {
 
-        private String idEmail,email,name,gambar,umur,noHp,status;
+        private String idEmail,email,name,gambar,noHp,status;
 
         public UserModel() {
         }
 
-        public UserModel(String id, String email, String name, String gambar, String umur, String noHp, String status) {
+        public UserModel(String id, String email, String name, String gambar, String noHp, String status) {
                 this.idEmail = id;
                 this.email = email;
                 this.name = name;
                 this.gambar = gambar;
-                this.umur = umur;
                 this.noHp = noHp;
                 this.status = status;
         }
@@ -51,9 +50,6 @@ public class UserModel implements Serializable {
                 return gambar;
         }
 
-        public String getUmur() {
-        return umur;
-        }
 
         public String getNoHp() {
         return noHp;
