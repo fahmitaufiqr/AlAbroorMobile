@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AlAbroorMobile.iml" filepath="$PROJECT_DIR$/AlAbroorMobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ClonningLagi.iml" filepath="$PROJECT_DIR$/ClonningLagi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

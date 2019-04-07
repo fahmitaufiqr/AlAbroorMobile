@@ -7,11 +7,13 @@ import android.location.Geocoder;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.compasHelper.GPSTracker;
@@ -24,8 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -123,6 +129,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         month			= cal.get(java.util.Calendar.MONTH);
         day				= cal.get(java.util.Calendar.DAY_OF_MONTH);
         ShowPrayTime(year, month, day);
+        countDown();
 
         mlayoutDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,9 +139,22 @@ public class WaktuShalatActivity extends AppCompatActivity {
         });
     }
 
+    private void countDown(){
+        String givenDateString = "04:32";
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+        try {
+            Date mDate = sdf.parse(givenDateString);
+            long time = mDate.getTime();
+            Toast.makeText(WaktuShalatActivity.this, "time"+time, Toast.LENGTH_SHORT).show();
+        }catch (ParseException e){
+
+        }
+    }
+
     private void ShowPrayTime(int year, int month, int day) {
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
         mDate.setText("Sesuaikan Waktu Shalat");
+        String convert;
         gantihari(day + "-" + months[month] + "-" + year,
                 prayerTimes.get(0),
                 prayerTimes.get(2),
@@ -142,6 +162,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 prayerTimes.get(4),
                 prayerTimes.get(6));
         showJadwal();
+        Log.d("subuh", prayerTimes.get(0));
     }
 
     private void setJadwal(String tanggal, String subuh, String dzuhur, String ashar, String maghrib, String isya){
@@ -149,6 +170,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         HashMap<String, String> dataWaktuShalat = new HashMap<>();
         dataWaktuShalat.put("tanggal", tanggal);
         dataWaktuShalat.put("subuh", subuh);
+        Toast.makeText(WaktuShalatActivity.this, "Subuh"+subuh, Toast.LENGTH_SHORT).show();
         dataWaktuShalat.put("dzuhur", dzuhur);
         dataWaktuShalat.put("ashar", ashar);
         dataWaktuShalat.put("maghrib", maghrib);
@@ -251,11 +273,24 @@ public class WaktuShalatActivity extends AppCompatActivity {
             }
         });
 
+        //ngambil data dari api untuk reset
+        prayers	 = new PrayTimes();
+        prayers.setTimeFormat(prayers.Time24);
+        prayers.setCalcMethod(prayers.MWL);
+        prayers.setAsrJuristic(prayers.Shafii);
+        prayers.setAdjustHighLats(prayers.MidNight);
+        prayers.setTimeZone(prayers.getTimeZone());
+        prayers.setFajrAngle(20.0);
+        prayers.setIshaAngle(18.0);
+
+        int[] offsets = { 2, 2, 2, 2, 2, 2, 2 };
+        prayers.tune(offsets);
+
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
-                gantihari(day + "-" + months[month] + "-" + year,
+                setJadwal(day + "-" + months[month] + "-" + year,
                         prayerTimes.get(0),
                         prayerTimes.get(2),
                         prayerTimes.get(3),

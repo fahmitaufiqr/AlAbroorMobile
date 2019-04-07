@@ -1,8 +1,12 @@
 package com.example.alabroormobile.activity.Menu;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +15,7 @@ import android.widget.Toast;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.TambahJadwalPetugasActivity;
 
 public class JadwalPetugasActivity extends AppCompatActivity {
 
@@ -25,6 +30,21 @@ public class JadwalPetugasActivity extends AppCompatActivity {
     String mg = "Mg";
     String is = "Is";
     int color = mColorGenerator.getRandomColor();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_add_jadwal_petugas, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.tambah_jadwal_petugas){
+            startActivity(new Intent(JadwalPetugasActivity.this, TambahJadwalPetugasActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

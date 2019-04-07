@@ -13,6 +13,7 @@ import com.example.alabroormobile.R;
 import com.example.alabroormobile.activity.MainActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -56,10 +57,82 @@ public class Login2Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-        if (currentUser != null){
-            startActivity(new Intent(Login2Activity.this,MainActivity.class));
-            finish();
+        if (currentUser != null) {
+            cekEmail(currentUser);
         }
+    }
+
+    private void cekEmail(FirebaseUser currentUser){
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    cekUser();
+                } else {
+                    mFirebaseAuth.signOut();
+                    Auth.GoogleSignInApi.signOut(googleApiClient);
+                    Toast.makeText(Login2Activity.this, "Maaf, email anda tidak terdaftar.", Toast.LENGTH_SHORT).show();
+                    pDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void cekUser(){
+        final FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        final HashMap<String, Object> user= new HashMap<>();
+        gambar = currentUser.getPhotoUrl().toString();
+        name = currentUser.getDisplayName();
+
+        final DatabaseReference dbf = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+        dbf.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    startActivity(new Intent(Login2Activity.this, MainActivity.class));
+                    finish();
+                } else {
+                    UserModel us = dataSnapshot.getValue(UserModel.class);
+                    if (dataSnapshot.child("email").exists()){
+                        email = us.getEmail();
+                    }
+                    if (dataSnapshot.child("nama").exists()){
+                        name = us.getName();
+                    }
+                    if (dataSnapshot.child("gambar").exists()){
+                        gambar = us.getGambar();
+                    }
+                    if (dataSnapshot.child("umur").exists()){
+                        umur = us.getUmur();
+                    }
+                    if (dataSnapshot.child("nohp").exists()){
+                        nohp = us.getNoHp();
+                    }
+
+                    user.put("numberPhone",nohp);
+                    user.put("idEmail",currentUser.getUid());
+                    user.put("name",name);
+                    user.put("email",currentUser.getEmail());
+                    user.put("age",umur);
+                    user.put("gambar",gambar);
+                    dbf.setValue(user);
+                    Intent pindah = new Intent(Login2Activity.this,MainActivity.class);
+                    startActivity(pindah);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -129,51 +202,7 @@ public class Login2Activity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Log.d(TAG, "onComplete: success");
                             final FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-                            final HashMap<String, Object> user= new HashMap<>();
-                            gambar = currentUser.getPhotoUrl().toString();
-                            name = currentUser.getDisplayName();
-                            final DatabaseReference dbf = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
-                            dbf.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.exists()){
-                                        Intent pindah = new Intent(Login2Activity.this, MainActivity.class);
-                                        startActivity(pindah);
-                                    } else {
-                                        UserModel us = dataSnapshot.getValue(UserModel.class);
-                                        if (dataSnapshot.child("email").exists()){
-                                            email = us.getEmail();
-                                        }
-                                        if (dataSnapshot.child("nama").exists()){
-                                            name = us.getName();
-                                        }
-                                        if (dataSnapshot.child("gambar").exists()){
-                                            gambar = us.getGambar();
-                                        }
-                                        if (dataSnapshot.child("umur").exists()){
-                                            umur = us.getUmur();
-                                        }
-                                        if (dataSnapshot.child("nohp").exists()){
-                                            nohp = us.getNoHp();
-                                        }
-
-                                        user.put("numberPhone",nohp);
-                                        user.put("idEmail",currentUser.getUid());
-                                        user.put("name",name);
-                                        user.put("email",currentUser.getEmail());
-                                        user.put("age",umur);
-                                        user.put("gambar",gambar);
-                                        dbf.setValue(user);
-                                        Intent pindah = new Intent(Login2Activity.this,MainActivity.class);
-                                        startActivity(pindah);
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
+                            cekEmail(currentUser);
                         }
                         else Log.w(TAG, "onFailure: ", task.getException() );
                     }

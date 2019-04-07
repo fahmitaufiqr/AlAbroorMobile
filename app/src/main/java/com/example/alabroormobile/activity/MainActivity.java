@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 "Mengambil Data...",
                 true,
                 false);
+
         //inisialisasi
         jadwalSholatbt = findViewById(R.id.jadwalSholat);
         jadwalPetugasbt = findViewById(R.id.jadwalPetugas);

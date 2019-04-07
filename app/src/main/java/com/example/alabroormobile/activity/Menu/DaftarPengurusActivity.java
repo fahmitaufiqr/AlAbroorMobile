@@ -36,7 +36,7 @@ public class DaftarPengurusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_pengurus);
-        getSupportActionBar().setTitle("Daftar Pengurus");
+        getSupportActionBar().setTitle("Daftar Petugas");
 
         fab_tambah_pengurus = findViewById(R.id.fab_add_pengurus);
         database = FirebaseDatabase.getInstance().getReference();
