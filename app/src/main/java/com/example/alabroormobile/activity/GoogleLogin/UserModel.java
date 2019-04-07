@@ -8,18 +8,17 @@ import java.io.Serializable;
 
 public class UserModel implements Serializable {
 
-        private String idEmail,email,name,gambar,numberPhone,status;
+        private String idEmail,email,name,gambar,numberPhone;
 
         public UserModel() {
         }
 
-        public UserModel(String id, String email, String name, String gambar, String numberPhone, String status) {
+        public UserModel(String id, String email, String name, String gambar, String numberPhone) {
                 this.idEmail = id;
                 this.email = email;
                 this.name = name;
                 this.gambar = gambar;
                 this.numberPhone = numberPhone;
-                this.status = status;
         }
 
         public String getEmail() {
@@ -63,11 +62,4 @@ public class UserModel implements Serializable {
                 this.numberPhone = numberPhone;
         }
 
-        public String getStatus() {
-                return status;
-        }
-
-        public void setStatus(String status) {
-                this.status = status;
-        }
 }

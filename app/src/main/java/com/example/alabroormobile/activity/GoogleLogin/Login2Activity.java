@@ -49,7 +49,6 @@ public class Login2Activity extends AppCompatActivity {
 
     String gambar = "";
     String name;
-    String umur = "";
     String nohp = "";
     String email = "";
 
@@ -109,18 +108,14 @@ public class Login2Activity extends AppCompatActivity {
                     if (dataSnapshot.child("gambar").exists()){
                         gambar = us.getGambar();
                     }
-                    if (dataSnapshot.child("umur").exists()){
-                        umur = us.getUmur();
-                    }
-                    if (dataSnapshot.child("nohp").exists()){
-                        nohp = us.getNoHp();
+                    if (dataSnapshot.child("numberPhone").exists()){
+                        nohp = us.getNumberPhone();
                     }
 
                     user.put("numberPhone",nohp);
                     user.put("idEmail",currentUser.getUid());
                     user.put("name",name);
                     user.put("email",currentUser.getEmail());
-                    user.put("age",umur);
                     user.put("gambar",gambar);
                     dbf.setValue(user);
                     Intent pindah = new Intent(Login2Activity.this,MainActivity.class);

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.activity.GoogleLogin.Login2Activity;
 import com.example.alabroormobile.activity.GoogleLogin.UserModel;
+import com.example.alabroormobile.model.Pengurus;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -53,6 +54,9 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseUser currentUser;
     private ProgressDialog loading;
 
+    FirebaseAuth mAuthStat;
+    FirebaseUser currentUserStat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +79,26 @@ public class ProfileActivity extends AppCompatActivity {
         logoutBtn = findViewById(R.id.LogOutBt);
         editProfileBtn = findViewById(R.id.editProfileBt);
 
-        //SET NAMA PENGGUNA
+        //SET STATUS PENGGUNA PENGGUNA
+//        String username = currentUser.getEmail();
+//
+//        DatabaseReference dbstat = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+//        dbstat.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+//                statuss.setText(pengurus.getStatus());
+//
+//                loading.dismiss();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                loading.dismiss();
+//            }
+//        });
+
+        //SET DATA PENGGUNA PENGGUNA
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
@@ -87,7 +110,6 @@ public class ProfileActivity extends AppCompatActivity {
                 namaUser.setText(user.getName());
                 emailUser.setText(user.getEmail());
                 hpUser.setText(user.getNumberPhone());
-                statuss.setText(user.getStatus());
                 Log.d("lol", "onDataChange: tes gambar " + user.getGambar());
                 Picasso.with(getApplicationContext()).load(user.getGambar()).into(profileUser);
 

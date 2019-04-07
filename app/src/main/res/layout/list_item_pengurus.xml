@@ -1,67 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rl_layout_pengurus"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginLeft="8dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:background="@color/cardView"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/rl_layout_pengurus">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="80dp"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="3dp"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        app:cardBackgroundColor="@android:color/darker_gray"
+        app:cardCornerRadius="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama&#x9;&#x9;: "
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/nama_pengurus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/background_light"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/nama_pengurus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap User"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email&#x9;&#x9;: "
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/email_pengurus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="Email user"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat" />
 
-        <TextView
-            android:id="@+id/email_pengurus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status  :  "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Petugas / Pengurus"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textSize="18sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Status&#x9;: "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
