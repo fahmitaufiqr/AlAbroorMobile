@@ -52,6 +52,7 @@ public class RamadhanActivity extends AppCompatActivity {
     int rozano,leftroz;
 
 
+
     IftarTime iftar = new IftarTime(00,40,18,thisDay,thisMonth,thisYear);
     String date = "31/Mar/2019";
     String cal_ift;

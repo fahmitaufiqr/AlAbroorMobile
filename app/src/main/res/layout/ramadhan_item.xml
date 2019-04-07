@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/ramadhan_layout">
+    android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -18,8 +17,13 @@
             app:cardBackgroundColor="@android:color/darker_gray"
             app:cardCornerRadius="5dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ramadhan_layout"
+                android:orientation="vertical">
 
-            <RelativeLayout
+                <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/background_light"
@@ -109,5 +113,6 @@
                     android:textSize="25sp" />
 
             </RelativeLayout>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 </LinearLayout>
