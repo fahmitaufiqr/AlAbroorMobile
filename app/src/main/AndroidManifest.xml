@@ -17,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RamadhanAct.DetailRamadhanActivity" />
         <activity android:name=".activity.RamadhanAct.RamadhanActivity" />
         <activity android:name=".activity.SplashscreenActivity">
             <intent-filter>
@@ -43,6 +42,7 @@
         <activity android:name=".activity.Menu.InfoActivity" />
         <activity android:name=".activity.Menu.ProfileActivity" />
         <activity android:name=".activity.Menu.ArahKiblatActivity" />
+        <activity android:name=".activity.RamadhanAct.DetailRamadhanActivity" />
         <activity android:name=".activity.Menu.AcaraActivity" />
         <activity android:name=".activity.Menu.StatistikActivity" />
         <activity android:name=".activity.Acara.JadwalPengajianActivity" />

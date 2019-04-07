@@ -7,15 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".activity.Acara.TambahAcaraActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
@@ -115,11 +109,37 @@
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dikirim oleh : "
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/nama_pengirim_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Pengirim"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/colorPrimary">
+                android:background="@color/colorPrimary"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp">
 
                 <Button
                     android:id="@+id/save_acara"
@@ -144,5 +164,5 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
 </RelativeLayout>

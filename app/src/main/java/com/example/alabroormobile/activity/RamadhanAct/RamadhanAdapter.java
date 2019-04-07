@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.Acara.TambahAcaraActivity;
 
 import java.util.List;
 
@@ -19,10 +20,10 @@ import java.util.List;
  */
 public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHolder>{
 
-    private List<RamadhanItem> listitems;
+    private List<RamadhanModel> listitems;
     private Activity mActivity;
 
-    public RamadhanAdapter(List<RamadhanItem> listitems, Activity activity) {
+    public RamadhanAdapter(List<RamadhanModel> listitems, Activity activity) {
         this.listitems = listitems;
         this.mActivity = activity;
 
@@ -37,19 +38,25 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        final RamadhanItem listitem = listitems.get(position);
-        holder.texttittle.setText(listitem.getItem());
-        holder.textDesc.setText(listitem.getDecription());
-        holder.days.setText(listitem.getDays());
-        holder.seh.setText(listitem.getSeh_time());
-        holder.ift.setText(listitem.getIft_time());
-        holder.mar.setText(listitem.getMark());
+        final RamadhanModel listitem = listitems.get(position);
+        holder.ramadhan_ke.setText(listitem.getHariKe());
+        holder.tanggal_puasa.setText(listitem.getTanggal());
+        holder.waktu_buka.setText(listitem.getBuka());
+        holder.waktu_sahur.setText(listitem.getSahur());
+        holder.penceramah.setText(listitem.getPenceramah());
 
         holder.recviewRamadhann.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent goDetail = new Intent(mActivity, DetailRamadhanActivity.class);
+                goDetail.putExtra("id", listitem.getKey());
+                goDetail.putExtra("buka", listitem.getBuka());
+                goDetail.putExtra("sahur", listitem.getSahur());
+                goDetail.putExtra("penceramah", listitem.getPenceramah());
+                goDetail.putExtra("tanggal", listitem.getTanggal());
+                goDetail.putExtra("hariKe", listitem.getHariKe());
+
                 mActivity.startActivity(goDetail);
 
 
@@ -64,16 +71,15 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public LinearLayout recviewRamadhann;
-        public TextView texttittle,textDesc,days,seh,ift,mar;
+        public TextView ramadhan_ke,tanggal_puasa,waktu_sahur,waktu_buka,penceramah;
         public ViewHolder(View itemview){
             super(itemview);
             recviewRamadhann = itemview.findViewById(R.id.ramadhan_layout);
-            texttittle = itemview.findViewById(R.id.text1);
-            textDesc=itemview.findViewById(R.id.text2);
-            days = itemview.findViewById(R.id.days);
-            seh=itemview.findViewById(R.id.seh_time);
-            ift = itemview.findViewById(R.id.ift_time);
-            mar=itemview.findViewById(R.id.textView);
+            ramadhan_ke = itemview.findViewById(R.id.ramadhan_ke);
+            tanggal_puasa=itemview.findViewById(R.id.tanggal_puasa);
+            waktu_buka = itemview.findViewById(R.id.sahur_time);
+            waktu_sahur=itemview.findViewById(R.id.buka_time);
+            penceramah = itemview.findViewById(R.id.penceramah);
             //textopt=itemview.findViewById(R.id.texopt);
 
         }

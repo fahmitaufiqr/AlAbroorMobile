@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -16,10 +17,17 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.activity.GoogleLogin.UserModel;
 import com.example.alabroormobile.model.Acara;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -33,15 +41,21 @@ public class TambahAcaraActivity extends AppCompatActivity {
     protected static TextView viewTime;
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
+    protected static TextView viewUserSend;
     protected static Calendar myCalendar;
     private TimePickerDialog timePickerDialog;
     private ProgressDialog loading;
     private DatabaseReference database;
-    private String sPid,sNama, sTanggal, sJam, sDesk;
+    private String sPid,sNama, sTanggal, sJam, sDesk,sPengirim;
 
     int year;
     int month;
     int dayOfMonth;
+
+    //GET USER
+    GoogleSignInClient mGoogleSignInClient;
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +75,29 @@ public class TambahAcaraActivity extends AppCompatActivity {
         keteranganEditText = (EditText) findViewById(R.id.input_keterangan);
         viewDate = (TextView) findViewById(R.id.view_date);
         viewTime = (TextView) findViewById(R.id.view_jam);
+        viewUserSend = (TextView) findViewById(R.id.nama_pengirim_input);
         Button pickDate = (Button)findViewById(R.id.pick_date);
         Button pickTime = (Button)findViewById(R.id.pick_time);
         Button submitAcara = (Button)findViewById(R.id.save_acara);
         Button cancelSubmit = (Button)findViewById(R.id.cancel_bt);
+
+        //NAMA PENGIRIM
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+        dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                viewUserSend.setText(user.getName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
 
         //SET DATA
         namaEdtText.setText(sNama);
@@ -87,6 +120,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 String Sket = keteranganEditText.getText().toString();
                 String Sdate = viewDate.getText().toString();
                 String Stime = viewTime.getText().toString();
+                String Spengirim = viewUserSend.getText().toString();
 
                 if (submitAcara.getText().equals("SIMPAN")){
                     // perintah save

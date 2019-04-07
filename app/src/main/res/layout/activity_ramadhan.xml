@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tanggal hari Ini"
+            android:text="Ramadhan 2019"
             android:id="@+id/DateNow"
             android:textSize="25sp"
             android:textColor="#ffffff"
@@ -89,7 +89,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Waktu Menuju Berbuka :"
             android:id="@+id/time_left"
             android:textSize="20sp"
             android:textColor="#ffffff" />
