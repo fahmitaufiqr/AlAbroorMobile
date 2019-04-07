@@ -37,7 +37,7 @@ public class RamadhanActivity extends AppCompatActivity {
     String currentdate = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault()).format(new Date());
     private TextView textView1,sahur,buka,textView3;
 
-    RamadhanCountDownTimer timer = new RamadhanCountDownTimer(0, 0, 0, 17, 4, 2018);
+    RamadhanCountDownTimer timer = new RamadhanCountDownTimer(0, 0, 0, 5, 5, 2019);
 
 
     Calendar calendar = Calendar.getInstance();
