@@ -1,5 +1,6 @@
 package com.example.alabroormobile.activity.Menu;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +34,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -39,13 +45,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView namaUser,emailUser,umurUser,hpUser;
+    TextView namaUser,emailUser,umurUser,hpUser,statuss;
     CircleImageView profileUser;
-    ImageView logoutBtn;
+    ImageView logoutBtn,editProfileBtn;
     GoogleApiClient mGoogleSignInClient;
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
-    private ProgressDialog loading;;
+    private ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +68,12 @@ public class ProfileActivity extends AppCompatActivity {
         //INISIALISASI
         namaUser = findViewById(R.id.tv_name);
         emailUser = findViewById(R.id.emailView);
-        umurUser = findViewById(R.id.umurView);
         hpUser = findViewById(R.id.noHpView);
+        statuss = findViewById(R.id.status);
 
         profileUser =  findViewById(R.id.userProfile);
         logoutBtn = findViewById(R.id.LogOutBt);
+        editProfileBtn = findViewById(R.id.editProfileBt);
 
         //SET NAMA PENGGUNA
         mAuth = FirebaseAuth.getInstance();
@@ -79,8 +86,8 @@ public class ProfileActivity extends AppCompatActivity {
                 UserModel user = dataSnapshot.getValue(UserModel.class);
                 namaUser.setText(user.getName());
                 emailUser.setText(user.getEmail());
-                umurUser.setText(user.getUmur());
-                hpUser.setText(user.getNoHp());
+                hpUser.setText(user.getNumberPhone());
+                statuss.setText(user.getStatus());
                 Log.d("lol", "onDataChange: tes gambar " + user.getGambar());
                 Picasso.with(getApplicationContext()).load(user.getGambar()).into(profileUser);
 
@@ -110,6 +117,14 @@ public class ProfileActivity extends AppCompatActivity {
                     .build();
         }
 
+
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editProfilePopUp();
+            }
+        });
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,5 +152,76 @@ public class ProfileActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
+
+    private void editProfilePopUp(){
+        HashMap<String, Object> hashMap = new HashMap<>();
+        Dialog popUp = new Dialog(ProfileActivity.this);
+        popUp.setContentView(R.layout.pop_up_edit_profile);
+        EditText et_nama = (EditText) popUp.findViewById(R.id.edit_nama);
+        EditText et_noHp = (EditText) popUp.findViewById(R.id.edit_no_hp);
+        Button btn_cancel = (Button) popUp.findViewById(R.id.btn_cancel);
+        Button btn_save = (Button) popUp.findViewById(R.id.btn_save);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+        dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                et_nama.setText(user.getName());
+                et_noHp.setText(user.getNumberPhone());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popUp.dismiss();
+            }
+        });
+
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nama = et_nama.getText().toString();
+                String noHp = et_noHp.getText().toString();
+
+                hashMap.put("name",nama);
+                hashMap.put("numberPhone",noHp);
+
+                dbuser.updateChildren(hashMap);
+
+                popUp.dismiss();
+                refresh();
+            }
+        });
+
+        popUp.show();
+    }
+
+    public void refresh() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
