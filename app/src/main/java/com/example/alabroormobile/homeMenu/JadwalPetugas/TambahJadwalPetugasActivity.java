@@ -1,7 +1,5 @@
 package com.example.alabroormobile.homeMenu.JadwalPetugas;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,16 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.model.JadwalPetugas;
 import com.example.alabroormobile.model.Pengurus;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,9 +30,10 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
     int dayOfMonth;
     TextView tv_tanggal_jadwal_petugas;
     Button btn_simpan, btn_batal;
-    Spinner spiner;
+    Spinner sp_muazin_subuh, sp_muazin_dzuhur, sp_muazin_ashar, sp_muazin_maghrib, sp_muazin_isya, sp_imam_subuh, sp_imam_dzuhur, sp_imam_ashar, sp_imam_maghrib, sp_imam_isya;
     private String dataTanggal;
     DatabaseReference databaseReference;
+    JadwalPetugas jadwalPetugas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +41,28 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tambah_jadwal_petugas);
         getSupportActionBar().setTitle("Tambah Jadwal Petugas");
 
+        //inisialisasi
         btn_batal = (Button) findViewById(R.id.btn_batal_tambah_jadwal_petugas);
         btn_simpan = (Button) findViewById(R.id.btn_simpan_tambah_jadwal_petugas);
         tv_tanggal_jadwal_petugas = (TextView) findViewById(R.id.tv_tanggal_jadwal_petugas);
-        spiner = (Spinner) findViewById(R.id.sp_muazin_subuh);
-        dataTanggal = getIntent().getExtras().getString("dataTanggal");
+        sp_muazin_subuh = (Spinner) findViewById(R.id.sp_muazin_subuh);
+        sp_muazin_dzuhur = (Spinner) findViewById(R.id.sp_muazin_dzuhur);
+        sp_muazin_ashar = (Spinner) findViewById(R.id.sp_muazin_ashar);
+        sp_muazin_maghrib = (Spinner) findViewById(R.id.sp_muazin_maghrib);
+        sp_muazin_isya = (Spinner) findViewById(R.id.sp_muazin_isya);
+        sp_imam_subuh = (Spinner) findViewById(R.id.sp_imam_subuh);
+        sp_imam_dzuhur= (Spinner) findViewById(R.id.sp_imam_dzuhur);
+        sp_imam_ashar = (Spinner) findViewById(R.id.sp_imam_ashar);
+        sp_imam_maghrib = (Spinner) findViewById(R.id.sp_imam_maghrib);
+        sp_imam_isya= (Spinner) findViewById(R.id.sp_imam_isya);
+        jadwalPetugas = new JadwalPetugas();
 
+        //set tanggal
+        dataTanggal = getIntent().getExtras().getString("dataTanggal");
         tv_tanggal_jadwal_petugas.setText(dataTanggal);
 
-
+        //ngambil data untuk spinner
         databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus");
-        Toast.makeText(TambahJadwalPetugasActivity.this, "Pengurus", Toast.LENGTH_SHORT).show();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -61,13 +70,20 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
                 for (DataSnapshot d : dataSnapshot.getChildren()){
                     Pengurus p = d.getValue(Pengurus.class);
                     dkmMasjid.add(p.getNama());
-                    Log.d("namaPengurus",""+dkmMasjid.get(0));
-                    Toast.makeText(TambahJadwalPetugasActivity.this, "penguruss", Toast.LENGTH_SHORT).show();
                 }
-                String[] dkmk = {"fjfy"};
                 ArrayAdapter<String> arrayImam = new ArrayAdapter<String>(TambahJadwalPetugasActivity.this,
                         android.R.layout.simple_dropdown_item_1line, dkmMasjid);
-                spiner.setAdapter(arrayImam);
+                //set adapter
+                sp_muazin_subuh.setAdapter(arrayImam);
+                sp_muazin_dzuhur.setAdapter(arrayImam);
+                sp_muazin_ashar.setAdapter(arrayImam);
+                sp_muazin_maghrib.setAdapter(arrayImam);
+                sp_muazin_isya.setAdapter(arrayImam);
+                sp_imam_subuh.setAdapter(arrayImam);
+                sp_imam_dzuhur.setAdapter(arrayImam);
+                sp_imam_ashar.setAdapter(arrayImam);
+                sp_imam_maghrib.setAdapter(arrayImam);
+                sp_imam_isya.setAdapter(arrayImam);
             }
 
             @Override
@@ -76,38 +92,32 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
             }
         });
 
+        //button simpan
+        btn_simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas");
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        jadwalPetugas.setTanggal(dataTanggal);
+                        databaseReference.child(dataTanggal).setValue(jadwalPetugas);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        //button batal
         btn_batal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-    }
-
-    private void spinner(){
-        databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus");
-        Toast.makeText(TambahJadwalPetugasActivity.this, "Pengurus", Toast.LENGTH_SHORT).show();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> dkmMasjid = new ArrayList<>();
-                for (DataSnapshot d : dataSnapshot.getChildren()){
-                    Pengurus p = d.getValue(Pengurus.class);
-                    dkmMasjid.add(p.getNama());
-                    Log.d("namaPengurus",""+dkmMasjid.get(0));
-                    Toast.makeText(TambahJadwalPetugasActivity.this, "penguruss", Toast.LENGTH_SHORT).show();
-                }
-
-                //CODE SPINNER
-                ArrayAdapter<String> arrayImam = new ArrayAdapter<String>(TambahJadwalPetugasActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, dkmMasjid);
-
-                spiner.setAdapter(arrayImam);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }

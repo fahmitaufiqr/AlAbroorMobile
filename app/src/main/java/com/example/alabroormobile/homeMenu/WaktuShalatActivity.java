@@ -13,9 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.alabroormobile.MainActivity;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.homeMenu.ArahKiblat.GPSTracker;
 import com.example.alabroormobile.model.Pengurus;
@@ -182,7 +179,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         try {
             Date mDate = sdf.parse(givenDateString);
             long time = mDate.getTime();
-            Toast.makeText(WaktuShalatActivity.this, "time"+time, Toast.LENGTH_SHORT).show();
         }catch (ParseException e){
 
         }
@@ -207,7 +203,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         HashMap<String, String> dataWaktuShalat = new HashMap<>();
         dataWaktuShalat.put("tanggal", tanggal);
         dataWaktuShalat.put("subuh", subuh);
-        Toast.makeText(WaktuShalatActivity.this, "Subuh"+subuh, Toast.LENGTH_SHORT).show();
         dataWaktuShalat.put("dzuhur", dzuhur);
         dataWaktuShalat.put("ashar", ashar);
         dataWaktuShalat.put("maghrib", maghrib);

@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
+            android:padding="8dp"
             android:hint="Tanggal"
             android:textColor="#000000"
             android:textSize="18sp" />
@@ -27,12 +28,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_tanggal_jadwal_petugas"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subuh" />
+                android:text="Subuh"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih Muazin"/>
 
             <Spinner
                 android:id="@+id/sp_muazin_subuh"
@@ -40,37 +49,200 @@
                 android:layout_height="wrap_content">
             </Spinner>
 
-            <!--<com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner-->
-                <!--android:id="@+id/sp_muazin_subuhh"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="4dp"-->
-                <!--android:background="@color/cardView"-->
-                <!--android:hint="Pilih Muazin"-->
-                <!--android:textColorHint="@color/colorPrimary"-->
-                <!--app:met_floatingLabel="normal" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Imam"/>
 
-            <!--<com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner-->
-                <!--android:id="@+id/sp_imam_subuh"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="4dp"-->
-                <!--android:background="@color/cardView"-->
-                <!--android:hint="Pilih Imam"-->
-                <!--android:textColorHint="@color/colorPrimary"-->
-                <!--app:met_floatingLabel="normal" />-->
-
-            <View
+            <Spinner
+                android:id="@+id/sp_imam_subuh"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000000" />
+                android:layout_height="wrap_content">
+            </Spinner>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dzuhur"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih Muazin"/>
+
+            <Spinner
+                android:id="@+id/sp_muazin_dzuhur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Imam"/>
+
+            <Spinner
+                android:id="@+id/sp_imam_dzuhur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ashar"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih Muazin"/>
+
+            <Spinner
+                android:id="@+id/sp_muazin_ashar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Imam"/>
+
+            <Spinner
+                android:id="@+id/sp_imam_ashar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown">
+            </Spinner>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maghrib"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih Muazin"/>
+
+            <Spinner
+                android:id="@+id/sp_muazin_maghrib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Imam"/>
+
+            <Spinner
+                android:id="@+id/sp_imam_maghrib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isya"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pilih Muazin"/>
+
+            <Spinner
+                android:id="@+id/sp_muazin_isya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Imam"/>
+
+            <Spinner
+                android:id="@+id/sp_imam_isya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
