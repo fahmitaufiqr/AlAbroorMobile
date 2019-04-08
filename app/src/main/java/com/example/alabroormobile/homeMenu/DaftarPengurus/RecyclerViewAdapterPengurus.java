@@ -1,4 +1,4 @@
-package com.example.alabroormobile.model;
+package com.example.alabroormobile.homeMenu.DaftarPengurus;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.homeMenu.DaftarPengurus.TambahPengurusActivity;
+import com.example.alabroormobile.model.Pengurus;
 
 import java.util.List;
 
