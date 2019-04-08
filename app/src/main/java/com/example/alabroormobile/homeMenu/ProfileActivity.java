@@ -45,7 +45,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView namaUser,emailUser,umurUser,hpUser,statuss;
+    TextView namaUser,emailUser,hpUser,statuss;
     CircleImageView profileUser;
     ImageView logoutBtn,editProfileBtn;
     GoogleApiClient mGoogleSignInClient;
