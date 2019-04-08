@@ -50,8 +50,6 @@ public class Login2Activity extends AppCompatActivity {
     String nohp = "";
     String email = "";
 
-    ProgressDialog loading;
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -136,11 +134,6 @@ public class Login2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        loading = ProgressDialog.show(Login2Activity.this,
-                null,
-                "Verifikasi Akun...",
-                true,
-                false);
 
         SignInButton loginBt = (SignInButton) findViewById(R.id.login_with_google);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -195,6 +188,7 @@ public class Login2Activity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle: "+acct.getId());
+        displayLoader();
         AuthCredential credential= GoogleAuthProvider.getCredential(acct.getIdToken(),null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -205,12 +199,19 @@ public class Login2Activity extends AppCompatActivity {
                             final FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
                             cekEmail(currentUser);
 
-                            loading.dismiss();
                         }
                         else Log.w(TAG, "onFailure: ", task.getException() );
 
                     }
                 });
+    }
+
+    private void displayLoader() {
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Verifikasi Akun...");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+        pDialog.show();
     }
 
 }
