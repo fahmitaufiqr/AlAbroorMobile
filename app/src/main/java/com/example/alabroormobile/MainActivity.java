@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
 
                 if (pengurus.getStatus().equals("Admin")){
-                    mBtnAddNotif.setVisibility(View.VISIBLE);
+//                    mBtnAddNotif.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Masuk Sebagai Admin", Toast.LENGTH_SHORT).show();
                 }else {
-                    mBtnAddNotif.setVisibility(View.GONE);
+//                    mBtnAddNotif.setVisibility(View.GONE);
                 }
 
             }
@@ -159,17 +159,17 @@ public class MainActivity extends AppCompatActivity {
         //Call Database Notif
         mDataNotif = FirebaseDatabase.getInstance().getReference("notifs");
         subscribe();
-        mBtnAddNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String key = mDataNotif.push().getKey();
-                HashMap<String, String> map = new HashMap<>();
-                map.put("idUser", mAuth.getCurrentUser().getUid());
-                map.put("idNotif",key);
-                mDataNotif.child(key).setValue(map);
-                Log.d(TAG, "onClick: isi Key "+key);
-            }
-        });
+//        mBtnAddNotif.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String key = mDataNotif.push().getKey();
+//                HashMap<String, String> map = new HashMap<>();
+//                map.put("idUser", mAuth.getCurrentUser().getUid());
+//                map.put("idNotif",key);
+//                mDataNotif.child(key).setValue(map);
+//                Log.d(TAG, "onClick: isi Key "+key);
+//            }
+//        });
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions
