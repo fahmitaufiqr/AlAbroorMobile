@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.GoogleLogin.Login2Activity;
+import com.example.alabroormobile.Login2Activity;
 
 /**
  * Created by Aulia Ikvanda on 31,March,2019

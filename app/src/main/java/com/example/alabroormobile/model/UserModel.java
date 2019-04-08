@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.GoogleLogin;
+package com.example.alabroormobile.model;
 
 import java.io.Serializable;
 
