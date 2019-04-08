@@ -54,6 +54,8 @@ public class Login2Activity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
         if (currentUser != null) {
+            startActivity(new Intent(Login2Activity.this,MainActivity.class));
+        }else {
             cekEmail(currentUser);
         }
     }

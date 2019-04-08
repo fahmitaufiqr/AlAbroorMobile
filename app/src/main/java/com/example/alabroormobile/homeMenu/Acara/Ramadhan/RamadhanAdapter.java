@@ -58,6 +58,7 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
                 goDetail.putExtra("hariKe", listitem.getHariKe());
 
                 mActivity.startActivity(goDetail);
+
             }
         });
     }
@@ -75,8 +76,8 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
             recviewRamadhann = itemview.findViewById(R.id.ramadhan_layout);
             ramadhan_ke = itemview.findViewById(R.id.ramadhan_ke);
             tanggal_puasa=itemview.findViewById(R.id.tanggal_puasa);
-            waktu_buka = itemview.findViewById(R.id.sahur_time);
-            waktu_sahur=itemview.findViewById(R.id.buka_time);
+            waktu_buka = itemview.findViewById(R.id.buka_time);
+            waktu_sahur=itemview.findViewById(R.id.sahur_time);
             penceramah = itemview.findViewById(R.id.penceramah);
         }
 

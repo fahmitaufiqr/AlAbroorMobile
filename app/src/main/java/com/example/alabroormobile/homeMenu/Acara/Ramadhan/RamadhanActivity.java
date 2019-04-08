@@ -65,7 +65,7 @@ public class RamadhanActivity extends AppCompatActivity {
                 ramadhanAdapter = new RamadhanAdapter(ramadhanArrayList, RamadhanActivity.this);
                 rc_list_ramadhan.setAdapter(ramadhanAdapter);
                 loading.dismiss();
-                Toast.makeText(RamadhanActivity.this, "Data Berhasil Diambil", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -74,12 +74,12 @@ public class RamadhanActivity extends AppCompatActivity {
                 loading.dismiss();
             }
         });
-
     }
 
     @Override
     public void onBackPressed() {
-        this.finish();
+        super.onBackPressed();
+        finish();
     }
 
 }

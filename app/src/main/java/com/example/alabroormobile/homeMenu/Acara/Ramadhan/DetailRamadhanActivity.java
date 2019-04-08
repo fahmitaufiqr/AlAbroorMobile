@@ -39,7 +39,7 @@ public class DetailRamadhanActivity extends AppCompatActivity {
     private ProgressDialog loading;
     private DatabaseReference database;
 
-    private String sHariKe = "", sTanggal = "", sPenceramah = "", sBuka = "", sSahur = "";
+    private String sHariKe = "", sTanggal = "", sPenceramah = "--", sBuka = "", sSahur = "";
 
     private String ramadhanID= "";
 
@@ -86,15 +86,32 @@ public class DetailRamadhanActivity extends AppCompatActivity {
                 dbRamadhan.updateChildren(hashMap);
 
                 Intent intent = new Intent(DetailRamadhanActivity.this, RamadhanActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        //RESET
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hashMap.put("penceramah","--");
+                dbRamadhan.updateChildren(hashMap);
+                Toast.makeText(DetailRamadhanActivity.this, "Berhasil Di Reset", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DetailRamadhanActivity.this, RamadhanActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 
     }
 
-
+    @Override
     public void onBackPressed() {
-        this.finish();
+        super.onBackPressed();
+        finish();
     }
 
 }
