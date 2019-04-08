@@ -34,33 +34,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddReminderActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".activity.GoogleLogin.Login2Activity"
+            android:name=".Login2Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.Acara.ViewPengajianActivity" />
         <activity android:name=".activity.Menu.InfoActivity" />
         <activity android:name=".activity.Menu.ProfileActivity" />
         <activity android:name=".activity.Menu.ArahKiblatActivity" />
-        <activity android:name=".activity.Menu.AcaraActivity" />
+        <activity android:name=".activity.Acara.AcaraActivity" />
         <activity android:name=".activity.Menu.StatistikActivity" />
         <activity android:name=".activity.Acara.JadwalPengajianActivity" />
         <activity android:name=".activity.Menu.JadwalPetugasActivity" />
-        <activity android:name=".activity.Menu.DaftarPengurusActivity" />
-        <activity android:name=".activity.WaktuShalat2Activity" />
+        <activity android:name=".activity.Pengurus.DaftarPengurusActivity" />
         <activity android:name=".activity.Acara.TambahAcaraActivity" />
         <activity android:name=".activity.Pengurus.TambahPengurusActivity" />
-        <activity android:name=".activity.Menu.WaktuShalatActivity" />
+        <activity android:name=".activity.WaktuShalat.WaktuShalatActivity" />
 
-        <provider
-            android:name=".data.AlarmReminderProvider"
-            android:authorities="edmt.dev.alarmreminder"
-            android:exported="false" />
-
-        <service
-            android:name=".reminder.ReminderAlarmService"
-            android:exported="false" />
         <service android:name=".service.FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

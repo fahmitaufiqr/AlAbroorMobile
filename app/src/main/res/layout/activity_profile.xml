@@ -66,10 +66,7 @@
                 android:layout_marginRight="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_edit" />
-
-
-
+                app:srcCompat="@drawable/ic_edit_white_24dp" />
         </RelativeLayout>
 
         <RelativeLayout
