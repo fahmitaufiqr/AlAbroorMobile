@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.RamadhanAct;
+package com.example.alabroormobile.homeMenu.Acara.Ramadhan;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,12 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.Acara.TambahAcaraActivity;
-import com.example.alabroormobile.model.Acara;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 
 
@@ -72,29 +68,10 @@ public class DetailRamadhanActivity extends AppCompatActivity {
                         true,
                         false);
 
-//                editRamadhan(new RamadhanModel(
-//                        sPenceramah.toLowerCase(),
-//                        sHariKe.toLowerCase(),
-//                        sTanggal.toLowerCase()), ramadhanID);
                 finish();
 
             }
         });
 
     }
-
-//    private void editRamadhan(RamadhanModel ramadhanModel, String id) {
-//        database.child("Ramadhan")
-//                .child(id)
-//                .setValue(ramadhanModel)
-//                .addOnSuccessListener(this, new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        loading.dismiss();
-//
-//                        Toast.makeText(DetailRamadhanActivity.this, "Data Berhasil diedit", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//    }
-
 }

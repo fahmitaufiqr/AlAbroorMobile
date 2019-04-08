@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.WaktuShalat;
+package com.example.alabroormobile.homeMenu;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.compasHelper.GPSTracker;
+import com.example.alabroormobile.homeMenu.ArahKiblat.GPSTracker;
 import com.example.alabroormobile.model.PrayTimes;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;

@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile;
 
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -16,16 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alabroormobile.R;
 import com.example.alabroormobile.model.UserModel;
-import com.example.alabroormobile.activity.Acara.AcaraActivity;
-import com.example.alabroormobile.activity.Menu.ArahKiblatActivity;
-import com.example.alabroormobile.activity.Pengurus.DaftarPengurusActivity;
-import com.example.alabroormobile.activity.Menu.InfoActivity;
-import com.example.alabroormobile.activity.Menu.JadwalPetugasActivity;
-import com.example.alabroormobile.activity.Menu.ProfileActivity;
-import com.example.alabroormobile.activity.Menu.StatistikActivity;
-import com.example.alabroormobile.activity.WaktuShalat.WaktuShalatActivity;
+import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.AcaraActivity;
+import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.DaftarPengurusActivity;
+import com.example.alabroormobile.homeMenu.InfoActivity;
+import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
+import com.example.alabroormobile.homeMenu.ProfileActivity;
+import com.example.alabroormobile.homeMenu.StatistikActivity;
+import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

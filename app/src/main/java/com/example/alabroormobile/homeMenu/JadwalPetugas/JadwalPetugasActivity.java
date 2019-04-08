@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Menu;
+package com.example.alabroormobile.homeMenu.JadwalPetugas;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.TambahJadwalPetugasActivity;
 
 public class JadwalPetugasActivity extends AppCompatActivity {
 

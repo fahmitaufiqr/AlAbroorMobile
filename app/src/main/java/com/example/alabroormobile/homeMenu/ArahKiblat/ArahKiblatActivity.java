@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Menu;
+package com.example.alabroormobile.homeMenu.ArahKiblat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -18,8 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alabroormobile.compasHelper.Compass;
-import com.example.alabroormobile.compasHelper.GPSTracker;
 import com.example.alabroormobile.R;
 
 import static android.view.View.INVISIBLE;
@@ -27,7 +25,6 @@ import static android.view.View.INVISIBLE;
 /**
  * Created by Aulia Ikvanda on 31,March,2019
  */
-
 
 public class ArahKiblatActivity extends AppCompatActivity {
 

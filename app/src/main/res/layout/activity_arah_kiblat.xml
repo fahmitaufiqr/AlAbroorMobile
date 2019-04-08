@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.Menu.ArahKiblatActivity">
+    tools:context=".homeMenu.ArahKiblat.ArahKiblatActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

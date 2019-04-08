@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Acara;
+package com.example.alabroormobile.homeMenu.Acara.JadwalPengajian;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

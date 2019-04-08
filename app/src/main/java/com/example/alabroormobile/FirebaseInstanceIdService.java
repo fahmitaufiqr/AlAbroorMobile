@@ -1,4 +1,4 @@
-package com.example.alabroormobile.service;
+package com.example.alabroormobile;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.MainActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 

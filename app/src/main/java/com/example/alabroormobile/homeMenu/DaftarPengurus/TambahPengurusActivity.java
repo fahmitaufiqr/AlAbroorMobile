@@ -1,7 +1,6 @@
-package com.example.alabroormobile.activity.Pengurus;
+package com.example.alabroormobile.homeMenu.DaftarPengurus;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;

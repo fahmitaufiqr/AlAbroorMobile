@@ -1,4 +1,4 @@
-package com.example.alabroormobile.compasHelper;
+package com.example.alabroormobile.homeMenu.ArahKiblat;
 
 import android.content.Context;
 import android.hardware.Sensor;

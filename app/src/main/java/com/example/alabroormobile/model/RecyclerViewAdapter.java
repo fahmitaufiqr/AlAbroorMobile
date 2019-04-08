@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.Acara.TambahAcaraActivity;
+import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.TambahAcaraActivity;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_acara, parent, false);
         return new MyViewHolder(itemView);
     }
 

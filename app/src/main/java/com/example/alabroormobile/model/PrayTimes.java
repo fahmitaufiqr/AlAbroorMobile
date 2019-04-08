@@ -501,11 +501,6 @@ public class PrayTimes {
 
     }
 
-    // convert double hours to 12h format with no suffix
-    public String floatToTime12NS(double time) {
-        return floatToTime12(time, true);
-    }
-
     // ---------------------- Compute Prayer Times -----------------------
     // compute prayer times at given julian date
     private double[] computeTimes(double[] times) {
@@ -807,16 +802,8 @@ public class PrayTimes {
         Tehran = tehran;
     }
 
-    private int getShafii() {
-        return Shafii;
-    }
-
     private void setShafii(int shafii) {
         Shafii = shafii;
-    }
-
-    private int getHanafi() {
-        return Hanafi;
     }
 
     private void setHanafi(int hanafi) {
@@ -831,32 +818,16 @@ public class PrayTimes {
         None = none;
     }
 
-    private int getMidNight() {
-        return MidNight;
-    }
-
     private void setMidNight(int midNight) {
         MidNight = midNight;
-    }
-
-    private int getOneSeventh() {
-        return OneSeventh;
     }
 
     private void setOneSeventh(int oneSeventh) {
         OneSeventh = oneSeventh;
     }
 
-    private int getAngleBased() {
-        return AngleBased;
-    }
-
     private void setAngleBased(int angleBased) {
         AngleBased = angleBased;
-    }
-
-    private int getTime24() {
-        return Time24;
     }
 
     private void setTime24(int time24) {
@@ -893,9 +864,5 @@ public class PrayTimes {
 
     private void setNumIterations(int numIterations) {
         this.numIterations = numIterations;
-    }
-
-    public ArrayList<String> getTimeNames() {
-        return timeNames;
     }
 }

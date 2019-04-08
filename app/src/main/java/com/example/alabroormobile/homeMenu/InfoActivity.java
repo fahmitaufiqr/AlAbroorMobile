@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Menu;
+package com.example.alabroormobile.homeMenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

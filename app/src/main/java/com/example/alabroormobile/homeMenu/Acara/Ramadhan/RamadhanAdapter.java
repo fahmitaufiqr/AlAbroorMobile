@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.RamadhanAct;
+package com.example.alabroormobile.homeMenu.Acara.Ramadhan;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.Acara.TambahAcaraActivity;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.ramadhan_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_ramadhan,parent,false);
         return new ViewHolder(v);
     }
 
@@ -58,8 +57,6 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
                 goDetail.putExtra("hariKe", listitem.getHariKe());
 
                 mActivity.startActivity(goDetail);
-
-
             }
         });
     }
@@ -80,8 +77,6 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
             waktu_buka = itemview.findViewById(R.id.sahur_time);
             waktu_sahur=itemview.findViewById(R.id.buka_time);
             penceramah = itemview.findViewById(R.id.penceramah);
-            //textopt=itemview.findViewById(R.id.texopt);
-
         }
 
     }

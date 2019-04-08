@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.Pengurus.TambahPengurusActivity;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.TambahPengurusActivity;
 
 import java.util.List;
 

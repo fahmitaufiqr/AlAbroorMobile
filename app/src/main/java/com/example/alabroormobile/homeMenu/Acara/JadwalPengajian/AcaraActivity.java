@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Acara;
+package com.example.alabroormobile.homeMenu.Acara.JadwalPengajian;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.activity.RamadhanAct.RamadhanActivity;
+import com.example.alabroormobile.homeMenu.Acara.Ramadhan.RamadhanActivity;
 
 /**
  * Created by Aulia Ikvanda on 31,March,2019

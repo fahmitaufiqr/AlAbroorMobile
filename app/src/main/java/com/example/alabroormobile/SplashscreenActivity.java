@@ -1,12 +1,9 @@
-package com.example.alabroormobile.activity;
+package com.example.alabroormobile;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.example.alabroormobile.R;
-import com.example.alabroormobile.Login2Activity;
 
 /**
  * Created by Aulia Ikvanda on 31,March,2019

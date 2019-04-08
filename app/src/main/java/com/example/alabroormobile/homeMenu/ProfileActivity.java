@@ -1,4 +1,4 @@
-package com.example.alabroormobile.activity.Menu;
+package com.example.alabroormobile.homeMenu;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -75,25 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
         profileUser =  findViewById(R.id.userProfile);
         logoutBtn = findViewById(R.id.LogOutBt);
         editProfileBtn = findViewById(R.id.editProfileBt);
-
-        //SET STATUS PENGGUNA PENGGUNA
-//        String username = currentUser.getEmail();
-//
-//        DatabaseReference dbstat = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
-//        dbstat.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
-//                statuss.setText(pengurus.getStatus());
-//
-//                loading.dismiss();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                loading.dismiss();
-//            }
-//        });
 
         //SET DATA PENGGUNA PENGGUNA
         mAuth = FirebaseAuth.getInstance();

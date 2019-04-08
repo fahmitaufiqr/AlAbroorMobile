@@ -1,7 +1,6 @@
 package com.example.alabroormobile.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 public class Acara implements Serializable {
 

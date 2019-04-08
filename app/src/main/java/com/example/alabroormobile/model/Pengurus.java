@@ -1,7 +1,5 @@
 package com.example.alabroormobile.model;
 
-import java.util.HashMap;
-
 public class Pengurus {
     private String nama;
     private String email;
