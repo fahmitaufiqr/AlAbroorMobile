@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,7 @@ public class RamadhanAdapter extends RecyclerView.Adapter<RamadhanAdapter.ViewHo
             public void onClick(View view) {
 
                 Intent goDetail = new Intent(mActivity, DetailRamadhanActivity.class);
-                goDetail.putExtra("id", listitem.getKey());
+                goDetail.putExtra("id", position+1);
                 goDetail.putExtra("buka", listitem.getBuka());
                 goDetail.putExtra("sahur", listitem.getSahur());
                 goDetail.putExtra("penceramah", listitem.getPenceramah());

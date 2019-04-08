@@ -298,4 +298,10 @@ public class TambahPengajianActivity extends AppCompatActivity {
 
         timePickerDialog.show();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

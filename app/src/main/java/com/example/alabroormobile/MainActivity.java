@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
         loading = ProgressDialog.show(MainActivity.this,
                 null,
                 "Mengambil Data...",
@@ -97,11 +100,32 @@ public class MainActivity extends AppCompatActivity {
         tv_tanggal = findViewById(R.id.tv_tanggal);
         tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
 
+        //CEK USER ADMIN =====================================================================
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+
+                if (pengurus.getStatus().equals("Admin")){
+                    mBtnAddNotif.setVisibility(View.VISIBLE);
+                    Toast.makeText(MainActivity.this, "Masuk Sebagai Admin", Toast.LENGTH_SHORT).show();
+                }else {
+                    mBtnAddNotif.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
+
+        //====================================================================================================
 
         //SET NAMA PENGGUNA
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-
         DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
         dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

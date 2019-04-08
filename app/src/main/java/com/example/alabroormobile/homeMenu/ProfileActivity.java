@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alabroormobile.MainActivity;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.Login2Activity;
+import com.example.alabroormobile.model.Pengurus;
 import com.example.alabroormobile.model.UserModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -60,6 +62,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         getSupportActionBar().setTitle("Profil Pengguna");
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
         loading = ProgressDialog.show(ProfileActivity.this,
                 null,
                 "Mengambil Data...",
@@ -76,10 +81,26 @@ public class ProfileActivity extends AppCompatActivity {
         logoutBtn = findViewById(R.id.LogOutBt);
         editProfileBtn = findViewById(R.id.editProfileBt);
 
-        //SET DATA PENGGUNA PENGGUNA
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
+        //CEK USER ADMIN =====================================================================
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+                statuss.setText(pengurus.getStatus());
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
+
+        //====================================================================================================
+
+        //SET DATA PENGGUNA PENGGUNA
         DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
         dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

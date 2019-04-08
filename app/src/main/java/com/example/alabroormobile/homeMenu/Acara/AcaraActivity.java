@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.JadwalPengajianActivity;
+import com.example.alabroormobile.homeMenu.Acara.Ramadhan.DetailRamadhanActivity;
 import com.example.alabroormobile.homeMenu.Acara.Ramadhan.RamadhanActivity;
 
 /**
@@ -43,5 +46,9 @@ public class AcaraActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        this.finish();
     }
 }
