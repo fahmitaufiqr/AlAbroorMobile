@@ -59,14 +59,14 @@ public class ViewPengajianActivity extends AppCompatActivity {
         mDateView.setText(sTanggal);
         mTextViewJam.setText(sJam);
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent edit = new Intent(ViewPengajianActivity.this, TambahAcaraActivity.class);
-                edit.putExtra("nama", acaraID);
-                startActivity(edit);
-            }
-        });
+//        edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent edit = new Intent(ViewPengajianActivity.this, TambahAcaraActivity.class);
+//                edit.putExtra("nama", acaraID);
+//                startActivity(edit);
+//            }
+//        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override

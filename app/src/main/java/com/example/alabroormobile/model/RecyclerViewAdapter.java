@@ -21,7 +21,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout rl_layout;
-        public TextView tv_title, tv_date,tv_time,tv_desk;
+        public TextView tv_title, tv_date,tv_time,tv_desk,tv_pengirim;
 
         public MyViewHolder(View view) {
             super(view);
@@ -30,6 +30,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_date = view.findViewById(R.id.txt_tanggal_acara);
             tv_desk = view.findViewById(R.id.txt_keterangan);
             tv_time = view.findViewById(R.id.txt_waktu_acara);
+            tv_pengirim = view.findViewById(R.id.pengirim_view);
         }
     }
 
