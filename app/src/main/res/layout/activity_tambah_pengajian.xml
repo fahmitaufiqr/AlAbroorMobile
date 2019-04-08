@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homeMenu.Acara.JadwalPengajian.TambahAcaraActivity">
+    tools:context=".homeMenu.Acara.JadwalPengajian.TambahPengajianActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,38 +131,37 @@
                 android:textSize="16sp"/>
         </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp">
+
+            <Button
+                android:id="@+id/save_acara"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:text="SIMPAN"
+                android:textSize="20sp"
+                android:textColor="@color/warnatextButton"
                 android:background="@color/colorPrimary"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="40dp">
+                android:paddingEnd="4dp"/>
+            <Button
+                android:id="@+id/cancel_bt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="BATAL"
+                android:textSize="20sp"
+                android:textColor="@color/warnatextButton"
+                android:background="@color/colorPrimary"
+                android:paddingStart="4dp"/>
 
-                <Button
-                    android:id="@+id/save_acara"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="SIMPAN"
-                    android:textSize="20sp"
-                    android:textColor="@color/warnatextButton"
-                    android:background="@color/colorPrimary"
-                    android:paddingEnd="4dp"/>
-                <Button
-                    android:id="@+id/cancel_bt"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="BATAL"
-                    android:textSize="20sp"
-                    android:textColor="@color/warnatextButton"
-                    android:background="@color/colorPrimary"
-                    android:paddingStart="4dp"/>
-
-            </LinearLayout>
         </LinearLayout>
-
+    </LinearLayout>
 </RelativeLayout>

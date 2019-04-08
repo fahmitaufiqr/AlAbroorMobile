@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.model.UserModel;
-import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.AcaraActivity;
+import com.example.alabroormobile.homeMenu.Acara.AcaraActivity;
 import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
 import com.example.alabroormobile.homeMenu.DaftarPengurus.DaftarPengurusActivity;
 import com.example.alabroormobile.homeMenu.InfoActivity;

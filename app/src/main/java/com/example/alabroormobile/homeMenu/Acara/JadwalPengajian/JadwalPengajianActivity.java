@@ -77,7 +77,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         fab_tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(JadwalPengajianActivity.this, TambahAcaraActivity.class)
+                startActivity(new Intent(JadwalPengajianActivity.this, TambahPengajianActivity.class)
                         .putExtra("id", "")
                         .putExtra("title", "")
                         .putExtra("email", "")

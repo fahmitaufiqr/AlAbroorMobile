@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.TambahAcaraActivity;
+import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.TambahPengajianActivity;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goDetail = new Intent(mActivity, TambahAcaraActivity.class);
+                Intent goDetail = new Intent(mActivity, TambahPengajianActivity.class);
                 goDetail.putExtra("id", movie.getKey());
                 goDetail.putExtra("nama", movie.getNama());
                 goDetail.putExtra("keterangan", movie.getKeterangan());

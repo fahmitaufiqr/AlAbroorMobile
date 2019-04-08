@@ -33,13 +33,12 @@ import java.util.Calendar;
  * Created by Aulia Ikvanda on 31,March,2019
  */
 
-public class TambahAcaraActivity extends AppCompatActivity {
+public class TambahPengajianActivity extends AppCompatActivity {
 
     protected static TextView viewDate;
     protected static TextView viewTime;
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
-    protected static TextView viewUserSend;
     protected static Calendar myCalendar;
     private TimePickerDialog timePickerDialog;
     private ProgressDialog loading;
@@ -58,7 +57,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_acara);
+        setContentView(R.layout.activity_tambah_pengajian);
         getSupportActionBar().setTitle("Tambah Pengajian");
 
         database = FirebaseDatabase.getInstance().getReference();
@@ -73,7 +72,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
         keteranganEditText = (EditText) findViewById(R.id.input_keterangan);
         viewDate = (TextView) findViewById(R.id.view_date);
         viewTime = (TextView) findViewById(R.id.view_jam);
-        viewUserSend = (TextView) findViewById(R.id.nama_pengirim_input);
         Button pickDate = (Button)findViewById(R.id.pick_date);
         Button pickTime = (Button)findViewById(R.id.pick_time);
         Button submitAcara = (Button)findViewById(R.id.save_acara);
@@ -82,20 +80,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
         //NAMA PENGIRIM
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-
-        DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
-        dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                UserModel user = dataSnapshot.getValue(UserModel.class);
-                viewUserSend.setText(user.getName());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                loading.dismiss();
-            }
-        });
 
         //SET DATA
         namaEdtText.setText(sNama);
@@ -118,7 +102,6 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 String Sket = keteranganEditText.getText().toString();
                 String Sdate = viewDate.getText().toString();
                 String Stime = viewTime.getText().toString();
-                String Spengirim = viewUserSend.getText().toString();
 
                 if (submitAcara.getText().equals("SIMPAN")){
                     // perintah save
@@ -136,7 +119,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewTime.setError("Silahkan masukkan waktu acara");
                         viewTime.requestFocus();
                     } else {
-                        loading = ProgressDialog.show(TambahAcaraActivity.this,
+                        loading = ProgressDialog.show(TambahPengajianActivity.this,
                                 null,
                                 "Sedang Proses...",
                                 true,
@@ -166,7 +149,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewTime.setError("Silahkan masukkan waktu acara");
                         viewTime.requestFocus();
                     } else {
-                        loading = ProgressDialog.show(TambahAcaraActivity.this,
+                        loading = ProgressDialog.show(TambahPengajianActivity.this,
                                 null,
                                 "Sedang Proses...",
                                 true,
@@ -191,7 +174,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                     finish();
                 } else {
                     // delete
-                    loading = ProgressDialog.show(TambahAcaraActivity.this,
+                    loading = ProgressDialog.show(TambahPengajianActivity.this,
                             null,
                             "Sedang Proses...",
                             true,
@@ -210,7 +193,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                 year = myCalendar.get(Calendar.YEAR);
                 month = myCalendar.get(Calendar.MONTH);
                 dayOfMonth = myCalendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(TambahAcaraActivity.this,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(TambahPengajianActivity.this,
                         (view, year, month, dayOfMonth) -> viewDate.setText(dayOfMonth + " - " + (month + 1) + " - " + year),year,month,dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
@@ -240,7 +223,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil dihapus", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TambahPengajianActivity.this, "Data Berhasil dihapus", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -259,7 +242,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TambahPengajianActivity.this, "Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -278,7 +261,7 @@ public class TambahAcaraActivity extends AppCompatActivity {
                         viewDate.setText("");
                         viewTime.setText("");
 
-                        Toast.makeText(TambahAcaraActivity.this, "Data Berhasil diedit", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TambahPengajianActivity.this, "Data Berhasil diedit", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

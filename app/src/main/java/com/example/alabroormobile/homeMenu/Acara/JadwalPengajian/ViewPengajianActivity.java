@@ -62,7 +62,7 @@ public class ViewPengajianActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent edit = new Intent(ViewPengajianActivity.this, TambahAcaraActivity.class);
+                Intent edit = new Intent(ViewPengajianActivity.this, TambahPengajianActivity.class);
                 edit.putExtra("key", acaraID);
                 startActivity(edit);
             }

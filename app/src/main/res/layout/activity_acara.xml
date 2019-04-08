@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal"
-    tools:context=".homeMenu.Acara.JadwalPengajian.AcaraActivity">
+    tools:context=".homeMenu.Acara.AcaraActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

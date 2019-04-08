@@ -40,12 +40,12 @@
         <activity android:name=".homeMenu.InfoActivity" />
         <activity android:name=".homeMenu.ProfileActivity" />
         <activity android:name=".homeMenu.ArahKiblat.ArahKiblatActivity" />
-        <activity android:name=".homeMenu.Acara.JadwalPengajian.AcaraActivity" />
+        <activity android:name=".homeMenu.Acara.AcaraActivity" />
         <activity android:name=".homeMenu.StatistikActivity" />
         <activity android:name=".homeMenu.Acara.JadwalPengajian.JadwalPengajianActivity" />
         <activity android:name=".homeMenu.JadwalPetugas.JadwalPetugasActivity" />
         <activity android:name=".homeMenu.DaftarPengurus.DaftarPengurusActivity" />
-        <activity android:name=".homeMenu.Acara.JadwalPengajian.TambahAcaraActivity" />
+        <activity android:name=".homeMenu.Acara.JadwalPengajian.TambahPengajianActivity" />
         <activity android:name=".homeMenu.DaftarPengurus.TambahPengurusActivity" />
         <activity android:name=".homeMenu.WaktuShalatActivity" />
 
