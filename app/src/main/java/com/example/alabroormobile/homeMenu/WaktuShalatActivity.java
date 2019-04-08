@@ -271,7 +271,8 @@ public class WaktuShalatActivity extends AppCompatActivity {
     }
 
     private void editWaktuShalatPopUp(){
-        Dialog popUp = new Dialog(WaktuShalatActivity.this, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+        Dialog popUp = new Dialog(WaktuShalatActivity.this,
+                android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar);
         popUp.setContentView(R.layout.pop_up_edit_waktu_shalat);
         EditText et_sSubuh = (EditText) popUp.findViewById(R.id.et_sSubuh);
         EditText et_sDzuhur = (EditText) popUp.findViewById(R.id.et_sDzuhur);

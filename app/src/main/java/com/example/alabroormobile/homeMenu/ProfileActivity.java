@@ -177,7 +177,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void editProfilePopUp(){
         HashMap<String, Object> hashMap = new HashMap<>();
-        Dialog popUp = new Dialog(ProfileActivity.this);
+        Dialog popUp = new Dialog(ProfileActivity.this
+                , android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
         popUp.setContentView(R.layout.pop_up_edit_profile);
         EditText et_nama = (EditText) popUp.findViewById(R.id.edit_nama);
         EditText et_noHp = (EditText) popUp.findViewById(R.id.edit_no_hp);
