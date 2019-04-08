@@ -75,6 +75,13 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 true,
                 false);
 
+        date_view = findViewById(R.id.date_vieww);
+        Date Datee = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("EEEE, dd MMM yyyy");
+        String formattanggal = format.format(Datee);
+        date_view.setText(formattanggal);
+
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
@@ -88,10 +95,11 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
                 if (pengurus.getStatus().equals("Admin")){
                     mDate.setVisibility(View.VISIBLE);
-
+                    date_view.setVisibility(View.GONE);
 
                 }else {
                     mDate.setVisibility(View.GONE);
+                    date_view.setVisibility(View.VISIBLE);
 
                 }
 
@@ -142,7 +150,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         mMagrib		= (TextView) findViewById(R.id.magrib_value);
         mIsya		= (TextView) findViewById(R.id.isya_value);
         mDate		= (TextView) findViewById(R.id.date_value);
-        mlayoutDate	= (RelativeLayout) findViewById(R.id.layout_date);
 
         timezone = (java.util.Calendar.getInstance().getTimeZone().getOffset(java.util.Calendar.getInstance().getTimeInMillis())) / (1000 * 60 * 60);
 
@@ -165,7 +172,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         ShowPrayTime(year, month, day);
         countDown();
 
-        mlayoutDate.setOnClickListener(new View.OnClickListener() {
+        mDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editWaktuShalatPopUp();

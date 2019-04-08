@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.model.Pengurus;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,11 +32,42 @@ public class DaftarPengurusActivity extends AppCompatActivity {
     private RecyclerView rc_list_pengurus;
     private FloatingActionButton fab_tambah_pengurus;
 
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_pengurus);
         getSupportActionBar().setTitle("Daftar Petugas");
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        //CEK USER ADMIN =====================================================================
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+
+                if (pengurus.getStatus().equals("Admin")){
+                    fab_tambah_pengurus.setVisibility(View.VISIBLE);
+
+                }else {
+                    fab_tambah_pengurus.setVisibility(View.GONE);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
+
+        //====================================================================================================
 
         fab_tambah_pengurus = findViewById(R.id.fab_add_pengurus);
         database = FirebaseDatabase.getInstance().getReference();

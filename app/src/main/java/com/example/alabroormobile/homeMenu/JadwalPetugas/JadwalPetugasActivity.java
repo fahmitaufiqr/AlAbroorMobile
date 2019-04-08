@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,14 @@ import android.widget.Toast;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.model.Pengurus;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -48,7 +57,11 @@ public class JadwalPetugasActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+
     }
+
+    FirebaseUser currentUser;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,5 +109,33 @@ public class JadwalPetugasActivity extends AppCompatActivity {
                 sendTanggal = dayOfMonth+"-"+month+"-"+year;
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        //CEK USER ADMIN =====================================================================
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+
+                if (pengurus.getStatus().equals("Admin")){
+
+                }else {
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //====================================================================================================
+
     }
 }
