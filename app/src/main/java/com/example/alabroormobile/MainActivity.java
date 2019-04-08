@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
 
                 if (pengurus.getStatus().equals("Admin")){
-                    mBtnAddNotif.setVisibility(View.VISIBLE);
+                    mBtnAddNotif.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this, "Masuk Sebagai Admin", Toast.LENGTH_SHORT).show();
                 }else {
                     mBtnAddNotif.setVisibility(View.GONE);

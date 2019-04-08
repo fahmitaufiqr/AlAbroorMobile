@@ -203,6 +203,7 @@
             android:layout_marginTop="25dp"
             android:background="#bab0b0" />
         <TextView
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Informasi Perhitungan : "
@@ -212,11 +213,13 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal" >
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -227,6 +230,7 @@
                 android:textSize="10sp"
                 android:textStyle="bold" />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/alamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,6 +243,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -265,6 +270,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -289,33 +295,38 @@
                 android:paddingRight="20dp"
                 android:text="longitude"
                 android:textSize="10sp" />
-        </LinearLayout> <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:paddingRight="15dp"
-            android:paddingTop="5dp"
-            android:text="Metode Perhitungan"
-            android:textSize="10sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/method"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.93"
-            android:gravity="end"
-            android:paddingLeft="15dp"
-            android:paddingTop="5dp"
-            android:paddingRight="20dp"
-            android:text="Muslim World League"
-            android:textSize="10sp" />
-    </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:text="Metode Perhitungan"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.93"
+                android:gravity="end"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:text="Muslim World League"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
