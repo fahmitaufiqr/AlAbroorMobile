@@ -1,4 +1,4 @@
-package com.example.alabroormobile.model;
+package com.example.alabroormobile.homeMenu.Acara.JadwalPengajian;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.TambahPengajianActivity;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapterPengajian extends RecyclerView.Adapter<RecyclerViewAdapterPengajian.MyViewHolder> {
 
-    List<Acara> acaraList;
+    List<Pengajian> pengajianList;
     private Activity mActivity;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -34,8 +33,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(List<Acara> acaraList,Activity activity) {
-        this.acaraList = acaraList;
+    public RecyclerViewAdapterPengajian(List<Pengajian> pengajianList, Activity activity) {
+        this.pengajianList = pengajianList;
         this.mActivity = activity;
     }
 
@@ -47,11 +46,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Acara movie = acaraList.get(position);
+        final Pengajian movie = pengajianList.get(position);
         holder.tv_title.setText(movie.getNama());
         holder.tv_date.setText(movie.getDate());
         holder.tv_desk.setText(movie.getKeterangan());
         holder.tv_time.setText(movie.getTime());
+        holder.tv_pengirim.setText(movie.getPengirim());
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 goDetail.putExtra("keterangan", movie.getKeterangan());
                 goDetail.putExtra("date", movie.getDate());
                 goDetail.putExtra("time", movie.getTime());
+                goDetail.putExtra("pengirim", movie.getPengirim());
 
                 mActivity.startActivity(goDetail);
             }
@@ -69,6 +70,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return acaraList.size();
+        return pengajianList.size();
     }
 }

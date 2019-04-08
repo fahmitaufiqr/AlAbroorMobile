@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.model.Acara;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,7 +26,7 @@ public class ViewPengajianActivity extends AppCompatActivity {
     private ImageView edit, delete;
     private String sNama = "", sTanggal = "", sJam = "", sDesk = "";
     private String acaraID;
-    ArrayList<Acara> acaraView;
+    ArrayList<Pengajian> pengajianView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class ViewPengajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_pengajian);
         getSupportActionBar().setTitle("Detail Pengajian");
 
-        acaraView = new ArrayList<>();
+        pengajianView = new ArrayList<>();
         Intent intentGetData = getIntent();
 
         //Inisialitation Variable

@@ -15,7 +15,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.model.Acara;
 import com.example.alabroormobile.model.UserModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,6 +39,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
     protected static Calendar myCalendar;
+    protected static TextView viewUserSend;
     private TimePickerDialog timePickerDialog;
     private ProgressDialog loading;
     private DatabaseReference database;
@@ -72,6 +72,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
         keteranganEditText = (EditText) findViewById(R.id.input_keterangan);
         viewDate = (TextView) findViewById(R.id.view_date);
         viewTime = (TextView) findViewById(R.id.view_jam);
+        viewUserSend = (TextView) findViewById(R.id.nama_pengirim_input);
         Button pickDate = (Button)findViewById(R.id.pick_date);
         Button pickTime = (Button)findViewById(R.id.pick_time);
         Button submitAcara = (Button)findViewById(R.id.save_acara);
@@ -81,6 +82,19 @@ public class TambahPengajianActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
+        DatabaseReference dbuser = FirebaseDatabase.getInstance().getReference("user").child(currentUser.getUid());
+        dbuser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                viewUserSend.setText(user.getName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                loading.dismiss();
+            }
+        });
         //SET DATA
         namaEdtText.setText(sNama);
         keteranganEditText.setText(sDesk);
@@ -102,6 +116,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
                 String Sket = keteranganEditText.getText().toString();
                 String Sdate = viewDate.getText().toString();
                 String Stime = viewTime.getText().toString();
+                String Spengirim = viewUserSend.getText().toString();
 
                 if (submitAcara.getText().equals("SIMPAN")){
                     // perintah save
@@ -125,11 +140,13 @@ public class TambahPengajianActivity extends AppCompatActivity {
                                 true,
                                 false);
 
-                        simpanAcara(new Acara(
+                        simpanPengajian(new Pengajian(
                                 Snama.toLowerCase(),
                                 Sket.toLowerCase(),
                                 Sdate.toLowerCase(),
-                                Stime.toLowerCase()));
+                                Stime.toLowerCase(),
+                                sPid,
+                                Spengirim));
 
                         finish();
 
@@ -155,11 +172,15 @@ public class TambahPengajianActivity extends AppCompatActivity {
                                 true,
                                 false);
 
-                        editAcara(new Acara(
+                        editPengajian(new Pengajian(
                                 Snama.toLowerCase(),
                                 Sket.toLowerCase(),
                                 Sdate.toLowerCase(),
-                                Stime.toLowerCase()), sPid);
+                                Stime.toLowerCase(),
+                                        sPid,
+                                        Spengirim
+                                ),
+                                sPid);
                         finish();
                     }
                 }
@@ -179,7 +200,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
                             "Sedang Proses...",
                             true,
                             false);
-                    deleteAcara();
+                    deletePengajian();
                     finish();
                 }
             }
@@ -209,7 +230,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteAcara(){
+    private void deletePengajian(){
         database.child("acaraList")
                 .child(sPid)
                 .removeValue()
@@ -228,10 +249,10 @@ public class TambahPengajianActivity extends AppCompatActivity {
                 });
     }
 
-    private void simpanAcara(Acara acara) {
+    private void simpanPengajian(Pengajian pengajian) {
         database.child("acaraList")
                 .push()
-                .setValue(acara)
+                .setValue(pengajian)
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -247,10 +268,10 @@ public class TambahPengajianActivity extends AppCompatActivity {
                 });
     }
 
-    private void editAcara(Acara acara, String id) {
+    private void editPengajian(Pengajian pengajian, String id) {
         database.child("acaraList")
                 .child(id)
-                .setValue(acara)
+                .setValue(pengajian)
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

@@ -9,34 +9,37 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="0dp"
-        android:layout_weight="2">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/masjid"/>
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/ic_user"/>
 
             <TextView
                 android:id="@+id/tv_nama_pengguna"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
+                android:text="Nama Pengguna"
+                android:layout_marginLeft="5dp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginRight="5dp"
@@ -46,10 +49,37 @@
                 android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
+                android:text="Tanggal Hari Ini"
+                android:layout_marginRight="5dp"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/ic_date"/>
+
         </LinearLayout>
 
+
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/masjid"/>
+
+
+
+
+    </RelativeLayout>
+
+
 
     <GridLayout
         android:layout_width="match_parent"

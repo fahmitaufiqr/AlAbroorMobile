@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alabroormobile.model.Pengurus;
 import com.example.alabroormobile.model.UserModel;
 import com.example.alabroormobile.homeMenu.Acara.AcaraActivity;
 import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
@@ -25,9 +28,11 @@ import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
 import com.example.alabroormobile.homeMenu.ProfileActivity;
 import com.example.alabroormobile.homeMenu.StatistikActivity;
 import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     //Database Notif
     private DatabaseReference mDataNotif;
     //~~Akhirnotif
+
 
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
     private TextView tv_tanggal, tv_nama_pengguna;
@@ -102,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserModel user = dataSnapshot.getValue(UserModel.class);
                 tv_nama_pengguna.setText(user.getName());
+
                 loading.dismiss();
             }
 
@@ -173,9 +180,9 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Yeay";
+                        String msg = "Assalamualaikum Wr. Wb";
                         if (!task.isSuccessful()) {
-                            msg = "Ney";
+                            msg = "Assalamualaikum Wr. Wb";
                         }
                         Log.d(TAG, msg);
                     }
@@ -210,8 +217,11 @@ public class MainActivity extends AppCompatActivity {
         statistikPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, StatistikActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, StatistikActivity.class);
+//                startActivity(intent);
+
+                Toast.makeText(MainActivity.this, "Fitur Dalam Pengembangan", Toast.LENGTH_SHORT).show();
+
             }
         });
 

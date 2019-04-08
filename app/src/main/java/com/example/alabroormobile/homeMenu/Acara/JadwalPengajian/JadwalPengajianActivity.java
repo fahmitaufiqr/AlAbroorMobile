@@ -11,8 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.model.Acara;
-import com.example.alabroormobile.model.RecyclerViewAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,8 +27,8 @@ public class JadwalPengajianActivity extends AppCompatActivity {
 
     private DatabaseReference database;
     private ProgressDialog loading;
-    private ArrayList<Acara> acaraArrayList;
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private ArrayList<Pengajian> pengajianArrayList;
+    private RecyclerViewAdapterPengajian recyclerViewAdapterPengajian;
     private RecyclerView rc_list_acara;
     private FloatingActionButton fab_tambah;
 
@@ -56,14 +54,14 @@ public class JadwalPengajianActivity extends AppCompatActivity {
         database.child("acaraList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                acaraArrayList = new ArrayList<>();
+                pengajianArrayList = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    Acara acara = noteDataSnapshot.getValue(Acara.class);
-                    acara.setKey(noteDataSnapshot.getKey());
-                    acaraArrayList.add(acara);
+                    Pengajian pengajian = noteDataSnapshot.getValue(Pengajian.class);
+                    pengajian.setKey(noteDataSnapshot.getKey());
+                    pengajianArrayList.add(pengajian);
                 }
-                recyclerViewAdapter = new RecyclerViewAdapter(acaraArrayList, JadwalPengajianActivity.this);
-                rc_list_acara.setAdapter(recyclerViewAdapter);
+                recyclerViewAdapterPengajian = new RecyclerViewAdapterPengajian(pengajianArrayList, JadwalPengajianActivity.this);
+                rc_list_acara.setAdapter(recyclerViewAdapterPengajian);
                 loading.dismiss();
             }
 
