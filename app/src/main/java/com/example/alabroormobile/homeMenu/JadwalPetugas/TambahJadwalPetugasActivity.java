@@ -9,10 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.TambahPengurusActivity;
 import com.example.alabroormobile.model.JadwalPetugas;
 import com.example.alabroormobile.model.Pengurus;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -96,20 +99,43 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas");
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        jadwalPetugas.setTanggal(dataTanggal);
-                        databaseReference.child(dataTanggal).setValue(jadwalPetugas);
-                        finish();
-                    }
+                String muazin_subuh = sp_muazin_subuh.getSelectedItem().toString();
+                String muazin_dzuhur = sp_muazin_dzuhur.getSelectedItem().toString();
+                String muazin_ashar = sp_muazin_ashar.getSelectedItem().toString();
+                String muazin_maghrib = sp_muazin_maghrib.getSelectedItem().toString();
+                String muazin_isya = sp_muazin_isya.getSelectedItem().toString();
+                String imam_subuh = sp_imam_subuh.getSelectedItem().toString();
+                String imam_dzuhur = sp_imam_dzuhur.getSelectedItem().toString();
+                String imam_ashar = sp_imam_ashar.getSelectedItem().toString();
+                String imam_maghrib = sp_imam_maghrib.getSelectedItem().toString();
+                String imam_isya = sp_imam_isya.getSelectedItem().toString();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                simpanJadwal("Subuh", new JadwalPetugas(
+                        dataTanggal,
+                        muazin_subuh,
+                        imam_subuh
+                ));
+                simpanJadwal("Dzuhur", new JadwalPetugas(
+                        dataTanggal,
+                        muazin_dzuhur,
+                        imam_dzuhur
+                ));
+                simpanJadwal("Ashar", new JadwalPetugas(
+                        dataTanggal,
+                        muazin_ashar,
+                        imam_ashar
+                ));
+                simpanJadwal("Maghrib", new JadwalPetugas(
+                        dataTanggal,
+                        muazin_maghrib,
+                        imam_maghrib
+                ));
+                simpanJadwal("Isya", new JadwalPetugas(
+                        dataTanggal,
+                        muazin_isya,
+                        imam_isya
+                ));
+                finish();
             }
         });
 
@@ -120,5 +146,19 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    //method untuk menyimpan jadwal petugas ke firebase database
+    private void simpanJadwal(String waktuShalat, JadwalPetugas jadwalPetugas) {
+        DatabaseReference dr= FirebaseDatabase.getInstance().getReference("JadwalPetugas");
+        dr.child(dataTanggal)
+                .child(waktuShalat)
+                .setValue(jadwalPetugas)
+                .addOnSuccessListener(this, new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(TambahJadwalPetugasActivity.this, "Data Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

@@ -114,6 +114,7 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
 
         //CEK USER ADMIN =====================================================================
+        String titik = ".";
         String username = currentUser.getEmail().split("@")[0];
         DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {

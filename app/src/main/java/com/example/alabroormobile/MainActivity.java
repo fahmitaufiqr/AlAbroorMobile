@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         //CEK USER ADMIN =====================================================================
         String username = currentUser.getEmail().split("@")[0];
+        //String username2 = "asdas.das".replace(".","");
         DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
