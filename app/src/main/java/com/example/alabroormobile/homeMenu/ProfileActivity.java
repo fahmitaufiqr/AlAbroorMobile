@@ -15,10 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alabroormobile.MainActivity;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.Login2Activity;
-import com.example.alabroormobile.model.Pengurus;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.example.alabroormobile.model.UserModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

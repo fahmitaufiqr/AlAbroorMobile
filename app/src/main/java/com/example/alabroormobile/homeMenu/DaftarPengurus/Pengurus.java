@@ -1,4 +1,4 @@
-package com.example.alabroormobile.model;
+package com.example.alabroormobile.homeMenu.DaftarPengurus;
 
 public class Pengurus {
     private String nama;

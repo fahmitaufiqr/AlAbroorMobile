@@ -3,7 +3,6 @@ package com.example.alabroormobile.homeMenu.JadwalPetugas;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,9 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.homeMenu.DaftarPengurus.TambahPengurusActivity;
 import com.example.alabroormobile.model.JadwalPetugas;
-import com.example.alabroormobile.model.Pengurus;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

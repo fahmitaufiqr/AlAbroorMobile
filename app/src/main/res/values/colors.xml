@@ -18,6 +18,8 @@
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
 
+    <color name="selectedColor">#BCE0FD</color>
+
     //PROFILE
     <color name="colorPrimaryDark">#65DCE5</color>
     <color name="colorAccent">#0D5D98</color>

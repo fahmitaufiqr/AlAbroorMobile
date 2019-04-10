@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/warnaText2"
+            android:textColorHint="@color/warnaText2">
+
+            <EditText
+                android:id="@+id/input_nama_acara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Acara"
+                android:inputType="textCapWords"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/warnaText2"
+            android:textColorHint="@color/warnaText2">
+
+            <EditText
+                android:id="@+id/input_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Keterangan"
+                android:inputType="textCapWords"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/view_date"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Pengajian"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/view_jam"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Jam Mulai"
+                android:maxLines="1"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dikirim oleh : "
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/nama_pengirim_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Pengirim"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

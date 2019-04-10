@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.homeMenu.ArahKiblat.GPSTracker;
-import com.example.alabroormobile.model.Pengurus;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.example.alabroormobile.model.PrayTimes;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

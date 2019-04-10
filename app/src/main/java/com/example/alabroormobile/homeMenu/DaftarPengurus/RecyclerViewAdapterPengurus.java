@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
-import com.example.alabroormobile.model.Pengurus;
 
 import java.util.List;
 

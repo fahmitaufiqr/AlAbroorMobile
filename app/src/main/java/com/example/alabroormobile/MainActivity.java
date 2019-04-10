@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alabroormobile.model.Pengurus;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.example.alabroormobile.model.UserModel;
 import com.example.alabroormobile.homeMenu.Acara.AcaraActivity;
 import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
@@ -26,13 +24,10 @@ import com.example.alabroormobile.homeMenu.DaftarPengurus.DaftarPengurusActivity
 import com.example.alabroormobile.homeMenu.InfoActivity;
 import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
 import com.example.alabroormobile.homeMenu.ProfileActivity;
-import com.example.alabroormobile.homeMenu.StatistikActivity;
 import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -49,7 +44,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {

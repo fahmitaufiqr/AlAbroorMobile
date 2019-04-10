@@ -102,8 +102,8 @@
     <string name="editor_insert_reminder_failed">Error saving</string>
     <string name="editor_delete_reminder_successful">Reminder deleted</string>
     <string name="editor_delete_reminder_failed">Error delete</string>
-    <string name="cancel">Cancel</string>
-    <string name="delete">Delete</string>
+    <string name="cancel">Batal</string>
+    <string name="delete">Hapus</string>
     <string name="delete_dialog_msg">Delete this reminder?</string>
     <string name="keep_editing">Keep editing</string>
     <string name="discard">Discard</string>
@@ -113,6 +113,10 @@
     <string name="title_activity_add_reminder">Add reminder</string>
     <string name="editor_activity_title_edit_reminder">Edit Reminder</string>
     <string name="editor_activity_title_new_reminder">Add reminder detail</string>
+    <string name="delete_pengajian">Yakin Dihapus?</string>
+    <string name="pengajian_save">SIMPAN</string>
+    <string name="pengajian_edit">EDIT</string>
+    <string name="tambah_pengajian">Tambah Jadwal Pengajian</string>
 
     <!--STRING RAMADHAN-->
     <string-array name="texttit">
