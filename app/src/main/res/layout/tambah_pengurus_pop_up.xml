@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".homeMenu.DaftarPengurus.TambahPengurusActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/warnaText2"
+            android:textColorHint="@color/warnaText2">
+
+            <EditText
+                android:id="@+id/input_nama_pengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Pengurus"
+                android:inputType="textCapWords"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/warnaText2"
+            android:textColorHint="@color/warnaText2">
+
+            <EditText
+                android:id="@+id/input_email_pengurus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Pengurus"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            android:text="Status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:id="@+id/rg_status"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
+            android:gravity=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"/>
+
+            <RadioButton
+                android:id="@+id/rb_pengurus"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pengurus"/>
+
+        </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/save_acara_pengurus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:paddingEnd="4dp"
+                android:text="SIMPAN"
+                android:textColor="@color/warnatextButton"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/cancel_bt_pengurus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:paddingStart="4dp"
+                android:text="BATAL"
+                android:textColor="@color/warnatextButton"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

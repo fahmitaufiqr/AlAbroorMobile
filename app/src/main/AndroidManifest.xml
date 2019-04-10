@@ -55,7 +55,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".homeMenu.JadwalPetugas.TambahJadwalPetugasActivity"></activity>
+        <activity android:name=".homeMenu.JadwalPetugas.TambahJadwalPetugasActivity" />
     </application>
 
 </manifest>

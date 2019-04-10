@@ -38,7 +38,7 @@ public class TambahPengajianActivity extends AppCompatActivity {
     protected static TextView viewTime;
     protected static EditText namaEdtText;
     protected static EditText keteranganEditText;
-    protected static Calendar myCalendar;
+    protected static Calendar myCalendar,calendar;
     protected static TextView viewUserSend;
     private TimePickerDialog timePickerDialog;
     private ProgressDialog loading;
@@ -48,6 +48,10 @@ public class TambahPengajianActivity extends AppCompatActivity {
     int year;
     int month;
     int dayOfMonth;
+
+    int currentHour;
+    int currentMinute;
+    String amPm;
 
     //GET USER
     GoogleSignInClient mGoogleSignInClient;
@@ -225,7 +229,22 @@ public class TambahPengajianActivity extends AppCompatActivity {
         pickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showTimeDialog();
+//                showTimeDialog();
+                calendar = Calendar.getInstance();
+                currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                currentMinute = calendar.get(Calendar.MINUTE);
+                timePickerDialog = new TimePickerDialog(TambahPengajianActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        if (hourOfDay >= 12) {
+                            amPm = " PM";
+                        } else {
+                            amPm = " AM";
+                        }
+                        viewTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+                    }
+                }, currentHour, currentMinute, false);
+                timePickerDialog.show();
             }
         });
     }
