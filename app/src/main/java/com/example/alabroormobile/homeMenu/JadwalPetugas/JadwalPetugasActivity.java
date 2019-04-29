@@ -1,9 +1,12 @@
 package com.example.alabroormobile.homeMenu.JadwalPetugas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,8 +17,11 @@ import android.widget.Toast;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
+import com.example.alabroormobile.MainActivity;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
+import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
+import com.example.alabroormobile.model.JadwalPetugas;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,22 +30,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class JadwalPetugasActivity extends AppCompatActivity {
 
+    private ProgressDialog loading;
     private TextView tv_muazin1, tv_imam1, tv_muazin2, tv_imam2, tv_muazin3, tv_imam3, tv_muazin4, tv_imam4, tv_muazin5, tv_imam5;
-    private ImageView im_su, im_dz, im_as, im_mg, im_is;
-    private TextDrawable mDrawableBuilderSu, mDrawableBuilderDz, mDrawableBuilderAs, mDrawableBuilderMg, mDrawableBuilderIs;
-    private ColorGenerator mColorGenerator = ColorGenerator.DEFAULT;
     private CalendarView cv_jadwal_petugas;
     private String sendTanggal;
-    String su = "Su";
-    String dz = "Dz";
-    String as = "As";
-    String mg = "Mg";
-    String is = "Is";
-    int color = mColorGenerator.getRandomColor();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,7 +50,7 @@ public class JadwalPetugasActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.tambah_jadwal_petugas){
+        if (item.getItemId() == R.id.tambah_jadwal_petugas) {
             Intent intent = new Intent(JadwalPetugasActivity.this, TambahJadwalPetugasActivity.class);
             intent.putExtra("dataTanggal", sendTanggal);
             startActivity(intent);
@@ -59,17 +59,15 @@ public class JadwalPetugasActivity extends AppCompatActivity {
 
     }
 
-    FirebaseUser currentUser;
-    FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_petugas);
         getSupportActionBar().setTitle("Jadwal Petugas");
 
-        Calendar cal	= java.util.Calendar.getInstance();
-        sendTanggal = cal.get(Calendar.DAY_OF_MONTH)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.YEAR);
+        Calendar cal = java.util.Calendar.getInstance();
+        sendTanggal = cal.get(Calendar.DAY_OF_MONTH) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.YEAR);
+        showDataPetugas(sendTanggal);
 
         //inisialisasi
         cv_jadwal_petugas = (CalendarView) findViewById(R.id.cv_jadwal_petugas);
@@ -83,59 +81,58 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         tv_imam3 = (TextView) findViewById(R.id.tv_imam3);
         tv_imam4 = (TextView) findViewById(R.id.tv_imam4);
         tv_imam5 = (TextView) findViewById(R.id.tv_imam5);
-        im_su = (ImageView) findViewById(R.id.iv_su);
-        im_dz = (ImageView) findViewById(R.id.iv_dz);
-        im_as = (ImageView) findViewById(R.id.iv_as);
-        im_mg = (ImageView) findViewById(R.id.iv_mg);
-        im_is = (ImageView) findViewById(R.id.iv_is);
-
-        //setColor
-        mDrawableBuilderSu = TextDrawable.builder().buildRound(su, color);
-        mDrawableBuilderDz = TextDrawable.builder().buildRound(dz, color);
-        mDrawableBuilderAs = TextDrawable.builder().buildRound(as, color);
-        mDrawableBuilderMg = TextDrawable.builder().buildRound(mg, color);
-        mDrawableBuilderIs = TextDrawable.builder().buildRound(is, color);
-        im_su.setImageDrawable(mDrawableBuilderSu);
-        im_dz.setImageDrawable(mDrawableBuilderDz);
-        im_as.setImageDrawable(mDrawableBuilderAs);
-        im_mg.setImageDrawable(mDrawableBuilderMg);
-        im_is.setImageDrawable(mDrawableBuilderIs);
 
         cv_jadwal_petugas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(JadwalPetugasActivity.this, "Year: "+year+ "\nMonth: "+month+ "\nDay of Month: "+dayOfMonth, Toast.LENGTH_SHORT).show();
-                sendTanggal = dayOfMonth+"-"+month+"-"+year;
+                sendTanggal = dayOfMonth + "-" + month + "-" + year;
+                showDataPetugas(sendTanggal);
             }
         });
+    }
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-
-        //CEK USER ADMIN =====================================================================
-        String titik = ".";
-        String username = currentUser.getEmail().split("@")[0];
-        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
-        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void showDataPetugas(String date) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas").child(date);
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
-
-                if (pengurus.getStatus().equals("Admin")){
-
-                }else {
-
+                if (dataSnapshot.exists()) {
+                    ArrayList<String> muazin = new ArrayList<>();
+                    ArrayList<String> imam = new ArrayList<>();
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
+                        JadwalPetugas jadwalPetugas = d.getValue(JadwalPetugas.class);
+                        muazin.add(jadwalPetugas.getMuazin());
+                        imam.add(jadwalPetugas.getImam());
+                    }
+                    if (muazin.size() == 5) {
+                        tv_muazin3.setText("Muazin\t: " + muazin.get(0));
+                        tv_muazin1.setText("Muazin\t: " + muazin.get(4));
+                        tv_muazin2.setText("Muazin\t: " + muazin.get(1));
+                        tv_muazin4.setText("Muazin\t: " + muazin.get(3));
+                        tv_muazin5.setText("Muazin\t: " + muazin.get(2));
+                        tv_imam1.setText("Imam\t\t: " + imam.get(4));
+                        tv_imam2.setText("Imam\t\t: " + imam.get(1));
+                        tv_imam3.setText("Imam\t\t: " + imam.get(0));
+                        tv_imam4.setText("Imam\t\t: " + imam.get(3));
+                        tv_imam5.setText("Imam\t\t: " + imam.get(2));
+                    }
+                } else {
+                    tv_muazin1.setText("Muazin Belum ditetukan");
+                    tv_muazin2.setText("Muazin Belum ditetukan");
+                    tv_muazin3.setText("Muazin Belum ditetukan");
+                    tv_muazin4.setText("Muazin Belum ditetukan");
+                    tv_muazin5.setText("Muazin Belum ditetukan");
+                    tv_imam1.setText("Imam Belum ditetukan");
+                    tv_imam2.setText("Imam Belum ditetukan");
+                    tv_imam3.setText("Imam Belum ditetukan");
+                    tv_imam4.setText("Imam Belum ditetukan");
+                    tv_imam5.setText("Imam Belum ditetukan");
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
-        //====================================================================================================
-
     }
 }

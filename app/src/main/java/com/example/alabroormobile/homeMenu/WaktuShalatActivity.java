@@ -238,6 +238,9 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 mMagrib.setText(waktuSholat.get(3));
                 mIsya.setText(waktuSholat.get(2));
 
+                Log.d("dzuhur", waktuSholat.get(1).split(":")[1]);
+                Log.d("dzuhur", waktuSholat.get(1).split(":")[0]);
+
                 loading.dismiss();
             }
 

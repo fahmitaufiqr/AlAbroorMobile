@@ -28,13 +28,17 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_su"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"/>
+                android:text="Su"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/circle_jadwal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,32 +61,32 @@
             </LinearLayout>
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_dz"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"/>
+                android:text="Dz"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/circle_jadwal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="4dp"
-                android:padding="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_toRightOf="@id/iv_dz"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_muazin2"
                     android:layout_width="match_parent"
-                    android:ellipsize="end"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Muazin"/>
@@ -90,40 +94,38 @@
                 <TextView
                     android:id="@+id/tv_imam2"
                     android:layout_width="match_parent"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Imam"/>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_as"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"/>
+                android:text="As"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/circle_jadwal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="4dp"
-                android:padding="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_toRightOf="@id/iv_as"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_muazin3"
                     android:layout_width="match_parent"
-                    android:ellipsize="end"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Muazin"/>
@@ -131,40 +133,38 @@
                 <TextView
                     android:id="@+id/tv_imam3"
                     android:layout_width="match_parent"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Imam"/>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_mg"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"/>
+                android:text="Su"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/circle_jadwal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="4dp"
-                android:padding="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_toRightOf="@id/iv_mg"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_muazin4"
                     android:layout_width="match_parent"
-                    android:ellipsize="end"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Muazin"/>
@@ -172,40 +172,39 @@
                 <TextView
                     android:id="@+id/tv_imam4"
                     android:layout_width="match_parent"
-                    android:ellipsize="marquee"
                     android:textColor="#000"
-                    android:singleLine="true"
                     android:layout_height="wrap_content"
                     tools:text="Imam"/>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_is"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"/>
+                android:text="Su"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/circle_jadwal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="4dp"
-                android:padding="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_toRightOf="@id/iv_is"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_muazin5"
                     android:layout_width="match_parent"
-                    android:ellipsize="end"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Muazin"/>
@@ -213,12 +212,10 @@
                 <TextView
                     android:id="@+id/tv_imam5"
                     android:layout_width="match_parent"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
                     tools:text="Imam"/>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

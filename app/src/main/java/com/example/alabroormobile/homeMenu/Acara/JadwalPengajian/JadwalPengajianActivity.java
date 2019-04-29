@@ -286,7 +286,6 @@ public class JadwalPengajianActivity extends AppCompatActivity {
 
         View view = getLayoutInflater().inflate(R.layout.pop_up_tambah_pengajian, null);
 
-
         final EditText namaEdtText = (EditText) view.findViewById(R.id.input_nama_acara);
         namaEdtText.setText(selectedPengajian.getNama());
         final EditText keteranganEditText = (EditText) view.findViewById(R.id.input_keterangan);

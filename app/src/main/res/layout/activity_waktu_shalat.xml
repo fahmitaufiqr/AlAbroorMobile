@@ -104,7 +104,7 @@
                 android:gravity="left"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
-                android:text="Shalat Zhuhur"
+                android:text="Shalat Dzuhur"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
