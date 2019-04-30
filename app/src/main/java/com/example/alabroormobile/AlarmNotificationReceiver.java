@@ -15,12 +15,19 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        String muazin = intent.getStringExtra("muazin");
+        String imam = intent.getStringExtra("imam");
+        String qultim= intent.getStringExtra("qultum");
+        String text = "Muazin: " + muazin + "\n" +
+                        "Imam: " + imam + "\n" +
+                        "Qultum: " + qultim;
 
-        builder.setAutoCancel(true)
+        builder.setAutoCancel(false)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.mipmap.ic_launcher_alabroor_round)
-                .setContentTitle("Adzan Sedang Berkumandang")
-                .setContentText("Cek Jadwal Petugas Disini")
+                .setContentTitle("Jadwal Petugas Tarawih Hari Ini")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+//                .setContentText("Muazin: " + muazin + ". Imam: " + imam + ". Qultum: " + qultim)
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.adzan2));
 

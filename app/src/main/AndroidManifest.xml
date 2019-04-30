@@ -47,7 +47,7 @@
         <activity android:name=".homeMenu.DaftarPengurus.TambahPengurusActivity" />
         <activity android:name=".homeMenu.WaktuShalatActivity" />
 
-        <receiver android:name=".AlarmNotificationReceiver"/>
+        <receiver android:name=".AlarmNotificationReceiver" />
 
         <service android:name=".FirebaseInstanceIdService">
             <intent-filter>
@@ -56,6 +56,8 @@
         </service>
 
         <activity android:name=".homeMenu.JadwalPetugas.TambahJadwalPetugasActivity" />
+        <activity android:name=".homeMenu.Ramadhan.JadwalRamadhanActivity" />
+        <activity android:name=".homeMenu.Ramadhan.TambahJadwalRamadhanActivity"></activity>
     </application>
 
 </manifest>

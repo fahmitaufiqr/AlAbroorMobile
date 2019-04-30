@@ -1,7 +1,7 @@
 package com.example.alabroormobile.model;
 
 public class JadwalPetugas {
-    String tanggal, muazin, imam;
+    String tanggal, muazin, imam, qultum;
 
     public JadwalPetugas() {
     }
@@ -12,8 +12,23 @@ public class JadwalPetugas {
         this.imam = imam;
     }
 
+    public JadwalPetugas(String tanggal, String muazin, String imam, String qultum) {
+        this.tanggal = tanggal;
+        this.muazin = muazin;
+        this.imam = imam;
+        this.qultum = qultum;
+    }
+
     public String getTanggal() {
         return tanggal;
+    }
+
+    public String getQultum() {
+        return qultum;
+    }
+
+    public void setQultum(String qultum) {
+        this.qultum = qultum;
     }
 
     public void setTanggal(String tanggal) {

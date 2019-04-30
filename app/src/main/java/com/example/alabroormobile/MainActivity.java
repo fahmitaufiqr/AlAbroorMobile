@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
+import com.example.alabroormobile.homeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.model.UserModel;
 import com.example.alabroormobile.homeMenu.Acara.AcaraActivity;
 import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
@@ -70,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
     private TextView tv_tanggal, tv_nama_pengguna;
-
-
+    private Button btnJadwalRamadhan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         aboutbt = findViewById(R.id.about);
         tv_tanggal = findViewById(R.id.tv_tanggal);
         tv_nama_pengguna = (TextView) findViewById(R.id.tv_nama_pengguna);
+        btnJadwalRamadhan = (Button) findViewById(R.id.jadwalRamadhan);
 
         //CEK USER ADMIN =====================================================================
         String username = currentUser.getEmail().split("@")[0];
@@ -197,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                         arrTime.add(d.getValue(String.class));
                     }
                 }
-                startAlarm(arrTime.get(1));
+//                startAlarm(arrTime.get(1));
             }
 
             @Override
@@ -300,6 +301,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnJadwalRamadhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, JadwalRamadhanActivity.class);
                 startActivity(intent);
             }
         });
