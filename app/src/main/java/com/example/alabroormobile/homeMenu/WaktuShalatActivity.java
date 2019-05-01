@@ -63,6 +63,8 @@ public class WaktuShalatActivity extends AppCompatActivity {
     DatabaseReference dRJadwalShalat;
     AlarmManager manager, managerSubuh;
     PendingIntent pendingIntent, pendingIntentSubuh;
+    int REQUEST_ID_BEFORE = 0;
+    int REQUEST_ID_AFTER = 1;
 
     /* Lokasi Daerah Bandung dan Sekitarnya */
     double latitude = -6.974086;
@@ -199,7 +201,10 @@ public class WaktuShalatActivity extends AppCompatActivity {
         myIntent.putExtra("imam", imam);
         myIntent.putExtra("muazin", muazin);
         myIntent.putExtra("qultum", qultum);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+
+        pendingIntent = PendingIntent.getBroadcast(this, REQUEST_ID_BEFORE, myIntent, 0);
+        pendingIntentSubuh = PendingIntent.getBroadcast(this, REQUEST_ID_AFTER, myIntent, 0);
+        manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-120000, pendingIntentSubuh);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
     }
 
@@ -258,7 +263,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
                             }
                             boolean check = compareTime(isya);
                             if (check == true) {
-                                startAlarmSubuh(isya, arrData.get(1), arrData.get(0), arrData.get(2));
                                 startAlarm(isya, arrData.get(1), arrData.get(0), arrData.get(2));
                             }
                         } else {
