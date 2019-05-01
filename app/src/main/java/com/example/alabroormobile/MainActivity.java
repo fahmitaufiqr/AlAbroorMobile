@@ -185,29 +185,6 @@ public class MainActivity extends AppCompatActivity {
         String formattanggal = format.format(Date);
         tv_tanggal.setText(formattanggal);
 
-        //Alarm Adzan
-        Calendar cal = java.util.Calendar.getInstance();
-        String sendTanggal = cal.get(Calendar.DAY_OF_MONTH) + "-" + convertMonth(cal.get(Calendar.MONTH)) + "-" + cal.get(Calendar.YEAR);
-        mDataNotif = FirebaseDatabase.getInstance().getReference("WaktuShalat");
-        mDataNotif.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> arrTime = new ArrayList<>();
-                for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    if (d.getValue(String.class).indexOf('-') < 0) {
-                        arrTime.add(d.getValue(String.class));
-                    }
-                }
-//                startAlarm(arrTime.get(1));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        //!Alarm Adzan
-
         intent();
     }
 
@@ -313,6 +290,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -321,66 +299,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    private void startAlarm(String time) {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent;
-        Calendar alarm = Calendar.getInstance();
-        alarm.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time.split(":")[0]));
-        alarm.set(Calendar.MINUTE, Integer.parseInt(time.split(":")[1]));
-        alarm.set(Calendar.SECOND, 00);
-        PendingIntent pendingIntent;
-
-        myIntent = new Intent(MainActivity.this, AlarmNotificationReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
-
-    }
-
-    private String convertMonth(int bulan) {
-        String bul = "Jan";
-        switch (bulan) {
-            case 0:
-                bul = "Januari";
-                break;
-            case 1:
-                bul = "Februari";
-                break;
-            case 2:
-                bul = "Maret";
-                break;
-            case 3:
-                bul = "April";
-                break;
-            case 4:
-                bul = "Mei";
-                break;
-            case 5:
-                bul = "Juni";
-                break;
-            case 6:
-                bul = "Juli";
-                break;
-            case 7:
-                bul = "Agustus";
-                break;
-            case 8:
-                bul = "September";
-                break;
-            case 9:
-                bul = "Oktober";
-                break;
-            case 10:
-                bul = "November";
-                break;
-            case 11:
-                bul = "Desember";
-                break;
-            default:
-                bul = "Tidak ada";
-                break;
-        }
-        return bul;
     }
 }

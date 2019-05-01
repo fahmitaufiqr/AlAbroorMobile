@@ -64,7 +64,7 @@ public class JadwalRamadhanActivity extends AppCompatActivity {
         cv_jadwal_petugas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                sendTanggal = dayOfMonth + "-" + month + "-" + year;
+                sendTanggal = dayOfMonth + "-" + (month+1) + "-" + year;
                 showDataPetugass(sendTanggal);
             }
         });

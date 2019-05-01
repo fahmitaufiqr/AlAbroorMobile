@@ -11,27 +11,21 @@ import android.support.v4.app.NotificationCompat;
 
 import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
 
-public class AlarmNotificationReceiver extends BroadcastReceiver {
+public class AlarmNotificationReceiverSubuh extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        String muazin = intent.getStringExtra("muazin");
-        String imam = intent.getStringExtra("imam");
-        String qultim= intent.getStringExtra("qultum");
-        String text = "Muazin: " + muazin + "\n" +
-                        "Imam: " + imam + "\n" +
-                        "Qultum: " + qultim;
 
         builder.setAutoCancel(false)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.mipmap.ic_launcher_alabroor_round)
                 .setContentTitle("Jadwal Petugas Tarawih Hari Ini")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.adzan2));
 
         Intent notificationIntent = new Intent(context, JadwalPetugasActivity.class);
-        PendingIntent intent1 = PendingIntent.getActivity(context, 0,
+        PendingIntent intent1 = PendingIntent.getActivity(context, 1,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         builder.setContentIntent(intent1);

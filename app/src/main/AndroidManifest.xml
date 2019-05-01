@@ -49,6 +49,8 @@
 
         <receiver android:name=".AlarmNotificationReceiver" />
 
+        <receiver android:name=".AlarmNotificationReceiverSubuh" />
+
         <service android:name=".FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

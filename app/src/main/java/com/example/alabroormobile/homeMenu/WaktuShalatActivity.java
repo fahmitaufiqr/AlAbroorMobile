@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alabroormobile.AlarmNotificationReceiver;
+import com.example.alabroormobile.AlarmNotificationReceiverSubuh;
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.homeMenu.ArahKiblat.GPSTracker;
 import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
@@ -33,9 +36,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,13 +55,14 @@ public class WaktuShalatActivity extends AppCompatActivity {
     private ProgressDialog loading;
     PrayTimes prayers;
     TextView mSubuh, mZuhur, mAsar, mMagrib, mIsya, mDate,lt,ln,al,date_view;
-    RelativeLayout mlayoutDate;
     String address,city,state,country,postalCode,knownName;
     GPSTracker gps;
     Geocoder geocoder;
     List<Address> addresses;
     double timezone;
     DatabaseReference dRJadwalShalat;
+    AlarmManager manager, managerSubuh;
+    PendingIntent pendingIntent, pendingIntentSubuh;
 
     /* Lokasi Daerah Bandung dan Sekitarnya */
     double latitude = -6.974086;
@@ -84,7 +92,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         String formattanggal = format.format(Datee);
         date_view.setText(formattanggal);
 
-
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
@@ -103,9 +110,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 }else {
                     mDate.setVisibility(View.GONE);
                     date_view.setVisibility(View.VISIBLE);
-
                 }
-
             }
 
             @Override
@@ -173,7 +178,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
         month			= cal.get(java.util.Calendar.MONTH);
         day				= cal.get(java.util.Calendar.DAY_OF_MONTH);
         ShowPrayTime(year, month, day);
-        countDown();
 
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,132 +185,46 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 editWaktuShalatPopUp();
             }
         });
-
-        //setAlarm
-        Calendar call = java.util.Calendar.getInstance();
-        String sendTanggal = call.get(Calendar.DAY_OF_MONTH) + "-" + convertMonth(call.get(Calendar.MONTH)) + "-" + call.get(Calendar.YEAR);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas");
-        dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
-        dRJadwalShalat.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> arrTime = new ArrayList<>();
-                String currentDate = sendTanggal;
-                for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    if (d.getValue(String.class).indexOf('-') < 0) {
-                        arrTime.add(d.getValue(String.class));
-                    } else {
-                        currentDate = d.getValue(String.class);
-                    }
-                }
-                Log.d("boom", "onDataChange: "+currentDate);
-                databaseReference.child(currentDate).child("Isya").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ArrayList<String> arrData = new ArrayList<>();
-                        for (DataSnapshot d : dataSnapshot.getChildren()) {
-                            if (d.getValue(String.class).indexOf('-') < 0) {
-                                arrData.add(d.getValue(String.class));
-                                Log.d("arrrr", "onDataChange: "+arrData.toString());
-                            }
-                        }
-                        startAlarm(arrTime.get(2), arrData.get(1), arrData.get(0), arrData.get(2));
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
     private void startAlarm(String time, String muazin, String imam, String qultum) {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent myIntent;
         Calendar alarm = Calendar.getInstance();
         alarm.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time.split(":")[0]));
         alarm.set(Calendar.MINUTE, Integer.parseInt(time.split(":")[1]));
         alarm.set(Calendar.SECOND, 00);
-        PendingIntent pendingIntent;
 
         myIntent = new Intent(WaktuShalatActivity.this, AlarmNotificationReceiver.class);
         myIntent.putExtra("imam", imam);
         myIntent.putExtra("muazin", muazin);
         myIntent.putExtra("qultum", qultum);
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-        manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
-
+        manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
     }
 
-    private String convertMonth(int bulan) {
-        String bul = "Jan";
-        switch (bulan) {
-            case 0:
-                bul = "Januari";
-                break;
-            case 1:
-                bul = "Februari";
-                break;
-            case 2:
-                bul = "Maret";
-                break;
-            case 3:
-                bul = "April";
-                break;
-            case 4:
-                bul = "Mei";
-                break;
-            case 5:
-                bul = "Juni";
-                break;
-            case 6:
-                bul = "Juli";
-                break;
-            case 7:
-                bul = "Agustus";
-                break;
-            case 8:
-                bul = "September";
-                break;
-            case 9:
-                bul = "Oktober";
-                break;
-            case 10:
-                bul = "November";
-                break;
-            case 11:
-                bul = "Desember";
-                break;
-            default:
-                bul = "Tidak ada";
-                break;
-        }
-        return bul;
-    }
+    private void startAlarmSubuh(String time, String muazin, String imam, String qultum) {
+        managerSubuh = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intentSubuh;
+        Calendar alarmSubuh = Calendar.getInstance();
+        alarmSubuh.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time.split(":")[0]));
+        alarmSubuh.set(Calendar.MINUTE, Integer.parseInt(time.split(":")[1]));
+        alarmSubuh.set(Calendar.SECOND, 00);
 
-    private void countDown(){
-        String givenDateString = "04:32";
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-        try {
-            Date mDate = sdf.parse(givenDateString);
-            long time = mDate.getTime();
-        }catch (ParseException e){
+        intentSubuh = new Intent(WaktuShalatActivity.this, AlarmNotificationReceiverSubuh.class);
+        intentSubuh.putExtra("imam", imam);
+        intentSubuh.putExtra("muazin", muazin);
+        intentSubuh.putExtra("qultum", qultum);
 
-        }
+        pendingIntentSubuh = PendingIntent.getBroadcast(this, 1, intentSubuh, 0);
+        managerSubuh.setExact(AlarmManager.RTC_WAKEUP, alarmSubuh.getTimeInMillis()-120000, pendingIntent);
     }
 
     private void ShowPrayTime(int year, int month, int day) {
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
         mDate.setText("Sesuaikan Waktu Shalat");
         String convert;
-        gantihari(day + "-" + month + "-" + year,
+        gantihari(day + "-" + (month+1) + "-" + year,
                 prayerTimes.get(0),
                 prayerTimes.get(2),
                 prayerTimes.get(3),
@@ -326,11 +244,57 @@ public class WaktuShalatActivity extends AppCompatActivity {
         dataWaktuShalat.put("maghrib", maghrib);
         dataWaktuShalat.put("isya", isya);
 
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas");
+        databaseReference.child(tanggal).child("Isya").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ArrayList<String> arrData = new ArrayList<>();
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot d : dataSnapshot.getChildren()) {
+                                if (d.getValue(String.class).indexOf('-') < 0) {
+                                    arrData.add(d.getValue(String.class));
+                                    Log.d("arrrr", "onDataChange: " + arrData.toString());
+                                }
+                            }
+                            boolean check = compareTime(isya);
+                            if (check == true) {
+                                startAlarmSubuh(isya, arrData.get(1), arrData.get(0), arrData.get(2));
+                                startAlarm(isya, arrData.get(1), arrData.get(0), arrData.get(2));
+                            }
+                        } else {
+                            Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
         dRJadwalShalat.setValue(dataWaktuShalat).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
             }
         });
+    }
+
+    private boolean compareTime(String time){
+        SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
+        Date d = new Date();
+        boolean bol = false;
+        String hourNow = hourFormat.format(d);
+        try {
+            Date firstTime = hourFormat.parse(time);
+            Date secondTime = hourFormat.parse(hourNow);
+            if (firstTime.compareTo(secondTime) > 0){
+                bol = true;
+            }else bol = false;
+            Log.d("boom", "firstTime: " + firstTime + "secondTime: " + secondTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return bol;
     }
 
     private void showJadwal(){
@@ -390,6 +354,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         Dialog popUp = new Dialog(WaktuShalatActivity.this,
                 android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth
         );
+
         popUp.setContentView(R.layout.pop_up_edit_waktu_shalat);
         EditText et_sSubuh = (EditText) popUp.findViewById(R.id.et_sSubuh);
         EditText et_sDzuhur = (EditText) popUp.findViewById(R.id.et_sDzuhur);
@@ -445,7 +410,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
-                setJadwal(day + "-" + month + "-" + year,
+                setJadwal(day + "-" + (month+1) + "-" + year,
                         prayerTimes.get(0),
                         prayerTimes.get(2),
                         prayerTimes.get(3),
@@ -464,7 +429,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 String waktuAshar = et_sAshar.getText().toString();
                 String waktuMaghrib = et_sMaghrib.getText().toString();
                 String waktuIsya = et_sIsya.getText().toString();
-                String tanggal = day + "-" + month + "-" + year;
+                String tanggal = day + "-" + (month+1) + "-" + year;
 
                 setJadwal(tanggal, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya);
                 showJadwal();
