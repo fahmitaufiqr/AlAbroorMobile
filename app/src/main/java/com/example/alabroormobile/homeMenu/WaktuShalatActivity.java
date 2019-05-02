@@ -191,18 +191,20 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
     private void startAlarm(String time, String muazin, String imam, String qultum) {
         manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent;
+        Intent myIntent, intent2;
         Calendar alarm = Calendar.getInstance();
         alarm.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time.split(":")[0]));
         alarm.set(Calendar.MINUTE, Integer.parseInt(time.split(":")[1]));
         alarm.set(Calendar.SECOND, 00);
 
         myIntent = new Intent(WaktuShalatActivity.this, AlarmNotificationReceiver.class);
+        intent2 = new Intent(WaktuShalatActivity.this, AlarmNotificationReceiverSubuh.class);
+
         myIntent.putExtra("imam", imam);
         myIntent.putExtra("muazin", muazin);
         myIntent.putExtra("qultum", qultum);
 
-        pendingIntent = PendingIntent.getBroadcast(this, REQUEST_ID_BEFORE, myIntent, 0);
+        pendingIntent = PendingIntent.getBroadcast(this, REQUEST_ID_BEFORE, intent2, 0);
         pendingIntentSubuh = PendingIntent.getBroadcast(this, REQUEST_ID_AFTER, myIntent, 0);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-120000, pendingIntentSubuh);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);

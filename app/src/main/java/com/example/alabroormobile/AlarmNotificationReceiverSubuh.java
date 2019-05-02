@@ -20,12 +20,12 @@ public class AlarmNotificationReceiverSubuh extends BroadcastReceiver {
         builder.setAutoCancel(false)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.mipmap.ic_launcher_alabroor_round)
-                .setContentTitle("Jadwal Petugas Tarawih Hari Ini")
+                .setContentTitle("Adzan Sedang Berkumandang")
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.adzan2));
 
         Intent notificationIntent = new Intent(context, JadwalPetugasActivity.class);
-        PendingIntent intent1 = PendingIntent.getActivity(context, 1,
+        PendingIntent intent1 = PendingIntent.getActivity(context, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         builder.setContentIntent(intent1);
