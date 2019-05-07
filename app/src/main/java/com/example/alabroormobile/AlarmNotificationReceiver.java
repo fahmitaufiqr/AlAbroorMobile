@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
+import com.example.alabroormobile.homeMenu.Ramadhan.JadwalRamadhanActivity;
 
 public class AlarmNotificationReceiver extends BroadcastReceiver {
     @Override
@@ -29,9 +30,9 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setVibrate(new long[] {1000, 1000, 1000, 1000, 1000})
-                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.definite));
+                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.android_sms));
 
-        Intent notificationIntent = new Intent(context, JadwalPetugasActivity.class);
+        Intent notificationIntent = new Intent(context, JadwalRamadhanActivity.class);
         PendingIntent intent1 = PendingIntent.getActivity(context, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

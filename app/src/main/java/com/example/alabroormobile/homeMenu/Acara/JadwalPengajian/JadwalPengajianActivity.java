@@ -126,7 +126,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
                         }
 
                         String acara = pengajianList.get(position).toString();
-                        Toast.makeText(JadwalPengajianActivity.this, "Tahan untuk edit dan hapus", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JadwalPengajianActivity.this, "Tahan untuk edit", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

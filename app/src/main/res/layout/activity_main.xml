@@ -211,7 +211,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acara"
+                android:text="Kegiatan"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="9sp"/>
@@ -351,7 +351,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Daftar Petugas"
+                android:text="Pengurus DKM"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="9sp"/>
@@ -376,7 +376,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/jadwalRamadhan"
@@ -384,7 +385,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:layout_gravity="center"
-            android:text="Jadwal Ramadhan"
+            android:textSize="12sp"
+            android:text="Imam Isya, Tarawih &amp; Qultum"
             />
 
         <Button

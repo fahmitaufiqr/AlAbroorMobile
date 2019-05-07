@@ -20,7 +20,7 @@ public class AcaraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acara);
-        getSupportActionBar().setTitle("Pengajian");
+        getSupportActionBar().setTitle("Kegiatan");
 
         //inisialisasi
         CardView pengajianBt = (CardView) findViewById(R.id.jadwalPengajian);

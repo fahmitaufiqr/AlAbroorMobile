@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Al-Abroor Mobile</string>
+    <string name="app_name">Al-Ab\'roor Mobile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -87,7 +87,7 @@
 
     <string name="team">Atom Team</string>
     <string name="add_reminder">Reminder</string>
-    <string name="pengertian">Al-Abroor Mobile adalah aplikasi pengingat waktu adzan dan iqamat yang diperuntukkan Dewan Kemakmuran Masjid (DKM), sehingga memudahkan pengurus dalam mengatur kegiatan dan juga jadwal shalat pada masjid tersebut.</string>
+    <string name="pengertian">Al-Abroor Mobile adalah aplikasi penjadwalan Masjid yang diperuntukkan bagi DKM Masjid Al-Abroor, sehingga memudahkan pengurus dalam mengatur kegiatan di masjid tersebut.</string>
     <string name="no_cardetails">Click on the button below to begin creating your reminder!</string>
     <string name="details">Details</string>
     <string name="date">Date</string>

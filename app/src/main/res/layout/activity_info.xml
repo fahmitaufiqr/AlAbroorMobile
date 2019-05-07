@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="APA ITU AL-ABROOR MOBILE?"
+            android:text="APA ITU AL-AB'ROOR MOBILE?"
             android:textSize="20sp"/>
 
         <TextView

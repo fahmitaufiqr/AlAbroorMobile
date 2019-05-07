@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,19 +29,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Isya"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    tools:text="Imam Isya dan Tarawih"/>
 
                 <TextView
                     android:id="@+id/tv_qultum5"
@@ -71,4 +60,14 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add_ramadhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"/>
+</RelativeLayout>

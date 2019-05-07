@@ -2,16 +2,21 @@ package com.example.alabroormobile.homeMenu.Ramadhan;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.example.alabroormobile.R;
+import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.example.alabroormobile.model.JadwalPetugas;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,30 +31,16 @@ public class JadwalRamadhanActivity extends AppCompatActivity {
     private TextView tv_muazin5, tv_imam5, tv_qultum5;
     private CalendarView cv_jadwal_petugas;
     private String sendTanggal;
+    private FloatingActionButton fab;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_add_jadwal_petugas, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.tambah_jadwal_petugas) {
-            Intent intent = new Intent(JadwalRamadhanActivity.this, TambahJadwalRamadhanActivity.class);
-            intent.putExtra("dataTanggal", sendTanggal);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_ramadhan);
-        getSupportActionBar().setTitle("Jadwal Ramadhan");
+        getSupportActionBar().setTitle("Imam Tarawih Masjid Al-Ab'roor");
 
         Calendar cal = java.util.Calendar.getInstance();
         sendTanggal = cal.get(Calendar.DAY_OF_MONTH) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.YEAR);
@@ -60,11 +51,50 @@ public class JadwalRamadhanActivity extends AppCompatActivity {
         tv_muazin5 = (TextView) findViewById(R.id.tv_muazin15);
         tv_imam5 = (TextView) findViewById(R.id.tv_imam15);
         tv_qultum5 = (TextView) findViewById(R.id.tv_qultum5);
+        fab = (FloatingActionButton)findViewById(R.id.fab_add_ramadhan);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        //CEK USER ADMIN =====================================================================
+        String username = currentUser.getEmail().split("@")[0];
+        DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
+        dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pengurus pengurus = dataSnapshot.getValue(Pengurus.class);
+
+                if (pengurus.getStatus().equals("Admin")){
+                    fab.setVisibility(View.VISIBLE);
+
+                }else {
+                    fab.setVisibility(View.GONE);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //====================================================================================================
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JadwalRamadhanActivity.this, TambahJadwalRamadhanActivity.class);
+                intent.putExtra("dataTanggal", sendTanggal);
+                startActivity(intent);
+            }
+        });
 
         cv_jadwal_petugas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                sendTanggal = dayOfMonth + "-" + (month+1) + "-" + year;
+                sendTanggal = dayOfMonth + "-" + month + "-" + year;
                 showDataPetugass(sendTanggal);
             }
         });
@@ -87,14 +117,14 @@ public class JadwalRamadhanActivity extends AppCompatActivity {
                         qultum.add(jadwalPetugas.getQultum());
                     }
                     if (muazin.size() == 1) {
-                        tv_muazin5.setText("Muazin\t: " + muazin.get(0));
-                        tv_imam5.setText("Imam\t\t: " + imam.get(0));
-                        tv_qultum5.setText("Qultum\t: " + qultum.get(0));
+                        tv_muazin5.setText("Muazin\t\t\t\t\t\t\t\t: " + muazin.get(0));
+                        tv_imam5.setText("Imam Isya Tarawih\t\t: " + imam.get(0));
+                        tv_qultum5.setText("Qultum\t\t\t\t\t\t\t\t: " + qultum.get(0));
                     }
                 } else {
-                    tv_muazin5.setText("Muazin Belum ditetukan");
-                    tv_imam5.setText("Imam Belum ditetukan");
-                    tv_qultum5.setText("Qultum Belum ditetukan");
+                    tv_muazin5.setText("Muazin Belum ditentukan");
+                    tv_imam5.setText("Imam Belum ditentukan");
+                    tv_qultum5.setText("Qultum Belum ditentukan");
                 }
             }
 

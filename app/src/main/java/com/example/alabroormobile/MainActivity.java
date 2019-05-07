@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.JadwalPengajianActivity;
 import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
 import com.example.alabroormobile.homeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.model.UserModel;
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Al-Ab'roor Mobile");
+
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -226,8 +229,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, JadwalPetugasActivity.class);
-                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Fitur Dalam Pengembangan", Toast.LENGTH_SHORT).show();
             }
         });
 

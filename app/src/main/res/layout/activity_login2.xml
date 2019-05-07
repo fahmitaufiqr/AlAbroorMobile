@@ -35,14 +35,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ayo masuk untuk menjadi bagian dari bagian"
-                android:textSize="15sp"
+                android:text="Assalamu'alaikum Wr. Wb."
+                android:textSize="24sp"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Masjid Al-Ab'roor"
-                android:textSize="30sp"
+                android:text="Aplikasi Penjadwalan Masjid Al-Ab'roor"
+                android:textSize="12sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"/>
 

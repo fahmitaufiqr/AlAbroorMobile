@@ -34,7 +34,7 @@ public class RamadhanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ramadhan);
-        getSupportActionBar().setTitle("Jadwal Ramadhan");
+        getSupportActionBar().setTitle("Petugas Ramadhan 2019M/1440H ");
 
 
         //    INISIALISASI

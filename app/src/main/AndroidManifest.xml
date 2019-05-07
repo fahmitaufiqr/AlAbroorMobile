@@ -31,7 +31,7 @@
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
-                    android:label="@string/title_activity_main2" />
+                    android:label="Aplikasi Penjadwalan Masjid Al-Ab'roor" />
             </intent-filter>
         </activity>
         <activity

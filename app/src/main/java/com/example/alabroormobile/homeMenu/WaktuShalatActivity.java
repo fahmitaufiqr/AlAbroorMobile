@@ -206,7 +206,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
         pendingIntent = PendingIntent.getBroadcast(this, REQUEST_ID_BEFORE, intent2, 0);
         pendingIntentSubuh = PendingIntent.getBroadcast(this, REQUEST_ID_AFTER, myIntent, 0);
-        manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-120000, pendingIntentSubuh);
+        manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-300000, pendingIntentSubuh);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
     }
 
@@ -231,7 +231,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
         mDate.setText("Sesuaikan Waktu Shalat");
         String convert;
-        gantihari(day + "-" + (month+1) + "-" + year,
+        gantihari(day + "-" + month + "-" + year,
                 prayerTimes.get(0),
                 prayerTimes.get(2),
                 prayerTimes.get(3),
@@ -416,7 +416,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ArrayList<String> prayerTimes = prayers.getPrayerTimes(year, month, day, latitude, longitude, timezone);
-                setJadwal(day + "-" + (month+1) + "-" + year,
+                setJadwal(day + "-" + month + "-" + year,
                         prayerTimes.get(0),
                         prayerTimes.get(2),
                         prayerTimes.get(3),
@@ -435,7 +435,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 String waktuAshar = et_sAshar.getText().toString();
                 String waktuMaghrib = et_sMaghrib.getText().toString();
                 String waktuIsya = et_sIsya.getText().toString();
-                String tanggal = day + "-" + (month+1) + "-" + year;
+                String tanggal = day + "-" + month + "-" + year;
 
                 setJadwal(tanggal, waktuSubuh, waktuDzuhur, waktuAshar, waktuMaghrib, waktuIsya);
                 showJadwal();
