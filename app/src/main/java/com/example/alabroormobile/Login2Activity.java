@@ -61,6 +61,7 @@ public class Login2Activity extends AppCompatActivity {
     }
 
     private void cekEmail(FirebaseUser currentUser){
+        displayLoader();
         String username = currentUser.getEmail().split("@")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -163,6 +164,7 @@ public class Login2Activity extends AppCompatActivity {
 
     protected void signInwithGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+        displayLoader();
         startActivityForResult(signInIntent, RC_SIGN);
     }
 

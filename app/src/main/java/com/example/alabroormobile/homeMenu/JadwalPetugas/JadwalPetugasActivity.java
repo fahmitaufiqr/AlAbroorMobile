@@ -66,7 +66,7 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Jadwal Petugas");
 
         Calendar cal = java.util.Calendar.getInstance();
-        sendTanggal = cal.get(Calendar.DAY_OF_MONTH) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.YEAR);
+        sendTanggal = cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH)+ 1) + "-" + cal.get(Calendar.YEAR);
         showDataPetugas(sendTanggal);
 
         //inisialisasi
@@ -85,14 +85,14 @@ public class JadwalPetugasActivity extends AppCompatActivity {
         cv_jadwal_petugas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                sendTanggal = dayOfMonth + "-" + month + "-" + year;
+                sendTanggal = dayOfMonth + "-" + (month+1) + "-" + year;
                 showDataPetugas(sendTanggal);
             }
         });
     }
 
     private void showDataPetugas(String date) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugas").child(date);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugasBaru").child(date);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -149,7 +149,7 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
 
     //method untuk menyimpan jadwal petugas ke firebase database
     private void simpanJadwal(String waktuShalat, JadwalPetugas jadwalPetugas) {
-        DatabaseReference dr= FirebaseDatabase.getInstance().getReference("JadwalPetugas");
+        DatabaseReference dr= FirebaseDatabase.getInstance().getReference("JadwalPetugasBaru");
         dr.child(dataTanggal)
                 .child(waktuShalat)
                 .setValue(jadwalPetugas)

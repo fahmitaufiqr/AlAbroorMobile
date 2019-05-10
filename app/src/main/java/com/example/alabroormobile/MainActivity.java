@@ -229,7 +229,8 @@ public class MainActivity extends AppCompatActivity {
         jadwalPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Fitur Dalam Pengembangan", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, JadwalPetugasActivity.class);
+                startActivity(i);
             }
         });
 

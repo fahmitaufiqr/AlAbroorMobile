@@ -47,9 +47,9 @@
         <activity android:name=".homeMenu.DaftarPengurus.TambahPengurusActivity" />
         <activity android:name=".homeMenu.WaktuShalatActivity" />
 
-        <receiver android:name=".AlarmNotificationReceiver" />
+        <receiver android:name=".AlarmNotificationReceiverBeforeAdzan" />
 
-        <receiver android:name=".AlarmNotificationReceiverSubuh" />
+        <receiver android:name=".AlarmNotificationReceiverAdzan" />
 
         <service android:name=".FirebaseInstanceIdService">
             <intent-filter>

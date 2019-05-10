@@ -12,18 +12,24 @@ import android.support.v4.app.NotificationCompat;
 import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
 import com.example.alabroormobile.homeMenu.Ramadhan.JadwalRamadhanActivity;
 
-public class AlarmNotificationReceiverSubuh extends BroadcastReceiver {
-
+public class AlarmNotificationReceiverBeforeAdzan extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        String muazin = intent.getStringExtra("muazin");
+        String imam = intent.getStringExtra("imam");
+//        String qultum= intent.getStringExtra("qultum");
+        String text = "Muazin: " + muazin + "\n" +
+                        "Imam: " + imam;
 
         builder.setAutoCancel(false)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.mipmap.ic_launcher_alabroor_round)
-                .setContentTitle("Adzan Sedang Berkumandang")
+                .setContentTitle("5 Menit Lagi Adzan Berkumandang")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_LIGHTS)
-                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.adzan2));
+                .setVibrate(new long[] {1000, 1000, 1000, 1000, 1000})
+                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.android_sms));
 
         Intent notificationIntent = new Intent(context, JadwalRamadhanActivity.class);
         PendingIntent intent1 = PendingIntent.getActivity(context, 0,
