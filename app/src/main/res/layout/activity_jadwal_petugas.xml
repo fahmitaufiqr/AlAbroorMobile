@@ -1,221 +1,249 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".homeMenu.JadwalPetugas.JadwalPetugasActivity">
+    tools:context=".HomeMenu.JadwalPetugas.JadwalPetugasActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <CalendarView
-            android:id="@+id/cv_jadwal_petugas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@color/grey"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_height="match_parent"
+            android:paddingBottom="40dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/iv_su"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Su"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            <CalendarView
+                android:id="@+id/cv_jadwal_petugas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/grey" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_muazin1"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Muazin"/>
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/tv_imam1"
-                    android:layout_width="match_parent"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    <TextView
+                        android:id="@+id/tv_subuh"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_height="wrap_content"
+                        tools:text="Subuh"/>
+
+                    <TextView
+                        android:id="@+id/tv_muazin1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Muazin" />
+
+                    <TextView
+                        android:id="@+id/tv_imam1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Imam" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/iv_dz"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Dz"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_muazin2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Muazin"/>
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/tv_imam2"
-                    android:layout_width="match_parent"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    <TextView
+                        android:id="@+id/tv_dzuhur"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_height="wrap_content"
+                        tools:text="Dzuhur"/>
+
+                    <TextView
+                        android:id="@+id/tv_muazin2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Muazin" />
+
+                    <TextView
+                        android:id="@+id/tv_imam2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Imam" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/iv_as"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="As"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_muazin3"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Muazin"/>
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/tv_imam3"
-                    android:layout_width="match_parent"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    <TextView
+                        android:id="@+id/tv_ashar"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_height="wrap_content"
+                        tools:text="Ashar"/>
+
+                    <TextView
+                        android:id="@+id/tv_muazin3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Muazin" />
+
+                    <TextView
+                        android:id="@+id/tv_imam3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Imam" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/iv_mg"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Su"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_muazin4"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Muazin"/>
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/tv_imam4"
-                    android:layout_width="match_parent"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    <TextView
+                        android:id="@+id/tv_maghrib"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_height="wrap_content"
+                        tools:text="Maghrib"/>
+
+                    <TextView
+                        android:id="@+id/tv_muazin4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Muazin" />
+
+                    <TextView
+                        android:id="@+id/tv_imam4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Imam" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/iv_is"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Su"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:background="@drawable/circle_jadwal"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_muazin5"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    tools:text="Muazin"/>
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/tv_imam5"
-                    android:layout_width="match_parent"
-                    android:textColor="#000"
-                    android:layout_height="wrap_content"
-                    tools:text="Imam"/>
+                    <TextView
+                        android:id="@+id/tv_isya"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_height="wrap_content"
+                        tools:text="Isya"/>
+
+                    <TextView
+                        android:id="@+id/tv_muazin5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Muazin" />
+
+                    <TextView
+                        android:id="@+id/tv_imam5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        tools:text="Imam" />
+                </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey"/>
         </LinearLayout>
-    </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_jadwal_petugas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabSize="normal"/>
+    </RelativeLayout>
 </ScrollView>

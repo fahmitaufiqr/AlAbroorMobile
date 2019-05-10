@@ -17,9 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".homeMenu.Acara.JadwalPengajian.JadwalPengajianActivity" />
-        <activity android:name=".homeMenu.Acara.Ramadhan.DetailRamadhanActivity" />
-        <activity android:name=".homeMenu.Acara.Ramadhan.RamadhanActivity" />
+        <activity android:name=".HomeMenu.Acara.JadwalPengajian.JadwalPengajianActivity" />
+        <activity android:name=".HomeMenu.Acara.Ramadhan.RamadhanActivity" />
         <activity android:name=".SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,29 +36,29 @@
         <activity
             android:name=".Login2Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".homeMenu.InfoActivity" />
-        <activity android:name=".homeMenu.ProfileActivity" />
-        <activity android:name=".homeMenu.ArahKiblat.ArahKiblatActivity" />
-        <activity android:name=".homeMenu.Acara.AcaraActivity" />
-        <activity android:name=".homeMenu.StatistikActivity" />
-        <activity android:name=".homeMenu.JadwalPetugas.JadwalPetugasActivity" />
-        <activity android:name=".homeMenu.DaftarPengurus.DaftarPengurusActivity" />
-        <activity android:name=".homeMenu.DaftarPengurus.TambahPengurusActivity" />
-        <activity android:name=".homeMenu.WaktuShalatActivity" />
+        <activity android:name=".HomeMenu.InfoActivity" />
+        <activity android:name=".HomeMenu.ProfileActivity" />
+        <activity android:name=".HomeMenu.ArahKiblat.ArahKiblatActivity" />
+        <activity android:name=".HomeMenu.Acara.AcaraActivity" />
+        <activity android:name=".HomeMenu.StatistikActivity" />
+        <activity android:name=".HomeMenu.JadwalPetugas.JadwalPetugasActivity" />
+        <activity android:name=".HomeMenu.PengurusDKM.PengurusDKMActivity" />
+        <activity android:name=".HomeMenu.PengurusDKM.TambahPengurusActivity" />
+        <activity android:name=".HomeMenu.WaktuShalatActivity" />
 
-        <receiver android:name=".AlarmNotificationReceiverBeforeAdzan" />
+        <receiver android:name=".Receiver.AlarmNotificationReceiverBeforeAdzan" />
 
-        <receiver android:name=".AlarmNotificationReceiverAdzan" />
+        <receiver android:name=".Receiver.AlarmNotificationReceiverAdzan" />
 
-        <service android:name=".FirebaseInstanceIdService">
+        <service android:name=".Service.FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".homeMenu.JadwalPetugas.TambahJadwalPetugasActivity" />
-        <activity android:name=".homeMenu.Ramadhan.JadwalRamadhanActivity" />
-        <activity android:name=".homeMenu.Ramadhan.TambahJadwalRamadhanActivity"></activity>
+        <activity android:name=".HomeMenu.JadwalPetugas.TambahJadwalPetugasActivity" />
+        <activity android:name=".HomeMenu.Ramadhan.JadwalRamadhanActivity" />
+        <activity android:name=".HomeMenu.Ramadhan.TambahJadwalRamadhanActivity"></activity>
     </application>
 
 </manifest>

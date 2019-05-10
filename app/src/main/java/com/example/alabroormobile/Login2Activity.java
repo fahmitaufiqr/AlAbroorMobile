@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
 import com.example.alabroormobile.model.UserModel;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -62,7 +61,8 @@ public class Login2Activity extends AppCompatActivity {
 
     private void cekEmail(FirebaseUser currentUser){
         displayLoader();
-        String username = currentUser.getEmail().split("@")[0];
+//        String username = currentUser.getEmail().split("@")[0];
+        String username = currentUser.getEmail().replace(".", "0").split("@")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -6,7 +6,7 @@
     android:id="@+id/activity_pengurus_jadwal_sholat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homeMenu.WaktuShalatActivity">
+    tools:context=".HomeMenu.WaktuShalatActivity">
 
     <LinearLayout
         android:id="@+id/layout_content"

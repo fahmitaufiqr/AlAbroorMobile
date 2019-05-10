@@ -1,8 +1,6 @@
 package com.example.alabroormobile;
 
-import android.app.AlarmManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,17 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alabroormobile.homeMenu.Acara.JadwalPengajian.JadwalPengajianActivity;
-import com.example.alabroormobile.homeMenu.DaftarPengurus.Pengurus;
-import com.example.alabroormobile.homeMenu.Ramadhan.JadwalRamadhanActivity;
+import com.example.alabroormobile.HomeMenu.Acara.JadwalPengajian.JadwalPengajianActivity;
+import com.example.alabroormobile.HomeMenu.Acara.Ramadhan.RamadhanActivity;
+import com.example.alabroormobile.model.Pengurus;
+import com.example.alabroormobile.HomeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.model.UserModel;
-import com.example.alabroormobile.homeMenu.Acara.AcaraActivity;
-import com.example.alabroormobile.homeMenu.ArahKiblat.ArahKiblatActivity;
-import com.example.alabroormobile.homeMenu.DaftarPengurus.DaftarPengurusActivity;
-import com.example.alabroormobile.homeMenu.InfoActivity;
-import com.example.alabroormobile.homeMenu.JadwalPetugas.JadwalPetugasActivity;
-import com.example.alabroormobile.homeMenu.ProfileActivity;
-import com.example.alabroormobile.homeMenu.WaktuShalatActivity;
+import com.example.alabroormobile.HomeMenu.Acara.AcaraActivity;
+import com.example.alabroormobile.HomeMenu.ArahKiblat.ArahKiblatActivity;
+import com.example.alabroormobile.HomeMenu.PengurusDKM.PengurusDKMActivity;
+import com.example.alabroormobile.HomeMenu.InfoActivity;
+import com.example.alabroormobile.HomeMenu.JadwalPetugas.JadwalPetugasActivity;
+import com.example.alabroormobile.HomeMenu.ProfileActivity;
+import com.example.alabroormobile.HomeMenu.WaktuShalatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -47,8 +46,6 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -104,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
         btnJadwalRamadhan = (Button) findViewById(R.id.jadwalRamadhan);
 
         //CEK USER ADMIN =====================================================================
-        String username = currentUser.getEmail().split("@")[0];
-        //String username2 = "asdas.das".replace(".","");
+//        String username = currentUser.getEmail().split("@")[0];
+        String username = currentUser.getEmail().replace(".", "0").split("@")[0];
         DatabaseReference dbuserA = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         dbuserA.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -237,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         jadwalAcarabt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AcaraActivity.class);
+                Intent intent = new Intent(MainActivity.this, JadwalPengajianActivity.class);
                 startActivity(intent);
             }
         });
@@ -245,11 +242,8 @@ public class MainActivity extends AppCompatActivity {
         statistikPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, StatistikActivity.class);
-//                startActivity(intent);
-
-                Toast.makeText(MainActivity.this, "Fitur Dalam Pengembangan", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(MainActivity.this, RamadhanActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -264,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
         strukturDkmbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DaftarPengurusActivity.class);
+                Intent intent = new Intent(MainActivity.this, PengurusDKMActivity.class);
                 startActivity(intent);
             }
         });
