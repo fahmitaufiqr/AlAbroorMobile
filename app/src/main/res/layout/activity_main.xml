@@ -366,7 +366,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info"
+                android:text="Tentang Aplikasi"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="9sp"/>
