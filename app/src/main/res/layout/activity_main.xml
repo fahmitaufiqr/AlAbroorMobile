@@ -169,7 +169,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="2dp"
-                app:srcCompat="@drawable/home_statistikpetugas"/>
+                app:srcCompat="@drawable/ic_ramadhans"/>
         </LinearLayout>
 
         <LinearLayout
