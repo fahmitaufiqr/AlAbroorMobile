@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.alabroormobile.HomeMenu.JadwalPetugas.JadwalPetugasActivity;
 import com.example.alabroormobile.HomeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.R;
 
@@ -25,7 +26,7 @@ public class AlarmNotificationReceiverAdzan extends BroadcastReceiver {
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.adzan2));
 
-        Intent notificationIntent = new Intent(context, JadwalRamadhanActivity.class);
+        Intent notificationIntent = new Intent(context, JadwalPetugasActivity.class);
         PendingIntent intent1 = PendingIntent.getActivity(context, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
