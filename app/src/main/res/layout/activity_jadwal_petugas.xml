@@ -6,22 +6,22 @@
     android:orientation="vertical"
     tools:context=".HomeMenu.JadwalPetugas.JadwalPetugasActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="40dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
 
             <CalendarView
                 android:id="@+id/cv_jadwal_petugas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
@@ -29,220 +29,233 @@
                 android:layout_marginRight="5dp"
                 android:background="@color/grey" />
 
-            <LinearLayout
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_subuh"
-                        android:layout_width="match_parent"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content"
-                        tools:text="Subuh"/>
-
-                    <TextView
-                        android:id="@+id/tv_muazin1"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Muazin" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_imam1"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_subuh"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Subuh" />
+
+                            <TextView
+                                android:id="@+id/tv_muazin1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Muazin" />
+
+                            <TextView
+                                android:id="@+id/tv_imam1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Imam" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Imam" />
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_dzuhur"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Dzuhur" />
+
+                            <TextView
+                                android:id="@+id/tv_muazin2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Muazin" />
+
+                            <TextView
+                                android:id="@+id/tv_imam2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Imam" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_ashar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Ashar" />
+
+                            <TextView
+                                android:id="@+id/tv_muazin3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Muazin" />
+
+                            <TextView
+                                android:id="@+id/tv_imam3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Imam" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_maghrib"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Maghrib" />
+
+                            <TextView
+                                android:id="@+id/tv_muazin4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Muazin" />
+
+                            <TextView
+                                android:id="@+id/tv_imam4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Imam" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_isya"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Isya" />
+
+                            <TextView
+                                android:id="@+id/tv_muazin5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Muazin" />
+
+                            <TextView
+                                android:id="@+id/tv_imam5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#000"
+                                tools:text="Imam" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/grey"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_dzuhur"
-                        android:layout_width="match_parent"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content"
-                        tools:text="Dzuhur"/>
-
-                    <TextView
-                        android:id="@+id/tv_muazin2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Muazin" />
-
-                    <TextView
-                        android:id="@+id/tv_imam2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Imam" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/grey"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_ashar"
-                        android:layout_width="match_parent"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content"
-                        tools:text="Ashar"/>
-
-                    <TextView
-                        android:id="@+id/tv_muazin3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Muazin" />
-
-                    <TextView
-                        android:id="@+id/tv_imam3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Imam" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/grey"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_maghrib"
-                        android:layout_width="match_parent"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content"
-                        tools:text="Maghrib"/>
-
-                    <TextView
-                        android:id="@+id/tv_muazin4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Muazin" />
-
-                    <TextView
-                        android:id="@+id/tv_imam4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Imam" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/grey"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_isya"
-                        android:layout_width="match_parent"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_height="wrap_content"
-                        tools:text="Isya"/>
-
-                    <TextView
-                        android:id="@+id/tv_muazin5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Muazin" />
-
-                    <TextView
-                        android:id="@+id/tv_imam5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        tools:text="Imam" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/grey"/>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_add_jadwal_petugas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_black_24dp"
         app:backgroundTint="@color/colorPrimary"
-        app:fabSize="normal"/>
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 </RelativeLayout>
