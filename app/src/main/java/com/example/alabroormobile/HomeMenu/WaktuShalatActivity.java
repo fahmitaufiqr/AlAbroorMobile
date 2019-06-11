@@ -214,7 +214,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
     }
 
-    private void startAlarmSubuh(String time, String muazin, String imam) {
+    public void startAlarmSubuh(String time, String muazin, String imam) {
         manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent myIntent, intent2;
         Calendar alarm = Calendar.getInstance();
@@ -233,6 +233,9 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-300000, pendingIntentSubuh);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
+
+        Toast.makeText(WaktuShalatActivity.this, "Set Lagi", Toast.LENGTH_SHORT).show();
+        Log.d("aaa12", "startAlarmSubuh: Set lagi");
     }
 
     private void startAlarmDzuhur(String time, String muazin, String imam) {
@@ -319,6 +322,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
         dataWaktuShalat.put("ashar", ashar);
         dataWaktuShalat.put("maghrib", maghrib);
         dataWaktuShalat.put("isya", isya);
+        Log.d("arrr", "setJadwal: Masuk set jadwal");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugasBaru");
         databaseReference.child(tanggal).child("Isya").addValueEventListener(new ValueEventListener() {
@@ -329,7 +333,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                             for (DataSnapshot d : dataSnapshot.getChildren()) {
                                 if (d.getValue(String.class).indexOf('-') < 0) {
                                     arrData.add(d.getValue(String.class));
-                                    Log.d("arrrr", "onDataChange: " + arrData.toString());
+                                    Log.d("arrrr1", "onDataChange: " + arrData.toString());
                                 }
                             }
                             boolean check = compareTime(isya);
@@ -356,11 +360,16 @@ public class WaktuShalatActivity extends AppCompatActivity {
                     for (DataSnapshot d : dataSnapshot.getChildren()) {
                         if (d.getValue(String.class).indexOf('-') < 0) {
                             arrData.add(d.getValue(String.class));
+                            Log.d("aaa12", "Check: ");
                         }
                     }
                     boolean check = compareTime(subuh);
+                    Toast.makeText(WaktuShalatActivity.this, "setelah compare" + check, Toast.LENGTH_SHORT).show();
+
                     if (check == true) {
                         startAlarmSubuh(subuh, arrData.get(1), arrData.get(0));
+                        Log.d("aaa12", "onDataChange: ");
+                        Toast.makeText(WaktuShalatActivity.this, "Set Lagi", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
@@ -455,7 +464,10 @@ public class WaktuShalatActivity extends AppCompatActivity {
         });
     }
 
+    private void setAlarmForAll(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+    }
 
     private boolean compareTime(String time){
         SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
@@ -477,6 +489,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
     private void showJadwal(){
         ArrayList<String> waktuSholat = new ArrayList<>();
+        Log.d("Boom", "onDataChange: Before set");
         dRJadwalShalat = FirebaseDatabase.getInstance().getReference("WaktuShalat");
         dRJadwalShalat.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -490,7 +503,15 @@ public class WaktuShalatActivity extends AppCompatActivity {
                 mAsar.setText(waktuSholat.get(0));
                 mMagrib.setText(waktuSholat.get(3));
                 mIsya.setText(waktuSholat.get(2));
-
+                setJadwal((day + "-" + (month+1) + "-" + year),
+                        waktuSholat.get(4),
+                        waktuSholat.get(1),
+                        waktuSholat.get(0),
+                        waktuSholat.get(3),
+                        waktuSholat.get(2)
+                );
+                Toast.makeText(WaktuShalatActivity.this, "test", Toast.LENGTH_SHORT).show();
+                Log.d("Boom", "onDataChange: After set");
                 loading.dismiss();
             }
 
