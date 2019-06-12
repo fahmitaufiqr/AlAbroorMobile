@@ -39,7 +39,6 @@
         <activity android:name=".HomeMenu.InfoActivity" />
         <activity android:name=".HomeMenu.ProfileActivity" />
         <activity android:name=".HomeMenu.ArahKiblat.ArahKiblatActivity" />
-        <activity android:name=".HomeMenu.Acara.AcaraActivity" />
         <activity android:name=".HomeMenu.StatistikActivity" />
         <activity android:name=".HomeMenu.JadwalPetugas.JadwalPetugasActivity" />
         <activity android:name=".HomeMenu.PengurusDKM.PengurusDKMActivity" />

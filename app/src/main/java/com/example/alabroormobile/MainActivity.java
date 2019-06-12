@@ -21,7 +21,6 @@ import com.example.alabroormobile.HomeMenu.Acara.Ramadhan.RamadhanActivity;
 import com.example.alabroormobile.model.Pengurus;
 import com.example.alabroormobile.HomeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.model.UserModel;
-import com.example.alabroormobile.HomeMenu.Acara.AcaraActivity;
 import com.example.alabroormobile.HomeMenu.ArahKiblat.ArahKiblatActivity;
 import com.example.alabroormobile.HomeMenu.PengurusDKM.PengurusDKMActivity;
 import com.example.alabroormobile.HomeMenu.InfoActivity;
