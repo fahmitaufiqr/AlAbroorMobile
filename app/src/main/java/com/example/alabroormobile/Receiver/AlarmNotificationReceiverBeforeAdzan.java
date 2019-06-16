@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.alabroormobile.HomeMenu.JadwalPetugas.JadwalPetugasActivity;
-import com.example.alabroormobile.HomeMenu.Ramadhan.JadwalRamadhanActivity;
 import com.example.alabroormobile.R;
 
 public class AlarmNotificationReceiverBeforeAdzan extends BroadcastReceiver {

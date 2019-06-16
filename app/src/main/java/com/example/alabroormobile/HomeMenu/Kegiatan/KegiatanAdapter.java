@@ -1,4 +1,4 @@
-package com.example.alabroormobile.HomeMenu.Acara.JadwalPengajian;
+package com.example.alabroormobile.HomeMenu.Kegiatan;
 
 /**
  * Created by Aulia Ikvanda on 10,April,2019
@@ -16,7 +16,7 @@ import com.example.alabroormobile.R;
 
 import java.util.ArrayList;
 
-public class PengajianAdapter extends RecyclerView.Adapter<PengajianAdapter.ViewHolder> {
+public class KegiatanAdapter extends RecyclerView.Adapter<KegiatanAdapter.ViewHolder> {
 
     private ClickHandler mClickHandler;
     private ArrayList<PengajianModel> mPengajian;
@@ -25,8 +25,8 @@ public class PengajianAdapter extends RecyclerView.Adapter<PengajianAdapter.View
     private View mEmptyView;
     private Context mContext;
 
-    public PengajianAdapter(Context context, ArrayList<PengajianModel> pengajians, ArrayList<String> dataId,
-                            View emptyView, ClickHandler handler) {
+    public KegiatanAdapter(Context context, ArrayList<PengajianModel> pengajians, ArrayList<String> dataId,
+                           View emptyView, ClickHandler handler) {
         mContext = context;
         mPengajian = pengajians;
         mPengajianId = dataId;

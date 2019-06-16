@@ -25,8 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class JadwalPetugasActivity extends AppCompatActivity {
-
-    private ProgressDialog loading;
+    
     private TextView tv_muazin1, tv_imam1, tv_muazin2, tv_imam2, tv_muazin3, tv_imam3, tv_muazin4, tv_imam4, tv_muazin5, tv_imam5, tv_subuh, tv_dzuhur, tv_ashar, tv_maghrib, tv_isya;
     private CalendarView cv_jadwal_petugas;
     private String sendTanggal;

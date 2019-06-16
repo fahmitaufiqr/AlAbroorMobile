@@ -372,32 +372,4 @@
                 android:textSize="9sp"/>
         </LinearLayout>
     </GridLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
-
-        <Button
-            android:visibility="gone"
-            android:id="@+id/jadwalRamadhan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_gravity="center"
-            android:textSize="12sp"
-            android:text="Imam Isya, Tarawih &amp; Qultum"
-            />
-
-        <Button
-            android:visibility="gone"
-            android:id="@+id/btn_notif_iqamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_gravity="center"
-            android:text="Kirim Notifikasi Iqamat"
-            />
-    </LinearLayout>
 </LinearLayout>

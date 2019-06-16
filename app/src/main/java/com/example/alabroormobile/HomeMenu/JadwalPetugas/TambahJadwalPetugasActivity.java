@@ -25,10 +25,6 @@ import java.util.Calendar;
 
 public class TambahJadwalPetugasActivity extends AppCompatActivity {
 
-    protected static Calendar myCalendar;
-    int year;
-    int month;
-    int dayOfMonth;
     TextView tv_tanggal_jadwal_petugas;
     Button btn_simpan, btn_batal;
     Spinner sp_muazin_subuh, sp_muazin_dzuhur, sp_muazin_ashar, sp_muazin_maghrib, sp_muazin_isya, sp_imam_subuh, sp_imam_dzuhur, sp_imam_ashar, sp_imam_maghrib, sp_imam_isya;

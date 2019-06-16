@@ -1,4 +1,4 @@
-package com.example.alabroormobile.HomeMenu.Acara.Ramadhan;
+package com.example.alabroormobile.HomeMenu.Ramadhan;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

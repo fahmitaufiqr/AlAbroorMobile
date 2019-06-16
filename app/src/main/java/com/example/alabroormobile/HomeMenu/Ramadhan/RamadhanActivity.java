@@ -1,4 +1,4 @@
-package com.example.alabroormobile.HomeMenu.Acara.Ramadhan;
+package com.example.alabroormobile.HomeMenu.Ramadhan;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -31,7 +31,6 @@ public class RamadhanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ramadhan);
         getSupportActionBar().setTitle("Petugas Ramadhan 2019M/1440H ");
-
 
         //    INISIALISASI
         database = FirebaseDatabase.getInstance().getReference();

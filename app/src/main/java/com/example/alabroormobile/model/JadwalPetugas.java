@@ -12,13 +12,6 @@ public class JadwalPetugas {
         this.imam = imam;
     }
 
-    public JadwalPetugas(String tanggal, String muazin, String imam, String qultum) {
-        this.tanggal = tanggal;
-        this.muazin = muazin;
-        this.imam = imam;
-        this.qultum = qultum;
-    }
-
     public String getTanggal() {
         return tanggal;
     }
