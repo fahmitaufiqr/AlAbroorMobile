@@ -28,14 +28,16 @@
                     android:layout_height="wrap_content"
                     android:text="Al-Ab'roor Mobile"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pengertian"
                     android:textColor="@color/warnaText2"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +45,8 @@
                     android:layout_marginTop="10dp"
                     android:text="Atom Team"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
