@@ -56,7 +56,6 @@ public class TambahPengurusActivity extends AppCompatActivity {
             rb_pengurus.setChecked(true);
         }
 
-        rb_pengurus.setChecked(true);
         status = "Pengurus";
 
         rg_status.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

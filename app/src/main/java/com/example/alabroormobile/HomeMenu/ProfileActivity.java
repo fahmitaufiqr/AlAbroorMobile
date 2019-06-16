@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alabroormobile.R;
 import com.example.alabroormobile.Login2Activity;
@@ -131,7 +130,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                         @Override
                         public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                            Toast.makeText(getApplicationContext(), "Something Error", Toast.LENGTH_SHORT).show();
+                            Log.d("LOGD", "onConnectionFailed: Error");
                         }
                     })
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)

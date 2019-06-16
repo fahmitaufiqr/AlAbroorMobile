@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alabroormobile.Receiver.AlarmNotificationReceiverBeforeAdzan;
 import com.example.alabroormobile.Receiver.AlarmNotificationReceiverAdzan;
@@ -233,9 +232,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
 
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis()-300000, pendingIntentSubuh);
         manager.setExact(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent);
-
-        Toast.makeText(WaktuShalatActivity.this, "Set Lagi", Toast.LENGTH_SHORT).show();
-        Log.d("aaa12", "startAlarmSubuh: Set lagi");
     }
 
     private void startAlarmDzuhur(String time, String muazin, String imam) {
@@ -339,10 +335,7 @@ public class WaktuShalatActivity extends AppCompatActivity {
                             boolean check = compareTime(isya);
                             if (check == true) {
                                 startAlarm(isya, arrData.get(1), arrData.get(0));
-//                                startAlarm(isya, arrData.get(1), arrData.get(0), arrData.get(2));
                             }
-                        } else {
-                            Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -364,15 +357,10 @@ public class WaktuShalatActivity extends AppCompatActivity {
                         }
                     }
                     boolean check = compareTime(subuh);
-                    Toast.makeText(WaktuShalatActivity.this, "setelah compare" + check, Toast.LENGTH_SHORT).show();
 
                     if (check == true) {
                         startAlarmSubuh(subuh, arrData.get(1), arrData.get(0));
-                        Log.d("aaa12", "onDataChange: ");
-                        Toast.makeText(WaktuShalatActivity.this, "Set Lagi", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -396,8 +384,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
                     if (check == true) {
                         startAlarmDzuhur(dzuhur, arrData.get(1), arrData.get(0));
                     }
-                } else {
-                    Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -421,8 +407,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
                     if (check == true) {
                         startAlarmAshar(ashar, arrData.get(1), arrData.get(0));
                     }
-                } else {
-                    Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -446,8 +430,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
                     if (check == true) {
                         startAlarmMaghrib(maghrib, arrData.get(1), arrData.get(0));
                     }
-                } else {
-                    Toast.makeText(WaktuShalatActivity.this, "Data petugas belum di set, segera set jadwal petugas untuk mengaktifkan alarm", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -510,8 +492,6 @@ public class WaktuShalatActivity extends AppCompatActivity {
                         waktuSholat.get(3),
                         waktuSholat.get(2)
                 );
-                Toast.makeText(WaktuShalatActivity.this, "test", Toast.LENGTH_SHORT).show();
-                Log.d("Boom", "onDataChange: After set");
                 loading.dismiss();
             }
 

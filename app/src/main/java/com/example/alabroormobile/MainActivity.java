@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (pengurus.getStatus().equals("Admin")){
 //                    mBtnAddNotif.setVisibility(View.GONE);
-                    Toast.makeText(MainActivity.this, "Masuk Sebagai Admin", Toast.LENGTH_SHORT).show();
                 }else {
 //                    mBtnAddNotif.setVisibility(View.GONE);
                 }

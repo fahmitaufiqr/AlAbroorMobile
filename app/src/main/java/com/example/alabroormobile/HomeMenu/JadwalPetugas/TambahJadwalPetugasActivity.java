@@ -3,6 +3,7 @@ package com.example.alabroormobile.HomeMenu.JadwalPetugas;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -84,6 +85,20 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
                 sp_imam_ashar.setAdapter(arrayImam);
                 sp_imam_maghrib.setAdapter(arrayImam);
                 sp_imam_isya.setAdapter(arrayImam);
+
+                DatabaseReference df = FirebaseDatabase.getInstance().getReference("JadwalPetugasBaru");
+                df.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChild(dataTanggal))
+                            setField(dataTanggal, dkmMasjid);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
@@ -157,5 +172,72 @@ public class TambahJadwalPetugasActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void setField(String dataTanggal, ArrayList<String> imamItem){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("JadwalPetugasBaru").child(dataTanggal);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                JadwalPetugas jadwalPetugasSubuh = dataSnapshot.child("Subuh").getValue(JadwalPetugas.class);
+                int imamSubuhPosition = selectImam(imamItem,jadwalPetugasSubuh);
+                int muazinSubuhPosition = selectMuazin(imamItem,jadwalPetugasSubuh);
+
+                JadwalPetugas jadwalPetugasDzuhur = dataSnapshot.child("Dzuhur").getValue(JadwalPetugas.class);
+                int imamDzuhurPosition = selectImam(imamItem,jadwalPetugasDzuhur);
+                int muazinDzuhurPosition = selectMuazin(imamItem,jadwalPetugasDzuhur);
+
+                JadwalPetugas jadwalPetugasAshar = dataSnapshot.child("Ashar").getValue(JadwalPetugas.class);
+                int imamAsharPosition = selectImam(imamItem,jadwalPetugasAshar);
+                int muazinAsharPosition = selectMuazin(imamItem,jadwalPetugasAshar);
+
+                JadwalPetugas jadwalPetugasMaghrib = dataSnapshot.child("Maghrib").getValue(JadwalPetugas.class);
+                int imamMaghribPosition = selectImam(imamItem,jadwalPetugasMaghrib);
+                int muazinMaghribPosition = selectMuazin(imamItem,jadwalPetugasMaghrib);
+
+                JadwalPetugas jadwalPetugasIsya = dataSnapshot.child("Isya").getValue(JadwalPetugas.class);
+                int imamIsyaPosition = selectImam(imamItem,jadwalPetugasIsya);
+                int muazinIsyaPosition = selectMuazin(imamItem,jadwalPetugasIsya);
+
+                sp_muazin_subuh.setSelection(muazinSubuhPosition);
+                sp_imam_subuh.setSelection(imamSubuhPosition);
+                sp_muazin_dzuhur.setSelection(muazinDzuhurPosition);
+                sp_imam_dzuhur.setSelection(imamDzuhurPosition);
+                sp_muazin_ashar.setSelection(muazinAsharPosition);
+                sp_imam_ashar.setSelection(imamAsharPosition);
+                sp_muazin_maghrib.setSelection(muazinMaghribPosition);
+                sp_imam_maghrib.setSelection(imamMaghribPosition);
+                sp_muazin_isya.setSelection(muazinIsyaPosition);
+                sp_imam_isya.setSelection(imamIsyaPosition);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private int selectImam(ArrayList<String> imamItem, JadwalPetugas jadwalPetugas){
+        int imamPosition = 0;
+
+        for (int i = 0; i < imamItem.size(); i++) {
+            if (imamItem.get(i).equals(jadwalPetugas.getImam())){
+                imamPosition = i;
+            }
+        }
+        return imamPosition;
+    }
+
+    private int selectMuazin(ArrayList<String> imamItem, JadwalPetugas jadwalPetugas){
+        int muazinPosition = 0;
+
+        for (int i = 0; i < imamItem.size(); i++) {
+            if (imamItem.get(i).equals(jadwalPetugas.getMuazin())){
+                muazinPosition = i;
+            }
+        }
+        return muazinPosition;
     }
 }

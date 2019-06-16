@@ -116,7 +116,7 @@
     <string name="delete_pengajian">Yakin Dihapus?</string>
     <string name="pengajian_save">SIMPAN</string>
     <string name="pengajian_edit">EDIT</string>
-    <string name="tambah_pengajian">Tambah Jadwal Pengajian</string>
+    <string name="tambah_pengajian">Tambah Kegiatan</string>
 
     <!--STRING RAMADHAN-->
     <string-array name="texttit">

@@ -61,7 +61,6 @@ public class Login2Activity extends AppCompatActivity {
 
     private void cekEmail(FirebaseUser currentUser){
         displayLoader();
-//        String username = currentUser.getEmail().split("@")[0];
         String username = currentUser.getEmail().replace(".", "0").split("@")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Pengurus").child(username);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -164,7 +163,6 @@ public class Login2Activity extends AppCompatActivity {
 
     protected void signInwithGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        displayLoader();
         startActivityForResult(signInIntent, RC_SIGN);
     }
 
@@ -190,7 +188,6 @@ public class Login2Activity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle: "+acct.getId());
-        displayLoader();
         AuthCredential credential= GoogleAuthProvider.getCredential(acct.getIdToken(),null);
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -212,7 +209,7 @@ public class Login2Activity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Verifikasi Akun...");
         pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
 

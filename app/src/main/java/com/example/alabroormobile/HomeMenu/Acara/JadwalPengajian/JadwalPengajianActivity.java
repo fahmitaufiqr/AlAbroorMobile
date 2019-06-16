@@ -94,7 +94,7 @@ public class JadwalPengajianActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal_pengajian);
-        getSupportActionBar().setTitle("Jadwal Pengajian");
+        getSupportActionBar().setTitle("Kegiatan");
 
         pengajianList = new ArrayList<>();
         mPengajianId = new ArrayList<>();

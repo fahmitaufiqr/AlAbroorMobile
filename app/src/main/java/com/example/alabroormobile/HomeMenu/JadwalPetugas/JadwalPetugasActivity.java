@@ -136,6 +136,7 @@ public class JadwalPetugasActivity extends AppCompatActivity {
                         tv_imam3.setText("Imam\t\t: " + imam.get(0));
                         tv_imam4.setText("Imam\t\t: " + imam.get(3));
                         tv_imam5.setText("Imam\t\t: " + imam.get(2));
+                        fab.setImageResource(R.drawable.ic_edit_white_24dp);
                     }
                 } else {
                     tv_muazin1.setText("Muazin Belum ditetukan");
@@ -148,6 +149,7 @@ public class JadwalPetugasActivity extends AppCompatActivity {
                     tv_imam3.setText("Imam Belum ditetukan");
                     tv_imam4.setText("Imam Belum ditetukan");
                     tv_imam5.setText("Imam Belum ditetukan");
+                    fab.setImageResource(R.drawable.ic_add_black_24dp);
                 }
             }
 
