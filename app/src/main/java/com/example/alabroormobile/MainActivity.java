@@ -4,15 +4,19 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alabroormobile.HomeMenu.Kegiatan.KegiatanActivity;
-import com.example.alabroormobile.HomeMenu.Ramadhan.RamadhanActivity;
+import com.example.alabroormobile.HomeMenu.Ramadhan.Ramadhan2Activity;
 import com.example.alabroormobile.model.UserModel;
 import com.example.alabroormobile.HomeMenu.ArahKiblat.ArahKiblatActivity;
 import com.example.alabroormobile.HomeMenu.PengurusDKM.PengurusDKMActivity;
@@ -20,6 +24,12 @@ import com.example.alabroormobile.HomeMenu.InfoActivity;
 import com.example.alabroormobile.HomeMenu.JadwalPetugas.JadwalPetugasActivity;
 import com.example.alabroormobile.HomeMenu.ProfileActivity;
 import com.example.alabroormobile.HomeMenu.WaktuShalatActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog loading;
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
+    GoogleApiClient mGoogleSignInClient;
 
     private LinearLayout jadwalSholatbt, jadwalPetugasbt, jadwalAcarabt, statistikPetugasbt, arahKiblatbt, strukturDkmbt, profilebt, aboutbt;
     private TextView tv_tanggal, tv_nama_pengguna;
@@ -47,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Al-Ab'roor Mobile");
+
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -92,11 +104,68 @@ public class MainActivity extends AppCompatActivity {
         tv_tanggal.setText(formattanggal);
 
         intent();
+
+        //DATA PENGGUNA
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        if (mGoogleSignInClient == null){
+            mGoogleSignInClient = new GoogleApiClient.Builder(MainActivity.this)
+                    .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                            Log.d("LOGD", "onConnectionFailed: Error");
+                        }
+                    })
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_logout, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_keluar) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Klik lagi untuk keluar")
+                    .setMessage("Yakin Keluar")
+                    .setPositiveButton("Ya", (dialog, which) -> {
+                        FirebaseAuth.getInstance().signOut();
+                        finish();
+                        if (mGoogleSignInClient != null) {
+                            Auth.GoogleSignInApi.signOut(mGoogleSignInClient).setResultCallback(new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(@NonNull Status status) {
+                                    Intent i = new Intent(MainActivity.this, Login2Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    finish();
+                                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(i);
+                                }
+                            });
+                        }
+                    })
+                    .setNegativeButton("Tidak", null);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()){
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
             return;
         } else {
@@ -106,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis();
     }
 
-    private void intent(){
+    private void intent() {
         jadwalSholatbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
         statistikPetugasbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RamadhanActivity.class);
+                Intent intent = new Intent(MainActivity.this, Ramadhan2Activity.class);
                 startActivity(intent);
             }
         });

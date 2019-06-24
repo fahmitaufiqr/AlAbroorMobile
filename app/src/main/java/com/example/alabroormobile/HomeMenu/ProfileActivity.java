@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     TextView namaUser,emailUser,hpUser,statuss;
     CircleImageView profileUser;
-    ImageView logoutBtn,editProfileBtn;
+    ImageView editProfileBtn;
     GoogleApiClient mGoogleSignInClient;
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
@@ -73,7 +73,6 @@ public class ProfileActivity extends AppCompatActivity {
         statuss = findViewById(R.id.status);
 
         profileUser =  findViewById(R.id.userProfile);
-        logoutBtn = findViewById(R.id.LogOutBt);
         editProfileBtn = findViewById(R.id.editProfileBt);
 
         //CEK USER ADMIN =====================================================================
@@ -141,33 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
-                builder.setMessage("Klik lagi untuk keluar")
-                        .setMessage("Yakin Keluar")
-                        .setPositiveButton("Ya", (dialog, which) -> {
-                           FirebaseAuth.getInstance().signOut();
-                           finish();
-                            if (mGoogleSignInClient != null){
-                                Auth.GoogleSignInApi.signOut(mGoogleSignInClient).setResultCallback(new ResultCallback<Status>() {
-                                    @Override
-                                    public void onResult(@NonNull Status status) {
-                                        Intent i = new Intent(ProfileActivity.this, Login2Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        finish();
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(i);
-                                    }
-                                });
-                            }
-                        })
-                        .setNegativeButton("Tidak", null);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
+
     }
 
     private void editProfilePopUp(){

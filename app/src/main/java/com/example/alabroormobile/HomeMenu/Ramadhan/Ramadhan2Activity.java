@@ -1,14 +1,13 @@
 package com.example.alabroormobile.HomeMenu.Ramadhan;
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.alabroormobile.model.RamadhanModel;
 import com.example.alabroormobile.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,28 +17,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RamadhanActivity extends AppCompatActivity {
+public class Ramadhan2Activity extends AppCompatActivity {
 
     private DatabaseReference database;
     private ProgressDialog loading;
-    private ArrayList<RamadhanModel> ramadhanArrayList;
-    private RamadhanAdapter ramadhanAdapter;
+    private ArrayList<Ramadhan2Model> ramadhanArrayList;
+    private Ramadhan2Adapter ramadhan2Adapter;
     private RecyclerView rc_list_ramadhan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ramadhan);
-        getSupportActionBar().setTitle("Petugas Ramadhan 2019M/1440H ");
+        setContentView(R.layout.activity_ramadhan2);
+        getSupportActionBar().setTitle("Jadwal Ramadhan");
 
         //    INISIALISASI
         database = FirebaseDatabase.getInstance().getReference();
-        rc_list_ramadhan = findViewById(R.id.recviewRamadhan);
+        rc_list_ramadhan = findViewById(R.id.recview2Ramadhan);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rc_list_ramadhan.setLayoutManager(mLayoutManager);
         rc_list_ramadhan.setItemAnimator(new DefaultItemAnimator());
 
-        loading = ProgressDialog.show(RamadhanActivity.this,
+        loading = ProgressDialog.show(Ramadhan2Activity.this,
                 null,
                 "Mengambil Data...",
                 true,
@@ -52,13 +51,13 @@ public class RamadhanActivity extends AppCompatActivity {
 
                 ramadhanArrayList = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    RamadhanModel ramadhan = noteDataSnapshot.getValue(RamadhanModel.class);
+                    Ramadhan2Model ramadhan = noteDataSnapshot.getValue(Ramadhan2Model.class);
 //                    ramadhan.setKey(noteDataSnapshot.getKey());
                     ramadhanArrayList.add(ramadhan);
                 }
 
-                ramadhanAdapter = new RamadhanAdapter(ramadhanArrayList, RamadhanActivity.this);
-                rc_list_ramadhan.setAdapter(ramadhanAdapter);
+                ramadhan2Adapter = new Ramadhan2Adapter(ramadhanArrayList, Ramadhan2Activity.this);
+                rc_list_ramadhan.setAdapter(ramadhan2Adapter);
                 loading.dismiss();
 
             }
@@ -71,10 +70,11 @@ public class RamadhanActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
-
 }

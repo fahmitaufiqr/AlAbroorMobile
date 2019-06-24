@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeMenu.Ramadhan.RamadhanActivity">
+    tools:context=".HomeMenu.Ramadhan.Ramadhan2Activity">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recviewRamadhan"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recview2Ramadhan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"/>
 
 </LinearLayout>

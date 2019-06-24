@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeMenu.Ramadhan.DetailRamadhanActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_pengajian_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingStart="16dp"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ramadhan Ke -   "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/warnaText2"/>
+
+            <TextView
+                android:id="@+id/ramadhanKe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="20sp"
+                android:textColor="@color/warnaText2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/resetRamadhan"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/editRamadhan"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:srcCompat="@drawable/ic_check_black_24dp"
+                android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimary"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/warnaText2"
+        android:textColorHint="@color/warnaText2">
+
+        <EditText
+            android:id="@+id/input_nama_imam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Imam Isya &amp; Tarawih"
+            android:inputType="textCapWords"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/warnaText2"
+        android:textColorHint="@color/warnaText2">
+
+        <EditText
+            android:id="@+id/input_nama_penceramah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Penceramah Ramadhan"
+            android:inputType="textCapWords"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_alabroor_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HomeMenu.Ramadhan.DetailRamadhanActivity"></activity>
+        <activity android:name=".HomeMenu.Ramadhan.Ramadhan2Activity" />
         <activity android:name=".HomeMenu.Kegiatan.KegiatanActivity" />
-        <activity android:name=".HomeMenu.Ramadhan.RamadhanActivity" />
         <activity android:name=".SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,7 @@
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
-                    android:label="Aplikasi Penjadwalan Masjid Al-Ab'roor" />
+                    android:label="Aplikasi Penjadwalan Masjid Al-Ab&apos;roor" />
             </intent-filter>
         </activity>
         <activity
@@ -45,7 +46,6 @@
         <activity android:name=".HomeMenu.WaktuShalatActivity" />
 
         <receiver android:name=".Receiver.AlarmNotificationReceiverBeforeAdzan" />
-
         <receiver android:name=".Receiver.AlarmNotificationReceiverAdzan" />
 
         <service android:name=".Service.FirebaseInstanceIdService">
